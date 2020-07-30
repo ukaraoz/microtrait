@@ -129,7 +129,7 @@ assert.rules <- function(genes){
 #'
 #' @examples
 set.geneprofile <- function(genes){
-  hmmnames = add_quotes(microtraithmmnames)
+  hmmnames = add_quotes(microtraithmm_names)
   profile = vector(mode = "character", length = length(hmmnames))
   profile[1:length(profile)] = "0"
   #names(profile) = paste("'", genes, "'", sep = "")
