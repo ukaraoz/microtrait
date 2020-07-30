@@ -10,7 +10,7 @@
 #' \dontrun{in_file = system.file("extdata/examples/2619619645/in", "2619619645.genes.faa", package = "microtrait", mustWork = TRUE)
 #' in_file = list(system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.microtrait.domtblout", package = "microtrait", mustWork = TRUE),
 #'                system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.dbcan.domtblout", package = "microtrait", mustWork = TRUE))
-#' }s
+#' }
 extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in", "2619619645.fna", package = "microtrait", mustWork = TRUE),
                           type = "genomic", out_dir = getwd()) {
   result <- c(call = match.call())
@@ -44,6 +44,11 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
     tictoc::tic("run.prodigal")
     fasta_file = in_file
     proteins_file = run.prodigal(genome_file = fasta_file, faa_file = tempfile())
+    tictoc::toc(log = "TRUE")
+
+    tictoc::tic("run.hmmsearch")
+    microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
+    dbcan_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "dbcan")
     tictoc::toc(log = "TRUE")
   }
   if(type == "protein") {  # run gene finder
