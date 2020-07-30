@@ -25,7 +25,7 @@ hmm_names_fromrules = removequotes(hmm_names_fromrules)
 hmm_names_fromrules_missing = setdiff(hmm_names_fromrules, microtraithmm_names)
 message(paste(length(hmm_names_fromrules_missing), " hmm-names after unwrapping the rules don't match microtraithmm_names.\n This should be 0."))
 write.table(rules, file = "./data-raw/rules-unwrapped.xls", row.names = F, col.names = T, sep = "\t")
-usethis::use_data(rules, microtraithmmnames, overwrite = TRUE, compress = 'xz')
+usethis::use_data(rules, microtraithmm_names, overwrite = TRUE, compress = 'xz')
 
 rule2trait = read_delim("./data-raw/rule2trait.txt", delim = "\t", col_names = T,
                             col_types =
@@ -42,8 +42,8 @@ rule2trait = read_delim("./data-raw/rule2trait.txt", delim = "\t", col_names = T
 message(paste("Read", nrow(rule2trait), "rule-to-trait association."))
 
 # make sure all rules are defined
-rule2trait_rulesnotdefined = 
-  setdiff(rule2trait %>% pull(`rule-name`), 
+rule2trait_rulesnotdefined =
+  setdiff(rule2trait %>% pull(`rule-name`),
           rules %>% pull(`rule-name`))
 message(paste(length(rule2trait_rulesnotdefined), " rules not defined.\n This should be 0."))
 usethis::use_data(rule2trait, overwrite = TRUE)
@@ -74,7 +74,7 @@ usethis::use_data(substrates, substrateclasses, overwrite = TRUE)
 
 
 ###
-#traits_transport = rules %>% 
+#traits_transport = rules %>%
 #  dplyr::inner_join(rule2substrate, by = c("rule_name" = "rule_name")) %>%
 #  dplyr::filter(`trait_type`=="transport") %>%
 #  tidyr::separate_rows(`substrate_name`, sep = ";") %>%
