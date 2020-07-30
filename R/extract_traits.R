@@ -11,6 +11,11 @@
 #' in_file = list(system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.microtrait.domtblout", package = "microtrait", mustWork = TRUE),
 #'                system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.dbcan.domtblout", package = "microtrait", mustWork = TRUE))
 #' }
+#' \dontrun{
+#' in_file = list(system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.microtrait.domtblout", package = "microtrait", mustWork = TRUE),
+#'                system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.dbcan.domtblout", package = "microtrait", mustWork = TRUE))
+#' }
+#' type = "domtblout"
 extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in", "2619619645.fna", package = "microtrait", mustWork = TRUE),
                           type = "genomic", out_dir = getwd()) {
   result <- c(call = match.call())
