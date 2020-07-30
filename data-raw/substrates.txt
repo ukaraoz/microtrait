@@ -163,14 +163,14 @@ ribonucleoside	nucleic acid component	ribonucleoside		transporter::nucleic acid 
 xanthosine	nucleic acid component	ribonucleoside		transporter::nucleic acid component:ribonucleoside	production
 phosphate	organophosphorus compound			transporter::organophosphorus compound	production
 phosphonate	organophosphorus compound			transporter::organophosphorus compound	production
-choline	osmolyte			osmoprotectant::osmolyte:choline	test
-glycine betaine	osmolyte			osmoprotectant::osmolyte:glycine betaine	test
-inositol	osmolyte			osmoprotectant::osmolyte:inositol	test
-inositol-phosphate	osmolyte			osmoprotectant::osmolyte:inositol-phosphate	test
+choline	osmolyte			osmoprotectant::osmolyte	production
+glycine betaine	osmolyte			osmoprotectant::osmolyte	production
+inositol	osmolyte			osmoprotectant::osmolyte	production
+inositol-phosphate	osmolyte			osmoprotectant::osmolyte	production
+proline betaine	osmolyte			osmoprotectant::osmolyte	production
+taurine	osmolyte			osmoprotectant::osmolyte	production
+trehalose	osmolyte			osmoprotectant::osmolyte	production
 osmolyte	osmolyte			osmoprotectant::osmolyte	production
-proline betaine	osmolyte			osmoprotectant::osmolyte:proline betaine	test
-taurine	osmolyte			osmoprotectant::osmolyte:taurine	test
-trehalose	osmolyte			osmoprotectant::osmolyte:trehalose	test
 acetoin	other			transporter::other	production
 colicin	other			transporter::other	production
 aminoethylphosphonate	other			transporter::other	production

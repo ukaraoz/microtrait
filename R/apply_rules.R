@@ -69,7 +69,7 @@ count.traitsforgenome <- function(rules_asserted, trait) {
       dplyr::left_join(substrateclasses, by = c("substrate-class" = "substrate-class")) %>%
       dplyr::select(c(`substrate-class`)) %>%
       dplyr::group_by(`substrate-class`, .drop = FALSE) %>%   # key not to drop levels with zero counts
-      dplyr::count(.drop = FALSE) %>%   # have the counts, polish
+      dplyr::summarise(n = length(`substrate-class`)) %>%   # have the counts, polish
       dplyr::left_join(substrateclasses, by = c("substrate-class" = "substrate-class")) %>%
       dplyr::arrange(`trait-displayorder`) %>%
       dplyr::ungroup() %>%

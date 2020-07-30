@@ -21,7 +21,7 @@ Data:
 * **[dbCAN-HMMdb](http://bcb.unl.edu/dbCAN2/download/Databases/)**: domain level profile-HMM database for Carbohydrate-active enzymes.
 
 See setup section below for deployment of these databases after installation.
- 
+
 ### <a name="install"></a> Install:
 The package will be available on CRAN soon. The developmental version can be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package. To install the R package directly from GitHub, do in R:
 

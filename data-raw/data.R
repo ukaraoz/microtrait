@@ -32,11 +32,11 @@ rule2trait = read_delim("./data-raw/rule2trait.txt", delim = "\t", col_names = T
                               cols(`rule-name` = col_character(),
                                    `trait-name` = col_character(),
                                    `trait-display-long` = col_character(),
-                                   `trait-display-short` = col_character(),
-                                   `trait-type` = col_character(),
-                                   `trait-category` = col_character(),
-                                   `trait-version` = col_character(),
-                                   `trait-displayorder` = col_integer()
+                                   `trait-display-short` = col_factor(),
+                                   `trait-type` = col_factor(),
+                                   `trait-category` = col_factor(),
+                                   `trait-version` = col_factor(),
+                                   `trait-displayorder` = col_factor()
                                   )
                           )
 message(paste("Read", nrow(rule2trait), "rule-to-trait association."))
