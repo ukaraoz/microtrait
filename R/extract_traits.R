@@ -17,9 +17,10 @@
 #' }
 #' type = "domtblout"
 extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in", "2619619645.fna", package = "microtrait", mustWork = TRUE),
-                          type = "genomic", out_dir = getwd()) {
+                          type = "genomic", save_tempfiles = F, out_dir = getwd()) {
   result <- c(call = match.call())
   id = fs::path_file(in_file)
+  id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
 
   tictoc::tic.clearlog()
   tictoc::tic("extract.traits")
@@ -81,6 +82,14 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
 
   tictoc::toc(log = "TRUE")
 
+  if(save_tempfiles == T) {
+    file.copy(proteins_file,
+              file.path(out_dir, paste0(id, ".prodigal.faa")))
+    file.copy(microtrait_domtblout_file,
+              file.path(out_dir, paste0(id, ".microtrait.domtblout")))
+    file.copy(dbcan_domtblout_file,
+              file.path(out_dir, paste0(id, ".dbcan.domtblout")))
+  }
   result$id = id
   result$genes_detected = map.traits.result$genes_detected
   result$domains_detected = map.traits.result$domains_detected

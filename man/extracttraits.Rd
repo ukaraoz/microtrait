@@ -8,6 +8,7 @@ extracttraits(
   in_file = system.file("extdata/examples/2619619645/in", "2619619645.fna", package =
     "microtrait", mustWork = TRUE),
   type = "genomic",
+  save_tempfiles = F,
   out_dir = getwd()
 )
 }
