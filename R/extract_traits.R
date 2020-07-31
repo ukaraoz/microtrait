@@ -96,6 +96,8 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
   result$rules_asserted = map.traits.result$rules_asserted
   result$all_traits = map.traits.result$all_traits
   result$time_log = tictoc::tic.log()
+  saveRDS(result,
+          file = file.path(out_dir, paste0(id, ".microtrait.rds")))
   result
 }
 
