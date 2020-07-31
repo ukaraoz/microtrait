@@ -19,8 +19,6 @@
 extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in", "2619619645.fna", package = "microtrait", mustWork = TRUE),
                           type = "genomic", save_tempfiles = F, out_dir = getwd()) {
   result <- c(call = match.call())
-  id = fs::path_file(in_file)
-  id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
 
   tictoc::tic.clearlog()
   tictoc::tic("extract.traits")
@@ -47,6 +45,9 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
   )
 
   if(type == "genomic") {  # run gene finder
+    id = fs::path_file(in_file)
+    id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
+
     tictoc::tic("run.prodigal")
     fasta_file = in_file
     proteins_file = run.prodigal(genome_file = fasta_file, faa_file = tempfile())
@@ -58,6 +59,9 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
     tictoc::toc(log = "TRUE")
   }
   if(type == "protein") {  # run gene finder
+    id = fs::path_file(in_file)
+    id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
+
     proteins_file = in_file
     tictoc::tic("run.hmmsearch")
     microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
@@ -65,6 +69,9 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
     tictoc::toc(log = "TRUE")
   }
   if(type == "domtblout") {  # run gene finder
+    id = fs::path_file(in_file[[1]])
+    id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
+
     microtrait_domtblout_file = in_file[[1]]
     dbcan_domtblout_file = in_file[[2]]
   }
