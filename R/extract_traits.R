@@ -24,15 +24,17 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
   tictoc::tic("extract.traits")
 
   # Check arguments
-  in_file = tryCatch({
-    assertthat::assert_that(file.exists(in_file))
-    in_file
-  },
-  error = function(e) {
-    message("Input file ", `in_file`, " doesn't exist.")
-    print(e)
+  if(type %in% c("genomic", "protein")){
+    in_file = tryCatch({
+      assertthat::assert_that(file.exists(in_file))
+      in_file
+    },
+    error = function(e) {
+      message("Input file ", `in_file`, " doesn't exist.")
+      print(e)
+    }
+    )
   }
-  )
 
   type = tryCatch({
     assertthat::assert_that(type %in% c("genomic", "protein", "domtblout"))
