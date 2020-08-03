@@ -4,7 +4,7 @@
 fetch_microtrait_results <- function(rds.file, id, type = "trait") {
   temp = readRDS(rds.file)
   if(type == "trait"){
-    result = temp$all_traits %>% dplyr::select(c("trait", "n"))
+    result = temp$all_traits %>% dplyr::select(c("trait-display-short", "n"))
   }
   if(type == "gene"){
     result = temp$genes_detected %>% tbl_df

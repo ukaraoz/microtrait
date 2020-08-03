@@ -217,3 +217,8 @@ available.external <- function(what) {
     }
   }
 }
+
+countseq.fasta <- function(fastafile) {
+  nseq = as.numeric(system(paste0("grep \">\"", fastafile, "|wc -l"), intern = T))
+  nseq
+}

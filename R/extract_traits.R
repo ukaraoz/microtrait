@@ -53,6 +53,7 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
     tictoc::tic("run.prodigal")
     fasta_file = in_file
     proteins_file = run.prodigal(genome_file = fasta_file, faa_file = tempfile())
+    nseq = countseq.fasta(proteins_file)
     tictoc::toc(log = "TRUE")
 
     tictoc::tic("run.hmmsearch")
@@ -100,6 +101,7 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
               file.path(out_dir, paste0(id, ".dbcan.domtblout")))
   }
   result$id = id
+  result$norfs = nseq
   result$genes_detected = map.traits.result$genes_detected
   result$domains_detected = map.traits.result$domains_detected
   result$rules_asserted = map.traits.result$rules_asserted
