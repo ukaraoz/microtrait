@@ -16,7 +16,8 @@ detect.genes.fromdomtblout <- function(domtblout, cov_threshold = 80){
     dplyr::top_n(1, cov_gene) %>%
     dplyr::group_by(hmm_name) %>%
     dplyr::top_n(1, gene_score)
-  return(dplyr::pull(hmmhits.gene, "hmm_name"))
+  return(hmmhits.gene)
+  #return(dplyr::pull(hmmhits.gene, "hmm_name"))
 }
 
 #' Apply rules to a set of detected genes

@@ -103,6 +103,8 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
   result$id = id
   result$norfs = nseq
   result$genes_detected = map.traits.result$genes_detected
+  result$genes_detected_table = map.traits.result$genes_detected_table
+
   result$domains_detected = map.traits.result$domains_detected
   result$rules_asserted = map.traits.result$rules_asserted
   result$all_traits = map.traits.result$all_traits
@@ -124,7 +126,9 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
 map.traits.fromdomtblout <- function(microtrait_domtblout, dbcan_domtblout) {
   result <- c(call = match.call())
 
-  genes_detected = detect.genes.fromdomtblout(microtrait_domtblout)
+  genes_detected_table = detect.genes.fromdomtblout(microtrait_domtblout)
+  genes_detected = dplyr::pull(genes_detected_table, "hmm_name")
+
   domains_detected = detect.domains.fromdomtblout(dbcan_domtblout)
   rules_asserted = assert.rulesforgenome(genes_detected, domains_detected)
 
@@ -132,6 +136,7 @@ map.traits.fromdomtblout <- function(microtrait_domtblout, dbcan_domtblout) {
   count_traits = count.traitsforgenome(rules_asserted, "count")
   all_traits = dplyr::bind_rows(binary_traits, count_traits)
 
+  result$genes_detected_table = genes_detected_table
   result$genes_detected = genes_detected
   result$domains_detected = domains_detected
   result$rules_asserted = rules_asserted
