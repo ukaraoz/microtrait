@@ -4,7 +4,7 @@
 \alias{filter.bycoverage.domtblout}
 \title{Read a file created through the '----domtblout' option}
 \usage{
-\method{filter}{bycoverage.domtblout}(domtblout, cov_by, cov_threshold = 60)
+filter.bycoverage.domtblout(domtblout, cov_by, cov_threshold = 60)
 }
 \arguments{
 \item{file}{Filename}
