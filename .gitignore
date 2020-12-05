@@ -25,6 +25,9 @@
 vignettes/*.html
 vignettes/*.pdf
 
+# temp directory
+tmp/*
+
 # large data (i.e.hmm database)
 microtrait.hmmdb
 inst/extdata/hmm/dbcan/*

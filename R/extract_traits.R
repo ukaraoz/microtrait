@@ -66,6 +66,7 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
     id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
 
     proteins_file = in_file
+    nseq = countseq.fasta(proteins_file)
     tictoc::tic("run.hmmsearch")
     microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
     dbcan_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "dbcan")
