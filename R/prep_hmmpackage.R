@@ -1,5 +1,6 @@
 #' Prepare dbcan database (download and subselect)
 #'
+#' @import futile.logger
 download.dbcan <- function(dbcan_version = 8, dbcanhmmdb_selectids_file, dbcanhmmdb_file) {
   futile.logger::flog.info("Downloading dbcan hmm database")
 
@@ -19,20 +20,27 @@ download.dbcan <- function(dbcan_version = 8, dbcanhmmdb_selectids_file, dbcanhm
 }
 
 #' Prepare microtrait database (download and subselect)
-#'
+#' @import futile.logger piggyback fs
+#' @importFrom R.utils gunzip
 download.microtrait <- function(microtraithmmdb_file) {
   futile.logger::flog.info("Downloading microtrait hmm database")
 
-  piggyback::pb_download("microtrait.hmmdb.gz",
-                         repo = "ukaraoz/test",
-                         dest = fs::path_dir(microtraithmmdb_file))
+  #piggyback::pb_download("microtrait.hmmdb.gz",
+  #                       repo = "ukaraoz/microtrait-hmmtest",
+  #                       #repo = "ukaraoz/test",
+  #                       dest = fs::path_dir(microtraithmmdb_file))
+
+  microtrait_hmmdb_url = "https://github.com/ukaraoz/microtrait-hmmtest/releases/download/latest/microtrait.hmmdb.gz"
+  download.file(microtrait_hmmdb_url,
+                destfile = microtraithmmdb_file)
+
   microtraithmmdb_unzippedfile = R.utils::gunzip(microtraithmmdb_file, remove = F, overwrite = T)
   return(microtraithmmdb_unzippedfile[1])
 }
 
 #' Prepare microtrait database (download and subselect)
-#'
-#' @export
+#' @import futile.logger
+#' @export prep.hmmmodels
 prep.hmmmodels <- function(output_dir=system.file("extdata", package = "microtrait")) {
   hmmpress.extensions = c("h3f", "h3i", "h3m", "h3p")
   hmmpress_dir = file.path(output_dir, "hmm", "hmmpress")

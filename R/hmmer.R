@@ -1,29 +1,29 @@
 #' Read a file created through the '----tblout' option
 #'
 #' @param file (Required). hmmscan output file to be read.
-#'
+#' @importFrom checkmate expect_file expect_choice expect_number
 #' @return data frame of class tibble
-#'
-#' @examples
+#' @export read.tblout
 read.tblout <- function(file){
   checkmate::expect_file(file)
-
-  parse_hmmer_output(file, 'tblout')
+  parse.hmmeroutput(file, 'tblout')
 }
 
 #' Read a file created through the '----domtblout' option
 #'
 #' @param file (Required). hmmscan output file to be read.
-#'
+#' @importFrom checkmate expect_file expect_choice expect_number
 #' @return data frame of class tibble
-#'
-#' @examples
+#' @export read.domtblout
 read.domtblout <- function(file){
   checkmate::expect_file(file)
-  .parse.hmmeroutput(file, 'domtblout')
+  parse.hmmeroutput(file, 'domtblout')
 }
 
-.parse.hmmeroutput <- function(file, type){
+#' @import readr
+#' @importFrom tidyr separate
+#' @importFrom magrittr %>%
+parse.hmmeroutput <- function(file, type){
   #checkmate::expect_file(file)
   #checkmate::expect_choice(type,
   #                         choices = c("tblout", "domtblout"),
@@ -94,10 +94,10 @@ read.domtblout <- function(file){
 #' Read a file created through the '----domtblout' option
 #'
 #' @param file Filename
-#'
+#' @import dplyr
+#' @importFrom checkmate expect_file expect_choice expect_number
 #' @return data.frame
-#'
-#' @examples
+#' @export filter.bycoverage.domtblout
 filter.bycoverage.domtblout <- function(domtblout, cov_by, cov_threshold = 60){
   checkmate::expect_choice(cov_by,
                            choices = c("gene", "domain"),

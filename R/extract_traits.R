@@ -3,8 +3,9 @@
 #' @param fasta_file type out_dir
 #'
 #' @return
-#'
-#' @export
+#' @import fs dplyr tictoc
+#' @importFrom assertthat assert_that
+#' @export extract.traits
 #'
 #' @examples
 #' \dontrun{in_file = system.file("extdata/examples/2619619645/in", "2619619645.genes.faa", package = "microtrait", mustWork = TRUE)
@@ -16,8 +17,9 @@
 #'                system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.dbcan.domtblout", package = "microtrait", mustWork = TRUE))
 #' }
 #' type = "domtblout"
-extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in", "2619619645.fna", package = "microtrait", mustWork = TRUE),
-                          type = "genomic", save_tempfiles = F, out_dir = getwd()) {
+extract.traits <- function(in_file = system.file("extdata/genomic/in", "2896129707.fna", package = "microtrait", mustWork = TRUE),
+                           out_dir = system.file("extdata/genomic/out", package = "microtrait", mustWork = TRUE),
+                           type = "genomic", mode = "single", save_tempfiles = F) {
   result <- c(call = match.call())
 
   tictoc::tic.clearlog()
@@ -52,16 +54,32 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
 
     tictoc::tic("run.prodigal")
     fasta_file = in_file
-    proteins_file = run.prodigal(genome_file = fasta_file, faa_file = tempfile())
+    proteins_file = run.prodigal(genome_file = fasta_file, faa_file = tempfile(), mode = mode)
     nseq = countseq.fasta(proteins_file)
     tictoc::toc(log = "TRUE")
 
-    tictoc::tic("run.hmmsearch")
-    microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
-    dbcan_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "dbcan")
-    tictoc::toc(log = "TRUE")
+    if(nseq == 0) {
+      map.traits.result = list()
+      map.traits.result$genes_detected_table = NULL
+      map.traits.result$genes_detected = NULL
+      map.traits.result$domains_detected = NULL
+      map.traits.result$rules_asserted = NULL
+      map.traits.result$trait_counts_atgranularity1 = NULL
+      map.traits.result$trait_counts_atgranularity2 = NULL
+      map.traits.result$trait_counts_atgranularity3 = NULL
+      map.traits.result$id = id
+      map.traits.result$norfs = nseq
+      map.traits.result$time_log = tictoc::tic.log()
+      returnList = list(microtrait_result = map.traits.result, rds_file = NULL)
+      return(returnList)
+    } else {
+      tictoc::tic("run.hmmsearch")
+      microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
+      dbcan_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "dbcan")
+      tictoc::toc(log = "TRUE")
+    }
   }
-  if(type == "protein") {  # run gene finder
+  if(type == "protein") {  # skip gene finder
     id = fs::path_file(in_file)
     id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
 
@@ -101,29 +119,22 @@ extracttraits <- function(in_file = system.file("extdata/examples/2619619645/in"
     file.copy(dbcan_domtblout_file,
               file.path(out_dir, paste0(id, ".dbcan.domtblout")))
   }
-  result$id = id
-  result$norfs = nseq
-  result$genes_detected = map.traits.result$genes_detected
-  result$genes_detected_table = map.traits.result$genes_detected_table
-
-  result$domains_detected = map.traits.result$domains_detected
-  result$rules_asserted = map.traits.result$rules_asserted
-  result$all_traits = map.traits.result$all_traits
-  result$time_log = tictoc::tic.log()
-  saveRDS(result,
-          file = file.path(out_dir, paste0(id, ".microtrait.rds")))
-  result
+  map.traits.result$id = id
+  map.traits.result$norfs = nseq
+  map.traits.result$time_log = tictoc::tic.log()
+  rds_file = file.path(out_dir, paste0(id, ".microtrait.rds"))
+  saveRDS(map.traits.result,file = rds_file)
+  returnList = list(microtrait_result = map.traits.result, rds_file = rds_file)
+  return(returnList)
 }
 
 #' Apply rules to a set of detected genes
 #'
 #' @param domtblout_file1 domtblout_file2 out_file
-#'
+#' @import dplyr
 #' @return
 #'
-#' @export
-#'
-#' @examples
+#' @export map.traits.fromdomtblout
 map.traits.fromdomtblout <- function(microtrait_domtblout, dbcan_domtblout) {
   result <- c(call = match.call())
 
@@ -133,14 +144,16 @@ map.traits.fromdomtblout <- function(microtrait_domtblout, dbcan_domtblout) {
   domains_detected = detect.domains.fromdomtblout(dbcan_domtblout)
   rules_asserted = assert.rulesforgenome(genes_detected, domains_detected)
 
-  binary_traits = count.traitsforgenome(rules_asserted, "binary")
-  count_traits = count.traitsforgenome(rules_asserted, "count")
-  all_traits = dplyr::bind_rows(binary_traits, count_traits)
+  trait_counts_atgranularity1 = count.traitsforgenome(rules_asserted, trait_granularity = 1)
+  trait_counts_atgranularity2 = count.traitsforgenome(rules_asserted, trait_granularity = 2)
+  trait_counts_atgranularity3 = count.traitsforgenome(rules_asserted, trait_granularity = 3)
 
   result$genes_detected_table = genes_detected_table
   result$genes_detected = genes_detected
   result$domains_detected = domains_detected
   result$rules_asserted = rules_asserted
-  result$all_traits = all_traits
+  result$trait_counts_atgranularity1 = trait_counts_atgranularity1
+  result$trait_counts_atgranularity2 = trait_counts_atgranularity2
+  result$trait_counts_atgranularity3 = trait_counts_atgranularity3
   result
 }

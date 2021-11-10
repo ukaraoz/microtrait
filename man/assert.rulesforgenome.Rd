@@ -7,7 +7,7 @@
 assert.rulesforgenome(genes, domains, cov_threshold = 80)
 }
 \arguments{
-\item{genes_detected}{}
+\item{genes}{domains cov_threshold}
 }
 \value{
 

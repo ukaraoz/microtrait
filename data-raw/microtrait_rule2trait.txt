@@ -1,0 +1,976 @@
+microtrait_rule-name	microtrait_rule-type	microtrait_rule-substrate	microtrait_trait-name1	microtrait_trait-name2	microtrait_trait-name3	microtrait_trait-version
+fdhC	count_by_substrate	formate				production
+aaeB	count_by_substrate	hydroxybenzoate				development
+aap_full	count_by_substrate	amino acid				development
+aap_key	count_by_substrate	amino acid				production
+abgT	count_by_substrate	aminobenzoyl-glutamate				development
+acrD	count_by_substrate	drug				development
+acrF	count_by_substrate	drug				development
+actP	count_by_substrate	acetate				production
+ade_full	count_by_substrate	drug				development
+ade_partial	count_by_substrate	drug				development
+adiC	count_by_substrate	arginine				production
+afu_full	count_by_substrate	iron				development
+afu_key	count_by_substrate	iron				production
+aga_full	count_by_substrate	acetylgalactosamine				development
+aga_partial	count_by_substrate	acetylgalactosamine				production
+agl_full	count_by_substrate	trehalose;maltose;sucrose				development
+agl_key	count_by_substrate	trehalose;maltose;sucrose				production
+agu_full	count_by_substrate	digalacturonate				development
+agu_key	count_by_substrate	digalacturonate				production
+algE	count_by_substrate	LPS				development
+allP	count_by_substrate	allantoin				production
+als_full	count_by_substrate	allose				development
+als_key	count_by_substrate	allose				production
+ameC	count_by_substrate	lipooligosaccharide				development
+amiS	count_by_substrate	amide				production
+ampG	count_by_substrate	drug				development
+amsL	count_by_substrate	LPS				development
+amt	count_by_substrate	ammonium				production
+ansP	count_by_substrate	asparagine				production
+aot_full	count_by_substrate	arginine;ornithine				development
+aot_key	count_by_substrate	arginine;ornithine				production
+ara-1_full	count_by_substrate	arabinosaccharide				development
+ara-1_key	count_by_substrate	arabinosaccharide				production
+ara-2_full	count_by_substrate	arabinose				development
+ara-2_key	count_by_substrate	arabinose				production
+araE	count_by_substrate	arabinose				production
+araJ	count_by_substrate	arabinose				production
+arcD	count_by_substrate	arginine				production
+arg_full	count_by_substrate	valine;alanine;histidine;arginine;lysine				development
+arg_key	count_by_substrate	valine;alanine;histidine;arginine;lysine				production
+argT	count_by_substrate	arginine;histidine;lysine;ornithine				production
+arnE	count_by_substrate	LPS				development
+arsB-1	count_by_substrate	arsenic				development
+arsB-2	count_by_substrate	arsenite				development
+art-1_full	count_by_substrate	arginine				development
+art-1_partial	count_by_substrate	arginine				production
+art-2_full	count_by_substrate	arginine;lysine;histidine				development
+art-2_key	count_by_substrate	arginine;lysine;histidine				production
+asc_full	count_by_substrate	cellobiose				development
+asc_partial	count_by_substrate	cellobiose				production
+atoE_key	count_by_substrate	fatty acid				production
+att_full	count_by_substrate	mannopine				development
+att_key	count_by_substrate	mannopine				production
+bce_full	count_by_substrate	drug				development
+bce_key	count_by_substrate	drug				development
+bcr_full	count_by_substrate	drug				development
+bcr_key	count_by_substrate	drug				development
+benE	count_by_substrate	benzoate				production
+betL	count_by_substrate	glycine betaine				production
+betT	count_by_substrate	choline;glycine;proline betaine				production
+bgl_full	count_by_substrate	glucoside				development
+bgl_partial	count_by_substrate	glucoside				production
+bglH	count_by_substrate	cellobiose;gentibiose;arbutin;salicin				production
+bgt_full	count_by_substrate	arginine;lysine;histidine;glutamine				development
+bgt_key	count_by_substrate	arginine;lysine;histidine;glutamine				production
+bica	count_by_substrate	drug				development
+bio-1_full	count_by_substrate	biotin				development
+bio-1_key	count_by_substrate	biotin				production
+bio-2_full	count_by_substrate	biotin				development
+bio-2_key	count_by_substrate	biotin				production
+blpA	count_by_substrate	bacteriocin				development
+bpeEF-oprC_full	count_by_substrate	drug				development
+bpeEF-oprC_partial	count_by_substrate	drug				development
+bra_full	count_by_substrate	drug				development
+bra_partial	count_by_substrate	drug				development
+btu_full	count_by_substrate	vitamin B12				development
+btu_key	count_by_substrate	vitamin B12				production
+btuB	count_by_substrate	vitamin B12				production
+bxl_full	count_by_substrate	xylobiose				development
+bxl_key	count_by_substrate	xylobiose				production
+cbi-1_full	count_by_substrate	nickel				development
+cbi-1_partial	count_by_substrate	nickel				production
+cbi-2_full	count_by_substrate	nickel				development
+cbi-2_key	count_by_substrate	nickel				production
+ccm-1_full	count_by_substrate	heme				development
+ccm-1_partial	count_by_substrate	heme				development
+ceb_full	count_by_substrate	cellobiose				development
+ceb_key	count_by_substrate	cellobiose				production
+cel_full	count_by_substrate	cellobiose				development
+cel_partial	count_by_substrate	cellobiose				production
+cfrA	count_by_substrate	siderophore				production
+chaA	count_by_substrate	calcium				production
+chi_full	count_by_substrate	chitobiose				development
+chi_key	count_by_substrate	chitobiose				production
+chrA	count_by_substrate	chromate				development
+citA	count_by_substrate	citrate				production
+citT	count_by_substrate	citrate				production
+cmlA	count_by_substrate	drug;arabinose				development
+cmp_full	count_by_substrate	bicarbonate				development
+cmp_key	count_by_substrate	bicarbonate				production
+codB	count_by_substrate	cytosine				production
+corA	count_by_substrate	magnesium				production
+cusA	count_by_substrate	copper;silver				development
+cusC	count_by_substrate	copper;silver				development
+cycA	count_by_substrate	serine;alanine;glycine				production
+cyd_full	count_by_substrate	thiol				development
+cyd_partial	count_by_substrate	thiol				development
+cys_full	count_by_substrate	sulfate				development
+cys_partial	count_by_substrate	sulfate				production
+czcA	count_by_substrate	cobalt;zinc;cadmium				development
+czcC	count_by_substrate	cobalt;zinc;cadmium				development
+czcD	count_by_substrate	cobalt;zinc;cadmium;nickel				development
+das_full	count_by_substrate	N,N'-diacetylchitobiose				development
+das_key	count_by_substrate	N,N'-diacetylchitobiose				production
+dct_full	count_by_substrate	dicarboxylate				development
+dct_key	count_by_substrate	dicarboxylate				production
+dctA	count_by_substrate	fumarate;malate;succinamide				production
+dcuA	count_by_substrate	fumarate;succinate;malate				production
+dcuB	count_by_substrate	fumarate;succinate;malate				production
+dcuC	count_by_substrate	dicarboxylate				production
+dev_full	count_by_substrate	glycolipid				development
+dev_partial	count_by_substrate	glycolipid				development
+dga_full	count_by_substrate	glucosaminate				development
+dga_partial	count_by_substrate	glucosaminate				production
+dgl_full	count_by_substrate	glucosamine				development
+dgl_partial	count_by_substrate	glucosamine				production
+dltB	count_by_substrate	alanine				production
+dpp-1_full	count_by_substrate	dipeptide				development
+dpp-1_key	count_by_substrate	dipeptide				production
+dpp-2_full	count_by_substrate	dipeptide				development
+dpp-2_key	count_by_substrate	dipeptide				production
+dsdX	count_by_substrate	serine				production
+eamA	count_by_substrate	cysteine				development
+eamB	count_by_substrate	cysteine				development
+ebr-1_full	count_by_substrate	drug				development
+ebr-1_partial	count_by_substrate	drug				development
+ebr-2	count_by_substrate	drug				development
+ecfA1	count_by_substrate	biotin;riboflavin				production
+eexD_key	count_by_substrate	mannuronan				development
+efeB	count_by_substrate	iron				production
+efeO	count_by_substrate	iron				production
+emrK	count_by_substrate	drug;cysteine				development
+emrY	count_by_substrate	long-chain fatty acid				development
+entS	count_by_substrate	siderophore				development
+eps_full	count_by_substrate	LPS				development
+eps_partial	count_by_substrate	LPS				development
+ery_full	count_by_substrate	erythritol				development
+ery_key	count_by_substrate	erythritol				production
+exb_full	count_by_substrate	biopolymer				development
+exb_key	count_by_substrate	biopolymer				production
+exbD_full	count_by_substrate	biopolymer				development
+exbD_key	count_by_substrate	biopolymer				production
+exoF	count_by_substrate	LPS				development
+exoT	count_by_substrate	glycan				development
+fadL	count_by_substrate	long-chain fatty acid				production
+fdhC	count_by_substrate	formate				production
+fec_full	count_by_substrate	Fe(III) dicitrate				development
+fec_key	count_by_substrate	Fe(III) dicitrate				production
+fecA	count_by_substrate	Fe(III) dicitrate				production
+fep_full	count_by_substrate	Fe-enterobactin				development
+fep_key	count_by_substrate	Fe-enterobactin				production
+fepA	count_by_substrate	siderophore				production
+fev_full	count_by_substrate	iron				development
+fev_key	count_by_substrate	iron				production
+fhu_full	count_by_substrate	Fe(III) hydroxamate				development
+fhu_key	count_by_substrate	Fe(III) hydroxamate				production
+fieF	count_by_substrate	zinc;cadmium;mercury;iron				development
+fiu	count_by_substrate	siderophore				production
+flq_full	count_by_substrate	drug				development
+flq_partial	count_by_substrate	drug				development
+focA	count_by_substrate	formate				production
+focB	count_by_substrate	formate				production
+fpvA	count_by_substrate	siderophore				production
+frc_full	count_by_substrate	fructose				development
+frc_key	count_by_substrate	fructose				production
+fru1_full	count_by_substrate	fructose				development
+fru1_partial	count_by_substrate	fructose				production
+fru2_full	count_by_substrate	fructose				development
+fru2_partial	count_by_substrate	fructose				production
+ftrA	count_by_substrate	iron				production
+gal_full	count_by_substrate	galactose				development
+gal_partial	count_by_substrate	galactose				production
+galP	count_by_substrate	galactose				production
+gam_full	count_by_substrate	galactosamine				development
+gam_partial	count_by_substrate	galactosamine				production
+gan_full	count_by_substrate	arabinogalactan;maltooligosaccharide				development
+gan_key	count_by_substrate	arabinogalactan;maltooligosaccharide				production
+gat_full	count_by_substrate	galactitol				development
+gat_partial	count_by_substrate	galactitol				production
+gesB	count_by_substrate	copper;gold				development
+gfr_full	count_by_substrate	fructoselysine;glucoselysine				development
+gfr_partial	count_by_substrate	fructoselysine;glucoselysine				production
+ggu_full	count_by_substrate	sugar				development
+ggu_key	count_by_substrate	sugar				production
+glc_full	count_by_substrate	glucose;arabinose				development
+glc_key	count_by_substrate	glucose;arabinose				production
+glc-1_full	count_by_substrate	glucose				development
+glc-1_partial	count_by_substrate	glucose				production
+glc-2_full	count_by_substrate	glucose				development
+glc-2_partial	count_by_substrate	glucose				production
+glcT1	count_by_substrate	glucose;mannose;xylose				production
+glcU	count_by_substrate	glucose				production
+glf	count_by_substrate	glucose				production
+gln_full	count_by_substrate	glutamine				development
+gln_key	count_by_substrate	glutamine				production
+glp_full	count_by_substrate	glycerol				development
+glp_key	count_by_substrate	glycerol				production
+glpF	count_by_substrate	glycerol				production
+glt_full	count_by_substrate	glutamate;aspartate				development
+glt_key	count_by_substrate	glutamate;aspartate				production
+gltP	count_by_substrate	glutamate;aspartate				production
+glu_full	count_by_substrate	glutamate				development
+glu_key	count_by_substrate	glutamate				production
+glucP	count_by_substrate	glucose				production
+glv_full	count_by_substrate	glucoside				development
+glv_partial	count_by_substrate	glucoside				production
+glycA	count_by_substrate	lactate;glycolate				production
+gntP	count_by_substrate	gluconate;fructuronate				production
+gntT	count_by_substrate	gluconate				production
+gntU	count_by_substrate	gluconate				production
+gsi_full	count_by_substrate	glutathione				development
+gsi_key	count_by_substrate	glutathione				production
+gts_full	count_by_substrate	glucose;mannose				development
+gts_key	count_by_substrate	glucose;mannose				production
+gut_full	count_by_substrate	glucitol;sorbitol				development
+gut_partial	count_by_substrate	glucitol;sorbitol				production
+gutA	count_by_substrate	sorbitol				production
+hasA	count_by_substrate	heme				production
+hasR	count_by_substrate	colicin				production
+hcaT	count_by_substrate	maltose				production
+his_full	count_by_substrate	ornithine;arginine;lysine;histidine				development
+his_key	count_by_substrate	ornithine;arginine;lysine;histidine				production
+hpt	count_by_substrate	glucose-6-P				production
+hrt_full	count_by_substrate	iron				development
+hrt_key	count_by_substrate	iron				production
+hutM	count_by_substrate	histidine				production
+hutT	count_by_substrate	histidine				production
+hxt	count_by_substrate	sugar				production
+idnT	count_by_substrate	gluconate				production
+ino_full	count_by_substrate	inositol-phosphate				development
+ino_key	count_by_substrate	inositol-phosphate				production
+iolF	count_by_substrate	inositol				production
+itsp-1_full	count_by_substrate	inositol				development
+itsp-1_key	count_by_substrate	inositol				production
+itsp-2_full	count_by_substrate	inositol				development
+itsp-2_key	count_by_substrate	inositol				production
+kdgM	count_by_substrate	oligogalacturonate				production
+kdgT	count_by_substrate	deoxygluconate				production
+kgtP	count_by_substrate	arabinose				production
+kps_full	count_by_substrate	capsular polysaccharide				development
+kps_key	count_by_substrate	capsular polysaccharide				development
+kup	count_by_substrate	potassium				production
+lac-1_full	count_by_substrate	lactose				development
+lac-1_partial	count_by_substrate	lactose;arabinose				development
+lac-2_full	count_by_substrate	lactose;arabinose				development
+lac-2_key	count_by_substrate	lactose				production
+lacS	count_by_substrate	lactose;raffinose;galactose				production
+lacY	count_by_substrate	lactose				production
+lamB	count_by_substrate	maltooligosaccharide				production
+lctB	count_by_substrate	potassium				production
+lctP-1	count_by_substrate	lactate				production
+lctP-2	count_by_substrate	lactate				production
+leuE	count_by_substrate	leucine				development
+lhp_full	count_by_substrate	hydroxyproline				development
+lhp_key	count_by_substrate	hydroxyproline				production
+liv_full	count_by_substrate	amino acid				development
+liv_key	count_by_substrate	amino acid				production
+lpiT	count_by_substrate	lysophospholipid				production
+lpl_full	count_by_substrate	alginate				development
+lpl_key	count_by_substrate	alginate				production
+lys_full	count_by_substrate	lysine				development
+lys_key	count_by_substrate	lysine				production
+lysE	count_by_substrate	lysine;histidine;arginine				development
+lysP	count_by_substrate	lysine				production
+macA_full	count_by_substrate	drug				development
+macA_partial	count_by_substrate	drug				development
+macB_full	count_by_substrate	drug				development
+macB_partial	count_by_substrate	drug				development
+maeN	count_by_substrate	malate				production
+mal-1_full	count_by_substrate	maltose				development
+mal-1_partial	count_by_substrate	maltose;maltodextrin				development
+mal-2_full	count_by_substrate	maltose;maltodextrin				development
+mal-2_key	count_by_substrate	maltose				production
+malglc_full	count_by_substrate	maltose;glucose				development
+malglc_partial	count_by_substrate	maltose;glucose				production
+malY	count_by_substrate	maltose				production
+man_full	count_by_substrate	mannose				development
+man_partial	count_by_substrate	mannose				production
+marC	count_by_substrate	amino acid				production
+mdcF	count_by_substrate	malonate				production
+mdt_full	count_by_substrate	drug				development
+mdt_partial	count_by_substrate	drug				development
+mdtD	count_by_substrate	drug;arabinose				development
+mdtF	count_by_substrate	drug				development
+mdtO	count_by_substrate	drug				development
+mdtP	count_by_substrate	drug				development
+melB	count_by_substrate	melibiose				production
+mer_full	count_by_substrate	mercury				development
+mer_partial	count_by_substrate	mercury				production
+merC	count_by_substrate	mercury				production
+merE	count_by_substrate	mercury				production
+met_full	count_by_substrate	methionine				development
+met_key	count_by_substrate	methionine				production
+mfs.cp	count_by_substrate	glucose				production
+mfs.set	count_by_substrate	lactose;glucose;galactoside;cellobiose;maltose				development
+mgl_full	count_by_substrate	galactose				development
+mgl_key	count_by_substrate	galactose				production
+mgtE	count_by_substrate	magnesium				production
+mhpT	count_by_substrate	arabinose				development
+mla-1_full	count_by_substrate	phospholipid				development
+mla-1_partial	count_by_substrate	phospholipid				production
+mla-2	count_by_substrate	phospholipid				production
+mleP	count_by_substrate	malate				production
+mmpL10	count_by_substrate	glycolipid				development
+mmpL11	count_by_substrate	heme				production
+mmr	count_by_substrate	drug				development
+mmuP	count_by_substrate	methylmethionine				production
+mn_full	count_by_substrate	manganese;iron				development
+mn_key	count_by_substrate	manganese;iron				production
+mng_full	count_by_substrate	glycerate				development
+mng_partial	count_by_substrate	glycerate				production
+mnh_full	count_by_substrate	potassium;sodium				development
+mnh_partial	count_by_substrate	potassium;sodium				production
+mnt-1_full	count_by_substrate	manganese				development
+mnt-1_key	count_by_substrate	manganese				production
+mnt-2_full	count_by_substrate	manganese				development
+mnt-2_key	count_by_substrate	manganese				production
+mntH	count_by_substrate	manganese				production
+mntP_key	count_by_substrate	manganese				development
+mod_full	count_by_substrate	molybdate				development
+mod_key	count_by_substrate	molybdate				production
+msbA	count_by_substrate	phospholipid;LPS				development
+mscL	count_by_substrate	osmolyte				development
+msm-1_full	count_by_substrate	fructooligosaccharide				development
+msm-1_key	count_by_substrate	fructooligosaccharide				production
+msm-2_full	count_by_substrate	raffinose;stachyose;melibiose				development
+msm-2_key	count_by_substrate	raffinose;stachyose;melibiose				production
+mthK	count_by_substrate	potassium				production
+mtl-1_full	count_by_substrate	sorbitol;mannitol				development
+mtl-1_partial	count_by_substrate	sorbitol;mannitol				development
+mtl-2_full	count_by_substrate	sorbitol;mannitol				development
+mtl-2_partial	count_by_substrate	mannitol				production
+mtr-2	count_by_substrate	tryptophan				production
+mtrD	count_by_substrate	drug				development
+mts_full	count_by_substrate	iron;zinc;manganese;copper				development
+mts_key	count_by_substrate	iron;zinc;manganese;copper				production
+mur_full	count_by_substrate	acetylmuramic acid				development
+mur_partial	count_by_substrate	acetylmuramic acid				production
+nag_full	count_by_substrate	acetylglucosamine				development
+nag_partial	count_by_substrate	acetylglucosamine				production
+nat-1_full	count_by_substrate	sodium				development
+nat-1_key	count_by_substrate	sodium				production
+nat-2_full	count_by_substrate	amino acid				development
+nat-2_key	count_by_substrate	amino acid				production
+nepI	count_by_substrate	ribonucleoside				development
+ngc_full	count_by_substrate	acetylglucosamine				development
+ngc_key	count_by_substrate	acetylglucosamine				production
+nhaA	count_by_substrate	sodium				production
+nhaB	count_by_substrate	sodium				production
+nhaC	count_by_substrate	sodium				production
+niaX	count_by_substrate	vitamin B				production
+nik_full	count_by_substrate	nickel				development
+nik_key	count_by_substrate	nickel				production
+nirC	count_by_substrate	nitrite				production
+nis_full	count_by_substrate	drug				development
+nis_partial	count_by_substrate	drug				development
+nisA	count_by_substrate	lantibiotic				development
+nitregulatory_full	count_by_substrate	nitrogen				development
+nitregulatory_partial	count_by_substrate	nitrogen				production
+nixA	count_by_substrate	cobalt;nickel				production
+nod_full	count_by_substrate	LPS				development
+nod_partial	count_by_substrate	LPS				development
+nos_full	count_by_substrate	copper				development
+nos_key	count_by_substrate	copper				production
+nrsA	count_by_substrate	cobalt;nickel				development
+nrt_full	count_by_substrate	nitrate;nitrite				development
+nrt_key	count_by_substrate	nitrate;nitrite				production
+nuk_full	count_by_substrate	drug				development
+nuk_partial	count_by_substrate	drug				development
+nupC	count_by_substrate	nucleoside				production
+nupG	count_by_substrate	nucleoside				production
+nupX	count_by_substrate	nucleoside				production
+occ_full	count_by_substrate	octopine;nopaline				development
+occ_key	count_by_substrate	octopine;nopaline				production
+oleC_full	count_by_substrate	drug				development
+oleC_key	count_by_substrate	drug				development
+ompA	count_by_substrate	sugar;amino acid				production
+opmD_key	count_by_substrate	drug				development
+opmE	count_by_substrate	drug				development
+opp-1_full	count_by_substrate	oligopeptide				development
+opp-1_key	count_by_substrate	oligopeptide				production
+oprB	count_by_substrate	glucose;glycerol;mannitol;fructose;maltose;pentose				production
+oprD	count_by_substrate	lysine;arginine;histidine;proline;tyrosine				production
+oprN	count_by_substrate	drug				development
+oprO_P	count_by_substrate	phosphate				production
+opu_and	count_by_substrate	osmolyte				development
+opu_key	count_by_substrate	osmolyte				development
+oqxB	count_by_substrate	drug				development
+oxlT	count_by_substrate	oxalate				production
+pa_full	count_by_substrate	amino acid				development
+pa_partial	count_by_substrate	amino acid				production
+paa	count_by_substrate	amino acid				production
+panF	count_by_substrate	pantothenate				production
+pbuE	count_by_substrate	nucleoside				development
+pbuG	count_by_substrate	guanosine				production
+peb_full	count_by_substrate	aspartate;glutamate;glutamine				development
+peb_key	count_by_substrate	aspartate;glutamate;glutamine				production
+pha_full	count_by_substrate	potassium;sodium				development
+pha_partial	count_by_substrate	potassium;sodium				production
+pheP	count_by_substrate	phenylalanine				production
+phn-1_full	count_by_substrate	aminoethylphosphonate				development
+phn-1_partial	count_by_substrate	aminoethylphosphonate				production
+phn-2_full	count_by_substrate	phosphonate				development
+phn-2_partial	count_by_substrate	phosphonate				production
+pho84	count_by_substrate	phosphate				production
+phoE	count_by_substrate	phosphate				production
+pit	count_by_substrate	phosphate				production
+pro_and	count_by_substrate	osmolyte				development
+pro_key	count_by_substrate	osmolyte				development
+proP	count_by_substrate	glycine betaine;proline				production
+proY	count_by_substrate	proline				production
+pslD	count_by_substrate	polysaccharide				development
+pst_full	count_by_substrate	phosphate				development
+pst_partial	count_by_substrate	phosphate				production
+psuT	count_by_substrate	nucleoside				production
+pucJ	count_by_substrate	uric acid				production
+putP	count_by_substrate	proline				production
+puuP	count_by_substrate	putrescine				production
+pvdE	count_by_substrate	siderophore				development
+rbs_full	count_by_substrate	ribose				development
+rbs_key	count_by_substrate	ribose				production
+rbsU	count_by_substrate	glucose				production
+rcnA	count_by_substrate	cobalt;nickel				production
+rha-1_full	count_by_substrate	rhamnose				development
+rha-1_key	count_by_substrate	rhamnose				production
+rha-2	count_by_substrate	rhamnose				production
+rhtA	count_by_substrate	threonine;homoserine				development
+rhtB	count_by_substrate	homoserine				development
+rhtC	count_by_substrate	threonine				development
+rib_full	count_by_substrate	riboflavin				development
+rib_partial	count_by_substrate	riboflavin				production
+rocE	count_by_substrate	arginine;ornithine				production
+rutG	count_by_substrate	pyrimidine				production
+sam	count_by_substrate	riboflavin				production
+sap_full	count_by_substrate	peptide				development
+sap_key	count_by_substrate	peptide				production
+satP	count_by_substrate	acetate;succinate				production
+scr_full	count_by_substrate	sucrose				development
+scr_partial	count_by_substrate	sucrose				production
+scrY	count_by_substrate	sucrose;raffinose;maltooligosaccharide				production
+sdaC	count_by_substrate	serine				production
+sit_full	count_by_substrate	iron;manganese				development
+sit_key	count_by_substrate	iron;manganese				production
+sme_full	count_by_substrate	drug				development
+sme_partial	count_by_substrate	drug				development
+sor_full	count_by_substrate	sorbose				development
+sor_partial	count_by_substrate	sorbose				production
+sotB	count_by_substrate	arabinose				development
+sstT	count_by_substrate	serine;threonine				production
+ssu_full	count_by_substrate	sulfonate				development
+ssu_key	count_by_substrate	sulfonate				production
+ste_full	count_by_substrate	drug				development
+ste_partial	count_by_substrate	drug				development
+sug-1_full	count_by_substrate	sugar				development
+sug-1_partial	count_by_substrate	sugar				production
+sug-2_full	count_by_substrate	sugar				development
+sug-2_partial	count_by_substrate	sugar				production
+syrD	count_by_substrate	drug				development
+tag_full	count_by_substrate	teichoic acid				development
+tag_key	count_by_substrate	teichoic acid				production
+tau_full	count_by_substrate	taurine				development
+tau_key	count_by_substrate	taurine				production
+tc_2.A.76.1.6	count_by_substrate	amino acid				development
+tc.aat	count_by_substrate	alanine;serine;glycine				production
+tc.agcs	count_by_substrate	alanine;glycine				production
+tc.apa	count_by_substrate	amino acid				production
+tc.bat2	count_by_substrate	serine				development
+tc.citmhs	count_by_substrate	calcium				production
+tc.cnt	count_by_substrate	nucleoside				production
+tc.dass	count_by_substrate	citrate				production
+tc.dme	count_by_substrate	drug				development
+tc.fev	count_by_substrate	iron				production
+tc.gntp	count_by_substrate	gluconate				production
+tc.gph	count_by_substrate	sugar				production
+tc.hae1	count_by_substrate	LPS				development
+tc.livcs	count_by_substrate	amino acid				production
+tc.ncs1	count_by_substrate	nucleotide				production
+tc.ncs2	count_by_substrate	purine				production
+tc.nss	count_by_substrate	tryptophan				production
+tc.pot	count_by_substrate	peptide				production
+tc.sss	count_by_substrate	proline				production
+tc.sulp	count_by_substrate	fumarate				production
+tc2.A.86.1.7	count_by_substrate	heme				production
+tct_full	count_by_substrate	tricarboxylate				development
+tct_partial	count_by_substrate	tricarboxylate				production
+tcy-1_full	count_by_substrate	amino acid				development
+tcy-1_key	count_by_substrate	amino acid				production
+tcy-2_full	count_by_substrate	amino acid				development
+tcy-2_partial	count_by_substrate	amino acid				production
+tdcC	count_by_substrate	threonine				production
+tehA	count_by_substrate	tellurite				development
+tet35	count_by_substrate	drug				development
+thi_full	count_by_substrate	thiamine				development
+thi_key	count_by_substrate	thiamine				production
+thiT	count_by_substrate	thiamine				production
+thu_full	count_by_substrate	trehalose;maltose;sucrose;palatinose				development
+thu_key	count_by_substrate	trehalose;maltose;sucrose;palatinose				production
+tnaB	count_by_substrate	tryptophan				production
+tog_full	count_by_substrate	oligogalacturonide				development
+tog_key	count_by_substrate	oligogalacturonide				production
+togT	count_by_substrate	oligogalacturonide				production
+tol_full	count_by_substrate	biopolymer				development
+tol_partial	count_by_substrate	biopolymer				production
+treE_full	count_by_substrate	trehalose				development
+treE_partial	count_by_substrate	trehalose				production
+triC	count_by_substrate	drug				development
+trkA	count_by_substrate	potassium				production
+trkH	count_by_substrate	potassium				production
+tro_full	count_by_substrate	iron;zinc;manganese				development
+tro_key	count_by_substrate	iron;zinc;manganese				production
+trp_full	count_by_substrate	tryptophan				development
+trp_key	count_by_substrate	tryptophan				production
+tsx	count_by_substrate	nucleoside				production
+ttdT	count_by_substrate	tartrate				production
+tuaB	count_by_substrate	teichuronic acid				development
+tup_full	count_by_substrate	tungstate				development
+tup_key	count_by_substrate	tungstate				production
+tutB	count_by_substrate	tyrosine				production
+tyrP	count_by_substrate	tyrosine				production
+ugp_and	count_by_substrate	osmolyte				development
+ugp_key	count_by_substrate	osmolyte				development
+uhpC	count_by_substrate	hexose				production
+uid-1	count_by_substrate	glucuronide				production
+uid-2	count_by_substrate	glucuronide				production
+ula_full	count_by_substrate	ascorbate				development
+ula_partial	count_by_substrate	ascorbate				production
+uraA	count_by_substrate	uracil				production
+urt_full	count_by_substrate	urea				development
+urt_key	count_by_substrate	urea				production
+utp	count_by_substrate	urea				production
+vb1x_and	count_by_substrate	osmolyte				development
+vb1x_key	count_by_substrate	osmolyte				development
+vex_full	count_by_substrate	LPS				development
+vex_key	count_by_substrate	LPS				development
+vexA	count_by_substrate	LPS				development
+vexF	count_by_substrate	drug				development
+vpsM	count_by_substrate	LPS				development
+vpsN	count_by_substrate	LPS				development
+wtp_full	count_by_substrate	molybdate;tungstate				development
+wtp_key	count_by_substrate	molybdate;tungstate				production
+wza	count_by_substrate	LPS				development
+wzxC	count_by_substrate	LPS				development
+xanP	count_by_substrate	xanthine				production
+xanQ	count_by_substrate	xanthine				production
+xapB	count_by_substrate	xanthosine				production
+xlt_full	count_by_substrate	xylitol				development
+xlt_key	count_by_substrate	xylitol				production
+xyl_full	count_by_substrate	xylose				development
+xyl_key	count_by_substrate	xylose				production
+xylE	count_by_substrate	xylose				production
+yad_full	count_by_substrate	drug				development
+yad_partial	count_by_substrate	drug				development
+yahN	count_by_substrate	amino acid				development
+ydjE	count_by_substrate	vitamin B				production
+yia_full	count_by_substrate	dicarboxylate				development
+yia_partial	count_by_substrate	dicarboxylate				production
+yjbB	count_by_substrate	phosphate				production
+yjeH	count_by_substrate	amino acid				development
+ykk_full	count_by_substrate	drug				development
+ykk_partial	count_by_substrate	drug				development
+ylnA	count_by_substrate	sulfate				production
+ynfM	count_by_substrate	arabinose				development
+yojI	count_by_substrate	drug				development
+yqgE	count_by_substrate	alanine				production
+yrbG	count_by_substrate	calcium				production
+ytr_full	count_by_substrate	acetoin				development
+ytr_partial	count_by_substrate	acetoin				production
+yuiF	count_by_substrate	histidine				production
+yxjA	count_by_substrate	purine				production
+yyd_full	count_by_substrate	antimicrobial peptide				development
+yyd_partial	count_by_substrate	antimicrobial peptide				development
+zipB	count_by_substrate	zinc;cadmium				production
+zm_full	count_by_substrate	zinc;manganese				development
+zm_key	count_by_substrate	zinc;manganese				production
+zntB	count_by_substrate	zinc				production
+znu_full	count_by_substrate	zinc				development
+znu_key	count_by_substrate	zinc				production
+GH1	count_by_substrate	xylan and heteroxylan				production
+GH2	count_by_substrate	xylan and heteroxylan				production
+GH3	count_by_substrate	cellulose;chitin;xylan and heteroxylan				production
+GH4	count_by_substrate	xyloglucan				production
+GH5	count_by_substrate	cellulose;xylan and heteroxylan;heteromannan;mixed linkage glucan				production
+GH6	count_by_substrate	cellulose				production
+GH7	count_by_substrate	cellulose				production
+GH8	count_by_substrate	cellulose;xylan and heteroxylan;mixed linkage glucan				production
+GH9	count_by_substrate	cellulose;mixed linkage glucan				production
+GH10	count_by_substrate	xylan and heteroxylan				production
+GH11	count_by_substrate	xylan and heteroxylan				production
+GH12	count_by_substrate	cellulose;xyloglucan				production
+GH16	count_by_substrate	xyloglucan;mixed linkage glucan				production
+GH18	count_by_substrate	chitin				production
+GH19	count_by_substrate	chitin				production
+GH20	count_by_substrate	chitin				production
+GH23	count_by_substrate	chitin				production
+GH26	count_by_substrate	heteromannan;mixed linkage glucan				production
+GH27	count_by_substrate	xyloglucan				production
+GH30	count_by_substrate	xylan and heteroxylan				production
+GH31	count_by_substrate	xyloglucan				production
+GH36	count_by_substrate	xyloglucan				production
+GH39	count_by_substrate	xylan and heteroxylan				production
+GH43	count_by_substrate	xylan and heteroxylan				production
+GH44	count_by_substrate	cellulose;xyloglucan				production
+GH45	count_by_substrate	cellulose				production
+GH48	count_by_substrate	cellulose				production
+GH51	count_by_substrate	cellulose;xylan and heteroxylan				production
+GH52	count_by_substrate	xylan and heteroxylan				production
+GH54	count_by_substrate	xylan and heteroxylan				production
+GH62	count_by_substrate	xylan and heteroxylan				production
+GH74	count_by_substrate	cellulose;xyloglucan				production
+GH79	count_by_substrate	xylan and heteroxylan				production
+GH97	count_by_substrate	xyloglucan				production
+GH98	count_by_substrate	xylan and heteroxylan				production
+GH124	count_by_substrate	cellulose				production
+GH110	count_by_substrate	xyloglucan				production
+GH113	count_by_substrate	heteromannan				production
+GH116	count_by_substrate	xylan and heteroxylan				production
+GH120	count_by_substrate	xylan and heteroxylan				production
+GH134	count_by_substrate	heteromannan				production
+ggt	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepA_M17	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepN	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepT	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pip	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepA_M42	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+map	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+dmpA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepD_M20	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepD_S1	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepQ	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepX	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+dcp	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+cpg	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ldcA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.17.19	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pcp	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+iadA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+yqgT	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+sspA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.21.50	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lon	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+iga_hap	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ptrB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+clpP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+iga_zmpA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ptrA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+prlC	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+hslV	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+bepA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+cpaA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+hofD	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pilD	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lepB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lspA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+psmA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+psmB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+hyaD	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+prc	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+hflB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lonB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+hhoB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lonH	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+degP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+degQ	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+sppA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+sohB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ydgD	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pfpI	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.11.10	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepE	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+cpt	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+gpr	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+spoIIGA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+preP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+dacC	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+dacB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+vanY	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+mepA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pbpG	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pqqL	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepO	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+loiP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+flaK	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+prtC_M10	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+prtC_U32	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+hycI	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ypdF	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pgtE	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+tpr	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+yopJ	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+yopT	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepF	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.17.14	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+vanX	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lasA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+zmpB_M26	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+zmpB_M4	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lef	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+scpA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pepDA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+tri	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+nprB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+mtfA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+rseP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+cps	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+iaaA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+wprA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+isp	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+bpr	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+epr	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+sipW	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+avrRpt2	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+avrPphB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+icsP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+mepS	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+trf2_3	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+aprE1	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+aprE2	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+vpr	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+dppA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+erfK	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+yydH	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+cwlK	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+aprX	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+frvX	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+sprE	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ptpA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+vanXY	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ampH	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+cwlS	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lytF	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lytE	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+gluP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ynhG	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ybiS	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ycfS	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+mepH	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+mepM	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+mpl	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ampS	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ywaD	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.11.24	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+zmp1	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+alpha-LP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+zmpA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+nisP	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+tet	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+sgcX	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ykfC	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.24.32	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+bapA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.21.121	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+impA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pbp4b	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ycbB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+cwlO	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+lytH	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ripA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+ripB	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+hpxW	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+E3.4.24.33	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+pipA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+tpdA	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+prsW	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+patG	count	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	Resource Acquisition:Substrate degradation:simple compound degradation:protein degradation	production
+glycolysis-ED_full	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:ED pathway	production
+glycolysis-EMP_full	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:EMP pathway	production
+fructose degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:fructose degradation	production
+fucose degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:fucose degradation	production
+maltose degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:maltose degradation	production
+galactose degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:galactose degradation	production
+mannose degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:mannose degradation	production
+trehalose degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation	Resource Acquisition:Substrate degradation:simple compound degradation:carbohydrate degradation:trehalose degradation	production
+galacturonate degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:sugar acid degradation	Resource Acquisition:Substrate degradation:simple compound degradation:sugar acid degradation:galacturonate degradation	production
+glucuronate degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:sugar acid degradation	Resource Acquisition:Substrate degradation:simple compound degradation:sugar acid degradation:glucuronate degradation	production
+glycerol degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:alcohol degradation	Resource Acquisition:Substrate degradation:simple compound degradation:alcohol degradation:glycerol degradation	production
+resorcinol degradation	binary	NA	Resource Acquisition:Substrate degradation:simple compound degradation	Resource Acquisition:Substrate degradation:simple compound degradation:phenol degradation	Resource Acquisition:Substrate degradation:simple compound degradation:phenol degradation:resorcinol degradation	production
+cc_key	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation:Calvin Cycle	production
+3hpb1_key1	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation:3-hydroxypropionate pathway	production
+3hp4hb_key1	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation:3-hydroxypropionate/4-hydroxybutyrate pathway	production
+dicarb-4hb_CO2fixation	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation:dicarboxylate-hydroxybutyrate pathway	production
+rac_key1	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation:reductive acetyl-CoA pathway	production
+rca_key1	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation:reductive citric acid pathway	production
+carboxysome	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation	Resource Acquisition:Substrate assimilation:C1 compounds:CO2 fixation:carboxysome	production
+CH2O->HCOO-	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:formaldehyde oxidation pathway	production
+CH4->CH3OH	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:methane oxidation pathway	production
+CH3OH->CH2O	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:methanol oxidation pathway	production
+serine pathway	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:formaldehyde assimilation with serine pathway	production
+RuMP pathway	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:formaldehyde assimilation with RuMP pathway	production
+PHB cycle	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:PHB cycle	production
+H4MPT pathway	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:H4MPT pathway	production
+H4F pathway	binary	NA	Resource Acquisition:Substrate assimilation:C1 compounds	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy	Resource Acquisition:Substrate assimilation:C1 compounds:methanotrophy:H4F pathway	production
+nitrate->nitrite_assimilatory_full	binary	NA	Resource Acquisition:Substrate assimilation:N compounds	Resource Acquisition:Substrate assimilation:N compounds:assimilatory nitrate reduction	Resource Acquisition:Substrate assimilation:N compounds:assimilatory nitrate reduction	production
+nitrogen fixation_key	binary	NA	Resource Acquisition:Substrate assimilation:N compounds	Resource Acquisition:Substrate assimilation:N compounds:nitrogen fixation	Resource Acquisition:Substrate assimilation:N compounds:nitrogen fixation	production
+glutamine to aspartate	binary	NA	Resource Acquisition:Substrate assimilation:N compounds	Resource Acquisition:Substrate assimilation:N compounds:ammonia assimilation	Resource Acquisition:Substrate assimilation:N compounds:ammonia assimilation to aspartate	production
+ammonia assimilation to glutamate	binary	NA	Resource Acquisition:Substrate assimilation:N compounds	Resource Acquisition:Substrate assimilation:N compounds:ammonia assimilation	Resource Acquisition:Substrate assimilation:N compounds:ammonia assimilation to glutamate	production
+ammonia assimilation to glutamine-GS	binary	NA	Resource Acquisition:Substrate assimilation:N compounds	Resource Acquisition:Substrate assimilation:N compounds:ammonia assimilation	Resource Acquisition:Substrate assimilation:N compounds:ammonia assimilation to glutamine	production
+sulfite->sulfide-assimilatory_or	binary	NA	Resource Acquisition:Substrate assimilation:S compounds	Resource Acquisition:Substrate assimilation:S compounds:assimilatory sulfate reduction	Resource Acquisition:Substrate assimilation:S compounds:assimilatory sulfate reduction	production
+phosphatase	binary	NA	Resource Acquisition:Substrate assimilation:P compounds	Resource Acquisition:Substrate assimilation:P compounds	Resource Acquisition:Substrate assimilation:P compounds:phosphatase	production
+phytase	binary	NA	Resource Acquisition:Substrate assimilation:P compounds	Resource Acquisition:Substrate assimilation:P compounds	Resource Acquisition:Substrate assimilation:P compounds:phytase	production
+katE	count	NA	Stress Tolerance:General	Stress Tolerance:General:scavenging of reactive oxygen species	Stress Tolerance:General:scavenging of reactive oxygen species:ROS scavenging enzymes	production
+katG	count	NA	Stress Tolerance:General	Stress Tolerance:General:scavenging of reactive oxygen species	Stress Tolerance:General:scavenging of reactive oxygen species:ROS scavenging enzymes	production
+alginate biosynthesis/transport	count	NA	Stress Tolerance:General	Stress Tolerance:General:biofilm formation	Stress Tolerance:General:biofilm formation:EPS biosynthesis/export	production
+Psl polysaccharide biosynthesis/export	count	NA	Stress Tolerance:General	Stress Tolerance:General:biofilm formation	Stress Tolerance:General:biofilm formation:EPS biosynthesis/export	production
+Pel polysaccharide biosynthesis/export	count	NA	Stress Tolerance:General	Stress Tolerance:General:biofilm formation	Stress Tolerance:General:biofilm formation:EPS biosynthesis/export	production
+Vi polysaccharide biosynthesis/export	count	NA	Stress Tolerance:General	Stress Tolerance:General:biofilm formation	Stress Tolerance:General:biofilm formation:EPS biosynthesis/export	production
+lipopolysaccharide assembly/export	count	NA	Stress Tolerance:General	Stress Tolerance:General:biofilm formation	Stress Tolerance:General:biofilm formation:EPS biosynthesis/export	production
+colanic acid biosynthesis/exporter	count	NA	Stress Tolerance:General	Stress Tolerance:General:biofilm formation	Stress Tolerance:General:biofilm formation:EPS biosynthesis/export	production
+exopolysaccharide production	count	NA	Stress Tolerance:General	Stress Tolerance:General:biofilm formation	Stress Tolerance:General:biofilm formation:EPS biosynthesis/export	production
+hsp10	count	NA	Stress Tolerance:General	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp24	count	NA	Stress Tolerance:General	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp40	count	NA	Stress Tolerance:General	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp60	count	NA	Stress Tolerance:General	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp70	count	NA	Stress Tolerance:General	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp100_or	count	NA	Stress Tolerance:General	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins:ATP-dependent proteases	production
+lon_or	count	NA	Stress Tolerance:General	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:General:protection, repair, degradation of denatured/misfolded proteins:ATP-dependent proteases	production
+hsp10	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp24	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp40	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp60	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp70	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins:heat shock proteins	production
+hsp100_or	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins:ATP-dependent proteases	production
+lon_or	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:temperature:high:protection, repair, degradation of denatured/misfolded proteins:ATP-dependent proteases	production
+heatinducibleTF	count	NA	Stress Tolerance:Specific:temperature:high	Stress Tolerance:Specific:temperature:high:heat-induced transcriptional regulation	Stress Tolerance:Specific:temperature:high:heat-induced transcriptional regulation:heat induced transcription factor	production
+desA	count	NA	Stress Tolerance:Specific:temperature:low	Stress Tolerance:Specific:temperature:low:membrane stabilization	Stress Tolerance:Specific:temperature:low:membrane stabilization:fatty acid desaturase	production
+cspA	count	NA	Stress Tolerance:Specific:temperature:low	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs:mRNA chaperone	production
+pnp	count	NA	Stress Tolerance:Specific:temperature:low	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs:mRNA stabilization	production
+deaD	count	NA	Stress Tolerance:Specific:temperature:low	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs:RNA degradation	production
+rnr	count	NA	Stress Tolerance:Specific:temperature:low	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs	Stress Tolerance:Specific:temperature:low:destabilization of secondary structures in mRNAs:RNA degradation	production
+desKR	count	NA	Stress Tolerance:Specific:temperature:low	Stress Tolerance:Specific:temperature:low:cold-sensing machinery	Stress Tolerance:Specific:temperature:low:cold-sensing machinery:cold sensing two-component system	production
+proline_biosynthesis	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:synthesis of compatible solutes	production
+trehalose_biosynthesis	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:synthesis of compatible solutes	production
+betaine_biosynthesis	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:synthesis of compatible solutes	production
+glucosylglycerate_biosynthesis	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:synthesis of compatible solutes	production
+mannosylglucosylglycerate_biosynthesis	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:synthesis of compatible solutes	production
+mannosylglycerate_biosynthesis	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:synthesis of compatible solutes	production
+proline transport	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:transport of compatible solutes	production
+glycine betaine/proline transport system	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:transport of compatible solutes	production
+glycine betaine transporter	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:transport of compatible solutes	production
+choline/glycine/proline betaine transport	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:transport of compatible solutes	production
+mechanosensitive channel	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes	Stress Tolerance:Specific:desiccation/osmotic/salt stress:accumulation of compatible solutes:transport of compatible solutes	production
+alginate biosynthesis/transport	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment:EPS biosynthesis/export	production
+Psl polysaccharide biosynthesis/export	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment:EPS biosynthesis/export	production
+Pel polysaccharide biosynthesis/export	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment:EPS biosynthesis/export	production
+Vi polysaccharide biosynthesis/export	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment:EPS biosynthesis/export	production
+lipopolysaccharide assembly/export	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment:EPS biosynthesis/export	production
+colanic acid biosynthesis/exporter	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment:EPS biosynthesis/export	production
+exopolysaccharide production	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment	Stress Tolerance:Specific:desiccation/osmotic/salt stress:enhancement of microenvironment:EPS biosynthesis/export	production
+phoQP_and	count	NA	Stress Tolerance:Specific:desiccation/osmotic/salt stress	Stress Tolerance:Specific:desiccation/osmotic/salt stress:osmotic sensing	Stress Tolerance:Specific:desiccation/osmotic/salt stress:osmotic sensing:two-component systems, osmotic sensors salt/potassium sensors	production
+hsp100_or	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:pH stress:protection, repair, degradation of denatured/misfolded proteins:ATP-dependent proteases	production
+lon_or	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:pH stress:protection, repair, degradation of denatured/misfolded proteins:ATP-dependent proteases	production
+hdeAB	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:protection, repair, degradation of denatured/misfolded proteins	Stress Tolerance:Specific:pH stress:protection, repair, degradation of denatured/misfolded proteins:periplasmic acid resistance protein	production
+cfa	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:membrane stabilization	Stress Tolerance:Specific:pH stress:membrane stabilization:cyclopropane fatty acid (CFA) synthase	production
+TF_redox	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:redox sensing	Stress Tolerance:Specific:pH stress:redox sensing:redox sensitive transcription factor	production
+nrsSR	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:redox sensing	Stress Tolerance:Specific:pH stress:redox sensing:redox sensing two component systems	production
+arcAB	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:redox sensing	Stress Tolerance:Specific:pH stress:redox sensing:redox sensing two component systems	production
+devSR	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:redox sensing	Stress Tolerance:Specific:pH stress:redox sensing:redox sensing two component systems	production
+regAB	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:redox sensing	Stress Tolerance:Specific:pH stress:redox sensing:redox sensing two component systems	production
+urease	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:urease system	production
+arginine amidinase	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+arginine decarboxylase	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+arginine antiporter	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+glutamate dependent acid tolerance	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+glutaminase	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+lysine decarboxylase	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+lysine antiporter	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+ornithine decarboxylase	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+ornithine antiporter	count	NA	Stress Tolerance:Specific:pH stress	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons	Stress Tolerance:Specific:pH stress:consumption of excessive cytoplasmic protons:decarboxylase and antiporter systems	production
+katE	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species:ROS scavenging enzymes	production
+katG	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species:ROS scavenging enzymes	production
+sodA	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species:ROS scavenging enzymes	production
+ahpCF	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species	Stress Tolerance:Specific:oxidative stress:scavenging of reactive oxygen species:ROS scavenging enzymes	production
+nrsSR	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:redox sensing	Stress Tolerance:Specific:oxidative stress:redox sensing:redox sensing two component systems	production
+arcAB	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:redox sensing	Stress Tolerance:Specific:oxidative stress:redox sensing:redox sensing two component systems	production
+devSR	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:redox sensing	Stress Tolerance:Specific:oxidative stress:redox sensing:redox sensing two component systems	production
+regAB	count	NA	Stress Tolerance:Specific:oxidative stress	Stress Tolerance:Specific:oxidative stress:redox sensing	Stress Tolerance:Specific:oxidative stress:redox sensing:redox sensing two component systems	production
+nrsSR	count	NA	Stress Tolerance:Specific:oxygen limitation	Stress Tolerance:Specific:oxygen limitation:redox sensing	Stress Tolerance:Specific:oxygen limitation:redox sensing:redox sensing two component systems	production
+arcAB	count	NA	Stress Tolerance:Specific:oxygen limitation	Stress Tolerance:Specific:oxygen limitation:redox sensing	Stress Tolerance:Specific:oxygen limitation:redox sensing:redox sensing two component systems	production
+devSR	count	NA	Stress Tolerance:Specific:oxygen limitation	Stress Tolerance:Specific:oxygen limitation:redox sensing	Stress Tolerance:Specific:oxygen limitation:redox sensing:redox sensing two component systems	production
+regAB	count	NA	Stress Tolerance:Specific:oxygen limitation	Stress Tolerance:Specific:oxygen limitation:redox sensing	Stress Tolerance:Specific:oxygen limitation:redox sensing:redox sensing two component systems	production
+resED	count	NA	Stress Tolerance:Specific:oxygen limitation	Stress Tolerance:Specific:oxygen limitation:oxygen sensing	Stress Tolerance:Specific:oxygen limitation:oxygen sensing:oxygen sensing two component systems	production
+prrAB	count	NA	Stress Tolerance:Specific:oxygen limitation	Stress Tolerance:Specific:oxygen limitation:oxygen sensing	Stress Tolerance:Specific:oxygen limitation:oxygen sensing:oxygen sensing two component systems	production
+nreB	count	NA	Stress Tolerance:Specific:oxygen limitation	Stress Tolerance:Specific:oxygen limitation:oxygen sensing	Stress Tolerance:Specific:oxygen limitation:oxygen sensing:oxygen sensing two component systems	production
+baeRS	count	NA	Stress Tolerance:Specific:envelope stress	Stress Tolerance:Specific:envelope stress:misfolded protein/secretion stress sensing	Stress Tolerance:Specific:envelope stress:misfolded protein/secretion stress sensing:misfolded proteins/secretion stress two component systems	production
+cpxAR	count	NA	Stress Tolerance:Specific:envelope stress	Stress Tolerance:Specific:envelope stress:misfolded protein/secretion stress sensing	Stress Tolerance:Specific:envelope stress:misfolded protein/secretion stress sensing:misfolded proteins/secretion stress two component systems	production
+cpxP	count	NA	Stress Tolerance:Specific:envelope stress	Stress Tolerance:Specific:envelope stress:misfolded protein/secretion stress sensing	Stress Tolerance:Specific:envelope stress:misfolded protein/secretion stress sensing:misfolded proteins/secretion stress two component systems	production
+phage shock protein	count	NA	Stress Tolerance:Specific:envelope stress	Stress Tolerance:Specific:envelope stress:phage resistance	Stress Tolerance:Specific:envelope stress:phage resistance:phage-shock system	production
+acetoacetyl-CoA->acetone	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of pyruvate	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of pyruvate to acetone	production
+pyruvate->lactate and ethanol	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of pyruvate	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of pyruvate to lactate and ethanol	production
+pyruvate->alcohols	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of pyruvate	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of pyruvate to alcohols	production
+pyruvate->SCFAs	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of pyruvate	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of pyruvate to SCFAs	production
+pyruvate->butyleneglycol	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of pyruvate	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of pyruvate to butylene glycol	production
+pyruvate->butanol	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of pyruvate	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of pyruvate to isobutanol	production
+acetylene->acetate	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of acetylene	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of acetylene to acetate	production
+acetylene->acetate+ethanol	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation:fermentation of acetylene	Resource Use:Chemotrophy:chemoorganoheterotrophy:fermentation of acetylene to acetate and ethanol	production
+oxppp	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:oxidative pentose phosphate pathway	production
+nonoxppp	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:nonoxidative pentose phosphate pathway	production
+glyoxylatecycle_full	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:glyoxylate cycle	production
+TCA cycle_full	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:TCA cycle	production
+ETC_complexI	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:electron transport chain: ETC complex I	production
+ETC_complexII	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:electron transport chain: ETC complex II	production
+ETC_complexIII	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:electron transport chain: ETC complex III	production
+ETC_complexIV	binary	NA	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration	Resource Use:Chemotrophy:chemoorganoheterotrophy:aerobic respiration:electron transport chain: ETC complex IV	production
+nitrate->nitrite_dissimilatory_full	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification)	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification):denitrification to nitrite	production
+nitrate->nitricoxide_complete	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification)	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification):denitrification to nitric oxide	production
+nitrate->nitrousoxide_complete	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification)	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification):denitrification to nitrous oxide	production
+nitrate->dinitrogen_complete	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification)	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:N (denitrification):denitrification to nitrogen	production
+sulfur->sulfide-reduction	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S compounds	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S as terminal electron acceptor:sulfur	production
+sulfate->sulfide-reduction	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S compounds	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S as terminal electron acceptor:sulfate	production
+sulfite->sulfide-reduction	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S compounds	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S as terminal electron acceptor:sulfite	production
+DMSO->DMS_and	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S compounds	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S as terminal electron acceptor:DMSO	production
+DMSP->DMS	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S compounds	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S as terminal electron acceptor:DMSP	production
+thiosulfate->sulfite+sulfide-disproportionation	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S compounds	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S as terminal electron acceptor:thiosulfate	production
+tetrathionate->thiosulfate-reduction	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S compounds	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:S as terminal electron acceptor:tetrathionate	production
+iron reduction	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:Fe	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:Fe as terminal electron acceptor:ferric ion	production
+arsenate->arsenite	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:As	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:As as terminal electron acceptor:arsenate	production
+selenate->selenite_and	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:Se	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:Se as terminal electron acceptor:selenate	production
+hydrogenotrophic methanogenesis_partial	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:hydrogenotrophic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:hydrogenotrophic methanogenesis	production
+acetoclastic methanogenesis_key	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:acetoclastic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:acetoclastic methanogenesis	production
+methanethiol->methylCoM	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis:from methanethiol	production
+methanol->methylCoM_or	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis:from methanol	production
+TMAO->trimethylamine	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis:from TMAO	production
+monomethylamine->methylCoM-direct_or	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis:from monomethylamine	production
+dimethylamine->methylCoM	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis:from dimethylamine	production
+trimethylamine->methylCoM	binary	NA	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis	Resource Use:Chemotrophy:chemolithoheterotrophy:anaerobic respiration:methylotrophic methanogenesis:from trimethylamine	production
+ammonia oxidation to dinitrogen_partial	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:N compounds as electron donor:ammonia oxidation	Resource Use:Chemotrophy:chemolithoautotrophy:anaerobic ammonia oxidation	production
+ammonia oxidation to nitrite_partial	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:N compounds as electron donor:ammonia oxidation	Resource Use:Chemotrophy:chemolithoautotrophy:aerobic ammonia oxidation	production
+nitrite->nitrate_full	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:N compounds as electron donor:nitrite oxidation	Resource Use:Chemotrophy:chemolithoautotrophy:nitrite oxidation	production
+sulfide->sulfur-oxidation	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:S compounds as electron donor	Resource Use:Chemotrophy:chemolithoautotrophy:sulfide oxidation	production
+sulfur->sulfite-oxidation	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:S compounds as electron donor	Resource Use:Chemotrophy:chemolithoautotrophy:sulfur oxidation	production
+sulfite->sulfate-oxidation	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:S compounds as electron donor	Resource Use:Chemotrophy:chemolithoautotrophy:sulfite oxidation	production
+thiosulfate->tetrathionate-oxidation	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:S compounds as electron donor	Resource Use:Chemotrophy:chemolithoautotrophy:thiosulfate oxidation	production
+iron oxidation	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:Fe compounds as electron donor	Resource Use:Chemotrophy:chemolithoautotrophy:iron oxidation	production
+hydrogenotrophic methanogenesis_partial	binary	NA	Resource Use:Chemotrophy:chemolithoautotrophy	Resource Use:Chemotrophy:chemolithoautotrophy:H as electron donor	Resource Use:Chemotrophy:chemolithoautotrophy:hydrogenotrophy from H2/CO2	production
+oxygenic photosystem I	binary	NA	Resource Use:Phototrophy:photosystem	Resource Use:Phototrophy:photosystem:oxygenic	Resource Use:Phototrophy:photosystem:oxygenic:oxygenic photosystem I	production
+oxygenic photosystem II	binary	NA	Resource Use:Phototrophy:photosystem	Resource Use:Phototrophy:photosystem:oxygenic	Resource Use:Phototrophy:photosystem:oxygenic:oxygenic photosystem II	production
+cytochrome b6f	binary	NA	Resource Use:Phototrophy:photosystem	Resource Use:Phototrophy:photosystem:oxygenic	Resource Use:Phototrophy:photosystem:oxygenic:cytochrome b6f complex	production
+photosynthetic ETC	binary	NA	Resource Use:Phototrophy:photosystem	Resource Use:Phototrophy:photosystem:oxygenic	Resource Use:Phototrophy:photosystem:oxygenic:photosynthetic electron transport	production
+anoxygenic photosystem I RC	binary	NA	Resource Use:Phototrophy:photosystem	Resource Use:Phototrophy:photosystem:anoxygenic	Resource Use:Phototrophy:photosystem:anoxygenic:anoxygenic photosystem I	production
+anoxygenic photosystem II RC	binary	NA	Resource Use:Phototrophy:photosystem	Resource Use:Phototrophy:photosystem:anoxygenic	Resource Use:Phototrophy:photosystem:anoxygenic:anoxygenic photosystem II	production
+oxygenic chlorophyll a synthesis	binary	NA	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core:chlorophyll a	production
+bacteriochlorophyll a synthesis	binary	NA	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core:anoxygenic	Resource Use:Phototrophy:pigments:core:anoxygenic:bacteriochlorophyll a	production
+bacteriochlorophyll b synthesis	binary	NA	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core:anoxygenic	Resource Use:Phototrophy:pigments:core:anoxygenic:bacteriochlorophyll b	production
+bacteriochlorophyll c synthesis	binary	NA	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core:anoxygenic	Resource Use:Phototrophy:pigments:core:anoxygenic:bacteriochlorophyll c	production
+bacteriochlorophyll d synthesis	binary	NA	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core:anoxygenic	Resource Use:Phototrophy:pigments:core:anoxygenic:bacteriochlorophyll d	production
+bacteriochlorophyll e synthesis	binary	NA	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core:anoxygenic	Resource Use:Phototrophy:pigments:core:anoxygenic:bacteriochlorophyll e	production
+bacteriochlorophyll g synthesis	binary	NA	Resource Use:Phototrophy:pigments:core	Resource Use:Phototrophy:pigments:core:anoxygenic	Resource Use:Phototrophy:pigments:core:anoxygenic:bacteriochlorophyll g	production
+neurosporene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:neurosporene	production
+lycopene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:lycopene	production
+gammacarotene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:gammacarotene	production
+chlorobactene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:chlorobactene	production
+betacarotene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:betacarotene	production
+betaisorenieratene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:betaisorenieratene	production
+isorenieratene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:isorenieratene	production
+diaponeurosporene biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene	Resource Use:Phototrophy:pigments:accessory:carotenoid:carotene:diaponeurosporene	production
+okenone biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll:okenone	production
+spirilloxanthin biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll:spirilloxanthin	production
+spheroidenone biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll:spheroidenone	production
+hydroxyspheroidenone biosynthesis	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll	Resource Use:Phototrophy:pigments:accessory:carotenoid:xanthophyll:OH-spheroidenone	production
+phycobilisome allophycocyanin	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein:allophycocyanin	production
+phycobilisome phycocyanin	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein:phycocyanin	production
+phycobilisome phycoerythrocyanin	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein:phycoerythrocyanin	production
+phycobilisome phycoerythrin	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein:phycoerythrin	production
+phycobilisome chlorophyll a/b	binary	NA	Resource Use:Phototrophy:pigments:accessory	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein	Resource Use:Phototrophy:pigments:accessory:phycobiliprotein:chlorophyll a/b binding light-harvesting protein	production

@@ -4,10 +4,10 @@
 \alias{assert.rules}
 \title{Apply rules to a set of detected genes}
 \usage{
-assert.rules(genes)
+assert.rules(hmms)
 }
 \arguments{
-\item{genes}{}
+\item{genes}{gene list}
 }
 \value{
 

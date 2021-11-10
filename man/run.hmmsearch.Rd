@@ -15,13 +15,11 @@ run.hmmsearch(
 \arguments{
 \item{hmm}{A hmm file. Must be pressed (see hmmpress from HMMER manual).}
 
+\item{domtblout_file}{}
+
 \item{n_threads}{An \code{integer}. The number of cores to use.}
 
 \item{fasta}{A protein fasta file.}
-
-\item{oty}{The \code{hmmsearch} output type.}
-
-\item{cut}{One of "ga" or "tc". See HMMER 3.1b2 manual.}
 }
 \value{
 The path to a temporary file where the hmmsearch output is placed.

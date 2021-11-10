@@ -7,7 +7,7 @@
 detect.domains.fromdomtblout(domtblout, cov_threshold = 35)
 }
 \arguments{
-\item{genes_detected}{}
+\item{domtblout}{cov_threshold}
 }
 \value{
 

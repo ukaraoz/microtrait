@@ -1,10 +1,8 @@
 #' Apply rules to a set of detected genes
 #'
-#' @param genes_detected
-#'
+#' @param domtblout cov_threshold
+#' @import dplyr
 #' @return
-#'
-#' @examples
 detect.genes.fromdomtblout <- function(domtblout, cov_threshold = 80){
   #hmmhits = read_domtblout(domtblout_file)
   # just to make sure
@@ -22,11 +20,9 @@ detect.genes.fromdomtblout <- function(domtblout, cov_threshold = 80){
 
 #' Apply rules to a set of detected genes
 #'
-#' @param genes_detected
-#'
+#' @param domtblout cov_threshold
+#' @import dplyr
 #' @return
-#'
-#' @examples
 detect.domains.fromdomtblout <- function(domtblout, cov_threshold = 35){
   hmmhits = domtblout %>%
     dplyr::mutate(hmm_name = stringr::str_replace(hmm_name, ".hmm", ""))
@@ -41,51 +37,88 @@ detect.domains.fromdomtblout <- function(domtblout, cov_threshold = 35){
 
 #' Apply rules to a set of detected genes
 #'
-#' @param genes_detected
-#'
+#' @param rules_asserted trait_granularity
+#' @import dplyr
 #' @return
 #'
-#' @examples
-count.traitsforgenome <- function(rules_asserted, trait) {
+#' @export count.traitsforgenome
+count.traitsforgenome <- function(rules_asserted, trait_granularity = 3) {
   options( warn = -1 )
-  if(trait == "binary") {
-    traitcounts = rule2trait %>%
-      dplyr::filter(`trait-type`=="binary") %>%
-      dplyr::inner_join(rules_asserted, by = c("rule-name" = "rule-name")) %>%
-      dplyr::arrange(`trait-displayorder`) %>%
-      dplyr::select(c("trait-display-short", "rule-asserted", "trait-type")) %>%
-      dplyr::mutate(`rule-asserted` = as.integer(`rule-asserted`)) %>%
-      dplyr::rename(trait=`rule-asserted`, n = `rule-asserted`)
+
+  traitcounts = rule2trait %>%
+    dplyr::inner_join(rules_asserted, by = c("microtrait_rule-name" = "microtrait_rule-name",
+                                             "microtrait_rule-boolean" = "microtrait_rule-boolean")) %>%
+    dplyr::filter(`microtrait_rule-asserted` == TRUE)
+
+  # number of dimensions per granularity: 37 (25 + 12), 100 (66+34), 189 (112+77)
+  if(trait_granularity == 1) {
+    traitcounts = traitcounts %>%
+      dplyr::inner_join(traits_listbygranularity[[1]], by = c("microtrait_trait-name1" = "microtrait_trait-name")) %>%
+      dplyr::select(c("microtrait_rule-name", "microtrait_rule-boolean", "microtrait_rule-type",
+                      "microtrait_rule-substrate", "microtrait_trait-name1", "microtrait_trait-displaynameshort",
+                      "microtrait_trait-displaynamelong","microtrait_trait-strategy", "microtrait_trait-granularity",
+                      "microtrait_trait-displayorder")) %>%
+      dplyr::group_by(`microtrait_trait-name1`, .drop = FALSE) %>%
+      dplyr::summarise(n = n()) %>%
+      dplyr::rename("microtrait_trait-name" = "microtrait_trait-name1",
+                    "microtrait_trait-value" = "n")
+
+    traitcounts = traitcounts %>%
+      dplyr::inner_join(traits_listbygranularity[[1]], by = c("microtrait_trait-name" = "microtrait_trait-name")) %>%
+      dplyr::mutate(`microtrait_trait-value1` = case_when(`microtrait_trait-type` == "count" ~ `microtrait_trait-value`,
+                                                          `microtrait_trait-type` == "binary" & `microtrait_trait-value` >= 1 ~ as.integer(1),
+                                                          `microtrait_trait-type` == "binary" & `microtrait_trait-value` == 0 ~ as.integer(0))
+      )
+
   }
 
-  if(trait == "count") {
-    pattern = "count: \"Stress Tolerance: Biofilm Formation: |\"|count: \"Resource Acquisition: Transport: |\"|count: \"Resource Acquisition: Extracellular: |\"|count: \"Stress Tolerance: Osmoprotection: |\""
-    traitcounts = rule2trait %>%
-      dplyr::filter(grepl("^count: ", `trait-type`)) %>%
-      dplyr::mutate(`trait-type` = gsub(pattern, "", `trait-type`)) %>%
-      dplyr::inner_join(rules_asserted, by = c("rule-name" = "rule-name")) %>%
-      dplyr::filter(`rule-asserted` == TRUE) %>%
-      tidyr::separate_rows(`trait-type`, sep = ";") %>%   # at this point, the trait-type is a countable object, i.e. substrate, they should be all in "substrates"
-      dplyr::left_join(substrates, by = c("trait-type" = "substrate-name")) %>%
-      dplyr::left_join(substrateclasses, by = c("substrate-class" = "substrate-class")) %>%
-      dplyr::select(c(`substrate-class`)) %>%
-      dplyr::group_by(`substrate-class`, .drop = FALSE) %>%   # key not to drop levels with zero counts
-      dplyr::summarise(n = length(`substrate-class`)) %>%   # have the counts, polish
-      dplyr::left_join(substrateclasses, by = c("substrate-class" = "substrate-class")) %>%
-      dplyr::arrange(`trait-displayorder`) %>%
-      dplyr::ungroup() %>%
-      dplyr::select(c("trait-display-short", "n", "trait-type"))
+  if(trait_granularity == 2) {
+    traitcounts = traitcounts %>%
+      dplyr::inner_join(traits_listbygranularity[[2]], by = c("microtrait_trait-name2" = "microtrait_trait-name")) %>%
+      dplyr::select(c("microtrait_rule-name", "microtrait_rule-boolean", "microtrait_rule-type",
+                      "microtrait_rule-substrate", "microtrait_trait-name2", "microtrait_trait-displaynameshort",
+                      "microtrait_trait-displaynamelong","microtrait_trait-strategy", "microtrait_trait-granularity",
+                      "microtrait_trait-displayorder")) %>%
+      dplyr::group_by(`microtrait_trait-name2`, .drop = FALSE) %>%
+      dplyr::summarise(n = n()) %>%
+      dplyr::rename("microtrait_trait-name" = "microtrait_trait-name2",
+                    "microtrait_trait-value" = "n")
+
+    traitcounts = traitcounts %>%
+      dplyr::inner_join(traits_listbygranularity[[2]], by = c("microtrait_trait-name" = "microtrait_trait-name")) %>%
+      dplyr::mutate(`microtrait_trait-value1` = case_when(`microtrait_trait-type` == "count" ~ `microtrait_trait-value`,
+                                                          `microtrait_trait-type` == "binary" & `microtrait_trait-value` >= 1 ~ as.integer(1),
+                                                          `microtrait_trait-type` == "binary" & `microtrait_trait-value` == 0 ~ as.integer(0))
+      )
   }
-  return(traitcounts)
+
+  if(trait_granularity == 3) {
+    traitcounts = traitcounts %>%
+      dplyr::inner_join(traits_listbygranularity[[3]], by = c("microtrait_trait-name3" = "microtrait_trait-name")) %>%
+      dplyr::select(c("microtrait_rule-name", "microtrait_rule-boolean", "microtrait_rule-type",
+                      "microtrait_rule-substrate", "microtrait_trait-name3", "microtrait_trait-displaynameshort",
+                      "microtrait_trait-displaynamelong","microtrait_trait-strategy", "microtrait_trait-granularity",
+                      "microtrait_trait-displayorder")) %>%
+      dplyr::group_by(`microtrait_trait-name3`, .drop = FALSE) %>%
+      dplyr::summarise(n = n()) %>%
+      dplyr::rename("microtrait_trait-name" = "microtrait_trait-name3",
+                    "microtrait_trait-value" = "n")
+
+    traitcounts = traitcounts %>%
+      dplyr::inner_join(traits_listbygranularity[[3]], by = c("microtrait_trait-name" = "microtrait_trait-name")) %>%
+      dplyr::mutate(`microtrait_trait-value1` = case_when(`microtrait_trait-type` == "count" ~ `microtrait_trait-value`,
+                                                          `microtrait_trait-type` == "binary" & `microtrait_trait-value` >= 1 ~ as.integer(1),
+                                                          `microtrait_trait-type` == "binary" & `microtrait_trait-value` == 0 ~ as.integer(0))
+      )
+  }
+  traitcounts
 }
 
 #' Apply rules to a set of detected genes
 #'
-#' @param genes_detected
-#'
+#' @param genes domains cov_threshold
+#' @import dplyr
 #' @return
-#'
-#' @examples
 assert.rulesforgenome <- function(genes, domains, cov_threshold = 80){
   #genes_detected = detect_genesfromdomtblout(domtblout_file1)
   #domains_detected = detect_domainsfromdomtblout(domtblout_file2)
@@ -98,43 +131,51 @@ assert.rulesforgenome <- function(genes, domains, cov_threshold = 80){
 
 #' Apply rules to a set of detected genes
 #'
-#' @param genes
-#'
+#' @param genes gene list
+#' @import dplyr stringr
 #' @return
-#'
-#' @examples
-assert.rules <- function(genes){
-  profile = set.geneprofile(genes)
-  rules_genestatus = unlist(lapply(rules[, "rule-boolean-unwrapped"],
-                                   FUN=stringr::str_replace_all,
-                                   profile))
-  names(rules_genestatus) = dplyr::pull(rules, "rule-name")
-
+assert.rules <- function(hmms){
+  #profile = set.geneprofile(genes)
+  #rules_genestatus = unlist(lapply(rules[, "microtrait_rule-booleanunwrapped"],
+  #                                 FUN=stringr::str_replace_all,
+  #                                 profile))
+  #names(rules_genestatus) = dplyr::pull(rules, "microtrait_rule-name")
+  #
+  #rules_evaluated = unlist(lapply(rules_genestatus,
+  #                                function(x) eval(parse(text=paste("as.logical(", x, ")", sep = "")))))
+  #rules_evaluated0 = dplyr::bind_cols(`rule-name` = names(rules_evaluated),
+  #                                   `rule-boolean` = rules[, "microtrait_rule-boolean"],
+  #                                   `rule-genestatus` = rules_genestatus,
+  #                                   `rule-asserted` = rules_evaluated)
+  profile = set.geneprofile(hmms)
+  rules = rules %>%
+    dplyr::mutate(`microtrait_rule-booleanunwrapped_set` = stringr::str_replace_all(`microtrait_rule-booleanunwrapped`, profile))
+  rules_genestatus = rules %>% pull(`microtrait_rule-booleanunwrapped_set`)
+  names(rules_genestatus) = rules %>% pull(`microtrait_rule-name`)
   rules_evaluated = unlist(lapply(rules_genestatus,
-                                  function(x) eval(parse(text=paste("as.logical(", x, ")", sep = ""))))
-  )
-  #rules_evaluated = dplyr::bind_cols(list(names(rules_evaluated), rules_evaluated))
-
-  rules_evaluated = dplyr::bind_cols(`rule-name` = names(rules_evaluated),
-                                     `rule-boolean` = rules[, "rule-boolean"],
-                                     `rule-genestatus` = rules_genestatus,
-                                     `rule-asserted` = rules_evaluated)
+                                  function(x) eval(parse(text=paste("as.logical(", x, ")", sep = "")))))
+  rules_evaluated = tibble(`microtrait_rule-name` = names(rules_evaluated),
+                           `microtrait_rule-asserted` = rules_evaluated) %>%
+    dplyr::left_join(rules, by = c("microtrait_rule-name" = "microtrait_rule-name")) %>%
+    dplyr::select(c("microtrait_rule-name",
+                    "microtrait_rule-boolean",
+                    "microtrait_rule-booleanunwrapped_set",
+                    "microtrait_rule-asserted"))
   return(rules_evaluated)
 }
 
 #' Set gene profiles using detected genes
 #'
-#' @param genes
+#' @param genes gene list
 #'
 #' @return
-#'
-#' @examples
 set.geneprofile <- function(genes){
-  hmmnames = add_quotes(microtraithmm_names)
-  profile = vector(mode = "character", length = length(hmmnames))
+  microtrait_hmmnames = hmms_fromrules %>% pull(`microtrait_hmm-name`)
+  microtrait_hmmnames = add_quotes(microtrait_hmmnames)
+  profile = vector(mode = "character", length = length(microtrait_hmmnames))
   profile[1:length(profile)] = "0"
   #names(profile) = paste("'", genes, "'", sep = "")
-  names(profile) = hmmnames
+  names(profile) = microtrait_hmmnames
   profile[add_quotes(genes)] = "1"
   names(profile) = gsub("\\+", "\\\\+", names(profile))
   names(profile) = gsub("\\(", "\\\\(", names(profile))

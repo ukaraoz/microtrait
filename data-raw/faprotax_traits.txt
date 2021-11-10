@@ -1,0 +1,53 @@
+faprotax_trait	select	rule
+denitrification	1
+nitrate_denitrification	1	(narG==1|narH==1|narI_dsrM==1|napA==1|napB==1)
+nitrite_denitrification	1	(narG==1|narH==1|narI_dsrM==1|napA==1|napB==1|nirS==1|nirK==1)
+nitrous_oxide_denitrification	1	(narG==1|narH==1|narI_dsrM==1|napA==1|napB==1|nirS==1|nirK==1|nosZ==1)
+nitrate_respiration	1
+nitrate_ammonification	1	(`narGHI_or`==1|`napAB_or`==1)
+nitrite_ammonification	1	(`narGHI_or`==1|`napAB_or`==1|nirB==1|nirD==1|nrfA==1|nrfH==1)
+nitrite_respiration	1
+nitrogen_fixation	1	(nifH==1|vnfH==1)
+aerobic_ammonia_oxidation	1
+aerobic_nitrite_oxidation	1
+anammox	1
+sulfate_respiration	1	sat==1
+sulfite_respiration	1	(dsrA==1|dsrB==1|dsrE==1|dsrF==1|dsrH==1|asrA==1|asrB==1|asrC==1|mccA==1)
+sulfur_respiration	1	(sat==1|aprA==1|aprB==1|sreA==1|sreB==1|sreC==1|sqr==1)
+thiosulfate_respiration	1	(`phsABC_or`==1)
+dark_oxidation_of_sulfur_compounds	1
+dark_sulfide_oxidation	1	(fccA==1|fccB==1)
+dark_sulfite_oxidation	1	(sorA==1|sorB==1|soeA==1|soeB==1|soeC==1|aprA==1|aprB==1)
+dark_sulfur_oxidation	1	(dsrA==1|dsrB==1|sor==1)
+dark_thiosulfate_oxidation	1	(soxB==1|soxC==1|soxD==1|tsdA==1)
+methanogenesis	1
+hydrogenotrophic_methanogenesis	1	(mcrA==1&mcrB==1&mcrG==1&mcr2==1&mcrC==1&mcrD==1&fwdA==1&fwdB==1&fwdC==1&fwdD==1&fwdF==1&fwdH==1&fwdG==1&fwdE==1&ftr==1&mtdch==1&hmd==1&mer==1)
+methanogenesis_by_CO2_reduction_with_H2	1	(`methylCoM+CoB->CoM+CH4_and`==1&ftr==1&mtdch==1&mer==1)
+methanogenesis_by_reduction_of_methyl_compounds_with_H2	0
+methanogenesis_by_disproportionation_of_methyl_groups	1	(`methylCoM+CoB->CoM+CH4_and`==1)&(mtbA==1|mtmB==1|mtmC==1|mtbB==1|mtbC==1|mttB==1|mttC==1)
+acetoclastic_methanogenesis	1	(mcrA==1&mcrB==1&mcrG==1&mcr2==1&mcrC==1&mcrD==1&ackA==1&cdhC==1&acsC==1)
+methanogenesis_using_formate	0
+methylotrophy	1
+methanol_oxidation	1
+methanotrophy	1
+reductive_acetogenesis	1	(ftfL==1&folD==1&metF==1&acsE==1&acsB==1&acsC==1&acsD==1&ackA==1)
+phototrophy	0
+photoautotrophy	0
+oxygenic_photoautotrophy	1	(`oxygenic	photosystem	I	core`==1&`oxygenic	photosystem	II	core`==1)
+anoxygenic_photoautotrophy	1
+anoxygenic_photoautotrophy_H2_oxidizing	0
+anoxygenic_photoautotrophy_S_oxidizing	1	"((`anoxygenic	photosystem	I	RC`==1|`anoxygenic	photosystem	II	RC`==1)&(`sulfite->sulfate-oxidation`==1|	`sulfide->sulfur-oxidation`==1|`sulfur->sulfite-oxidation`==1|`sulfur->sulfate-oxidation`==1))"
+anoxygenic_photoautotrophy_Fe_oxidizing	1	"((`anoxygenic	photosystem	I	RC`==1|`anoxygenic	photosystem	II	RC`==1)&(pioA==1|pioB==1|pioC==1))"
+photoheterotrophy	1
+aerobic_anoxygenic_phototrophy	1	(bchG==1&bciB==0&por==0&bciC==0&bchV==0&bchU==0&bchK==0&bciD==0)
+arsenate_respiration	0
+arsenate_detoxification	0
+arsenite_oxidation_detoxification	0
+arsenite_oxidation_energy_yielding	0
+dissimilatory_arsenite_oxidation	0
+iron_respiration	1	(mtrA==1|mtrB==1|mtrC==1|mtrD.x==1|mtrE==1|mtrF==1|omcA==1)
+dark_iron_oxidation	1	(`iron	oxidation`==1)
+chlorate_reducers	1	(serA==1|serB==1|serC==1)
+fumarate_respiration	1	(`fumarate->succinate-frd_or`==1|`fumarate->succinate-frdNADH_or`==1)
+aerobic_chemoheterotrophy	1
+fermentation	1

@@ -4,10 +4,10 @@
 \alias{count.traitsforgenome}
 \title{Apply rules to a set of detected genes}
 \usage{
-count.traitsforgenome(rules_asserted, trait)
+count.traitsforgenome(rules_asserted, trait_granularity = 3)
 }
 \arguments{
-\item{genes_detected}{}
+\item{rules_asserted}{trait_granularity}
 }
 \value{
 

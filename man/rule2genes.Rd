@@ -6,6 +6,9 @@
 \usage{
 rule2genes(rule)
 }
+\arguments{
+\item{rule}{(Required). microtrait rule.}
+}
 \value{
 
 }

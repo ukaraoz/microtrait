@@ -9,9 +9,10 @@
 #'
 #' @param hmm A hmm file. Must be pressed (see hmmpress from HMMER manual).
 #'
-#' @param oty The \code{hmmsearch} output type.
-#' @param cut One of "ga" or "tc". See HMMER 3.1b2 manual.
+#' @param domtblout_file
+#'
 #' @param n_threads An \code{integer}. The number of cores to use.
+#' @importFrom assertthat assert_that
 #' @return The path to a temporary file where the hmmsearch output is placed.
 #'
 #' hmmsearch --cpu $ncpus --domtblout $faafile".microtrait.domtblout" $hmm $faafile > /dev/null
@@ -32,6 +33,8 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
 
   hmm = match.arg(hmm, c("microtrait", "dbcan"))
   hmm_file = switch(hmm,
+                    #"microtrait" = file.path("/Users/ukaraoz/Work/microtrait/code/microtrait", "inst/extdata/hmm/hmmpress/microtrait.hmmdb"),
+                    #"dbcan" = file.path("/Users/ukaraoz/Work/microtrait/code/microtrait", "inst/extdata/hmm/hmmpress/dbcan.select.v8.hmmdb")
                     "microtrait" = file.path(system.file(package="microtrait"), "extdata/hmm/hmmpress/microtrait.hmmdb"),
                     "dbcan" = file.path(system.file(package="microtrait"), "extdata/hmm/hmmpress/dbcan.select.v8.hmmdb")
   )
@@ -47,14 +50,23 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
     #                 ">/dev/null")
     message("Running hmmsearch for ", fs::path_file(faa_file))
     #message(command)
-    system2("hmmsearch",
-            args = c("--domtblout", domtblout_file,
-                     "--cpu", n_threads,
-                     "--noali",
-                     hmm_file, faa_file
-            ),
-            stdout = "/dev/null"
-    )
+    if(hmm == "microtrait") {
+      system2("hmmsearch",
+              args = c("--domtblout", domtblout_file,
+                       "--cpu", n_threads,
+                       "--noali",
+                       "--cut_tc ", # CRUCIAL, otherwise doesn't use model specific thresholds
+                       hmm_file, faa_file
+              ), stdout = "/dev/null")
+    } else if(hmm == "dbcan") {
+      system2("hmmsearch",
+              args = c("--domtblout", domtblout_file,
+                       "--cpu", n_threads,
+                       "--noali",
+                       hmm_file, faa_file
+              ), stdout = "/dev/null")
+    }
+
     #file.remove(tmp.file)
     return(domtblout_file)
   }
@@ -85,14 +97,13 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
 #' The \code{mask.N} will prevent genes having runs of N inside. The \code{bypass.SD} turn off the search
 #' for a Shine-Dalgarno motif.
 #'
+#' @importFrom assertthat assert_that
 #' @return
 #'
 #' @note The prodigal software must be installed on the system for this function to work, i.e. the command
 #' \samp{system("prodigal -h")} must be recognized as a valid command if you run it in the Console window.
 #'
 #' @seealso
-#'
-#' @examples
 run.prodigal <- function(genome_file = system.file("extdata/examples/2619619645/in", "2619619645.genes.fna", package = "microtrait", mustWork = TRUE),
                          faa_file,
                          mode = "single",

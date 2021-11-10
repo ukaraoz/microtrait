@@ -1,19 +1,20 @@
 Package: microtrait
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: microTrait
+Version: 1.0.0
 Authors@R: 
     person(given = "Ulas",
            family = "Karaoz",
            role = c("aut", "cre"),
            email = "ukaraoz@lbl.gov",
            comment = c(ORCID = "0000-0002-8238-6757"))
-Description: What the package does (one paragraph).
+Description: Extracts environmental fitness traits from microbial genomes
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
-Imports: 
-    magrittr
-Depends: 
-    R (>= 2.10)
+RoxygenNote: 7.1.1
+Depends: R (>= 2.10)
+NeedsCompilation: no
+Packaged: 2021-06-04 18:16:36 UTC; ukaraoz
+Author: Ulas Karaoz [aut, cre] (<https://orcid.org/0000-0002-8238-6757>)
+Maintainer: Ulas Karaoz <ukaraoz@lbl.gov>

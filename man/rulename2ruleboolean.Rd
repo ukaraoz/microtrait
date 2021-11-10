@@ -6,6 +6,9 @@
 \usage{
 rulename2ruleboolean(rule)
 }
+\arguments{
+\item{rule}{(Required). microtrait rule.}
+}
 \value{
 
 }

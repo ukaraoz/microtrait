@@ -7,7 +7,7 @@
 set.geneprofile(genes)
 }
 \arguments{
-\item{genes}{}
+\item{genes}{gene list}
 }
 \value{
 
