@@ -30,7 +30,7 @@ download.microtrait <- function(microtraithmmdb_file) {
   #                       #repo = "ukaraoz/test",
   #                       dest = fs::path_dir(microtraithmmdb_file))
 
-  microtrait_hmmdb_url = "https://github.com/ukaraoz/microtrait-hmmtest/releases/download/latest/microtrait.hmmdb.gz"
+  microtrait_hmmdb_url = "https://github.com/ukaraoz/microtrait-hmm/releases/download/latest/microtrait.hmmdb.gz"
   download.file(microtrait_hmmdb_url,
                 destfile = microtraithmmdb_file)
 

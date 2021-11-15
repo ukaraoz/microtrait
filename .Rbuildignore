@@ -1,4 +1,5 @@
 ^microtrait\.Rproj$
 ^\.Rproj\.user$
-^LICENSE\.md$
-^data-raw$
+^./inst/extdata/genomic/in/*$
+^./inst/extdata/hmm/hmmpress/*$
+^/Users/ukaraoz/Work/microtrait/code/microtrait/scripts$
