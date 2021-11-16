@@ -17,8 +17,8 @@
 #'                system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.dbcan.domtblout", package = "microtrait", mustWork = TRUE))
 #' }
 #' type = "domtblout"
-extract.traits <- function(in_file = system.file("extdata/genomic/in", "2896129707.fna", package = "microtrait", mustWork = TRUE),
-                           out_dir = system.file("extdata/genomic/out", package = "microtrait", mustWork = TRUE),
+extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.fna", package = "microtrait", mustWork = TRUE),
+                           out_dir = system.file("extdata/genomic", package = "microtrait", mustWork = TRUE),
                            type = "genomic", mode = "single", save_tempfiles = F) {
   result <- c(call = match.call())
 
