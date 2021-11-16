@@ -32,12 +32,8 @@ devtools::install_github("ukaraoz/microtrait")
 ```
 
 ### <a name="setup"></a> Setup:
-Due to its large size (~170M), **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** isn't packaged with microTrait. After installation, **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** database has to be downloaded and deployed. For this, we use **[piggyback](https://cran.r-project.org/web/packages/piggyback/index.html)** R package. Install and load **[piggyback](https://cran.r-project.org/web/packages/piggyback/index.html)**
+Due to its large size (~170M), **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** isn't packaged with microTrait. After installation, **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** database has to be downloaded and deployed.
 
-```{r tidy = FALSE}
-install.packages("piggyback")
-library(piggyback)
-```
 microTrait includes a function (`prep.hmmmodels()`) that downloads and deploys hmm models that underlie microTrait. This function should be run once after the installation.
 
 ```{r tidy = FALSE}
