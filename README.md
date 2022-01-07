@@ -1,7 +1,7 @@
 # microTrait
 microTrait is an R package that provides a workflow to extract fitness traits from microbial genome sequences. microTrait uses profile hidden Markov models (profile-HMM) and simple logical operations to predict and map protein family content represented in a genome sequence to fitness traits. The HMMs used in the microTrait framework ([microtrait-hmms](https://github.com/ukaraoz/microtrait-hmm)) represent protein family sequence diversity accumulated in genomes and metagenomes in [IMG/M](https://img.jgi.doe.gov/cgi-bin/m/main.cgi), have been curated, benchmarked using [KEGG](https://www.kegg.jp/) orthologs to establish *trusted cutoff (TC)* scores.
 
-<img src="https://github.com/ukaraoz/microtrait/blob/master/microtrait.png" width="45%">
+<img src="https://github.com/ukaraoz/microtrait/blob/master/microtrait.png" width="80%">
 
 ## Installation
 
