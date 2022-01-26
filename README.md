@@ -1,7 +1,13 @@
-# microTrait
-microTrait is an R package that provides a workflow to extract fitness traits from microbial genome sequences. microTrait uses profile hidden Markov models (profile-HMM) and simple logical operations to predict and map protein family content represented in a genome sequence to fitness traits. The HMMs used in the microTrait framework ([microtrait-hmms](https://github.com/ukaraoz/microtrait-hmm)) represent protein family sequence diversity accumulated in genomes and metagenomes in [IMG/M](https://img.jgi.doe.gov/cgi-bin/m/main.cgi), have been curated, benchmarked using [KEGG](https://www.kegg.jp/) orthologs to establish *trusted cutoff (TC)* scores.
+# *microTrait*
+*microTrait* is an R package that provides a workflow to extract fitness traits from microbial genome sequences. *microTrait* uses profile hidden Markov models (profile-HMM) and simple logical operations to predict and map protein family content represented in a genome sequence to fitness traits. The HMMs used in the *microTrait* framework ([microtrait-hmms](https://github.com/ukaraoz/microtrait-hmm)) represent protein family sequence diversity accumulated in genomes and metagenomes in [IMG/M](https://img.jgi.doe.gov/cgi-bin/m/main.cgi), have been curated, benchmarked using [KEGG](https://www.kegg.jp/) orthologs to establish *trusted cutoff (TC)* scores.
 
-<img src="https://github.com/ukaraoz/microtrait/blob/master/microtrait.png" width="80%">
+The genome inferred traits represented by *microTrait* are summarized in the figure below. 
+
+<img src="https://github.com/ukaraoz/microtrait/blob/master/microtrait.png" width="60%">
+
+*microTrait* maps a genome sequence to a hierarchy of traits summarized in this [figure](https://github.com/ukaraoz/microtrait/blob/master/microtrait-hierarchy.pdf). The genomic basis for each trait was compiled from the literature accessible in [this file](https://github.com/ukaraoz/microtrait/blob/master/inst/extdata/ST8.microtrait_references.txt).
+
+
 
 ## Installation
 
@@ -58,17 +64,19 @@ list.files(file.path(.libPaths(), "microtrait/extdata/hmm/hmmpress"))
 ## Usage
 ### Extracting traits from a genome sequence
 #### Single genome
-When microTrait is setup, you can extract traits from a genome sequence. For the following example, we use the genome sequence included as part of microTrait package.
+Once *microTrait* is correctly setup, you can extract traits from a genome sequence. For the following example, we use the genome sequence of "Achromobacter xylosoxidans A-8 (IMG Taxon OID 2695420375)" included as part of *microTrait* package.
 
 ```{r tidy = FALSE}
 library(microtrait)
-genome_file <- system.file("extdata/examples/2775507255/in/2775507255.fna", package="microtrait")
-microtrait_result = extracttraits(genome_file)
+genome_file <- system.file("extdata/genomic/2695420375.fna", package="microtrait")
+microtrait_result = extract.traits(genome_file)
 ```
 
 microTrait packages its results into an R list with the following names components:
 
 * `microtrait_result$id`: genome id, currently set to fasta filename for the genome sequence
+* `microtrait_result$genes_detected`: microtrait-hmm models detected in the genome sequence (using the benchmarked TC thresholds)
+
 * `microtrait_result$genes_detected`: microtrait-hmm models detected in the genome sequence (using the benchmarked TC thresholds)
 * `microtrait_result$domains_detected`: CAZy domains detected in the genome sequence
 * `microtrait_result$all_traits`: Extracted traits
