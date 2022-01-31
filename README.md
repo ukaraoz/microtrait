@@ -48,11 +48,13 @@ Next install R package dependencies for *microTrait*:
 
 	Missing dependencies available on [CRAN](https://cran.r-project.org/) can be installed as follows:
 
-	```{r tidy = FALSE}
-	list_of_packages = c("R.utils", "RColorBrewer", "ape", "assertthat", "checkmate", "coRdon", "corrplot", "doParallel", "dplyr", "futile.logger", "gtools", "kmed", "lazyeval", "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", "tictoc", "tidyr")
+	```{r tidy=TRUE}
+	list_of_packages = c("R.utils", "RColorBrewer", "ape", "assertthat", "checkmate",
+	 "coRdon", "corrplot", "doParallel", "dplyr", "futile.logger", "gtools", "kmed",
+	  "lazyeval", "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", 
+	  "tictoc", "tidyr")
 	newpackages <- list_of_packages[!(list_of_packages %in% installed.packages([,"Package"])]
-if(length(new.packages)) install.packages(newpackages)
-```
+	if(length(new.packages)) install.packages(newpackages)```
 
 * [Bioconductor](https://www.bioconductor.org/) package dependencies
 
