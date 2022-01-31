@@ -35,7 +35,20 @@ The following are required for calculating features used in calculating Optimal 
 See setup section below for deployment of these databases after installation.
 
 ### <a name="install"></a> Installation:
-The developmental version can be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package. To install the R package directly from GitHub, do in R:
+gRodon has a few dependencies - namely the Biostrings, coRdon, and matrixStats packages which are bioconductor packages and cannot be installed via CRAN. To install them run the following:
+
+The developmental version can be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package.
+```{r tidy = FALSE}
+install.packages("devtools")
+library(devtools)
+```
+[devtools](https://cran.r-project.org/web/packages/devtools/index.html) will sort out CRAN dependencies of microTrait. microTrait also depends on [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html), which is a [Bioconductor](https://bioconductor.org/) package and cannot be installed with CRAN. To install it, run the following:
+```{r tidy = FALSE}
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("Biostrings")
+```
+To install the R package directly from GitHub, do in R:
 
 ```{r tidy = FALSE}
 install.packages("devtools")

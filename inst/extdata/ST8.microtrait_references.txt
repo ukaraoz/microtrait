@@ -1,0 +1,90 @@
+Genome-derived features underlying ecological traits	reference: title	reference: PMID/doi
+Membrane transport proteins: linked to their substrates and hierarchically organized by chemical class	The Transporter Classification Database (TCDB):	26546518
+Carbohydrate active enzymes	The carbohydrate-active enzymes database (CAZy) in 2013	24270786
+proteases	The Bacterial Proteasome at the Core of Diverse Degradation Pathways	31024929
+proteases	AAA+ ATPases in Protein Degradation: Structures, Functions and Mechanisms	32325699
+proteases	Bacterial Proteasomes: Mechanistic and Functional Insights	27974513
+proteases	Bacterial Proteasomes Annual Review of Microbiology	26488274
+CO2 Fixation pathways	Microbial carbon dioxide fixation: new tricks for an old game	29228194
+Assimilation Pathways	The quinoprotein dehydrogenases for methanol and glucose. Archives of biochemistry and biophysics	15234264
+Assimilation Pathways	Modularity of methylotrophy, revisited. Environmental microbiology 13, 2603-2622.	21443740
+Assimilation Pathways	Aerobic Methylotrophic Prokaryotes. In: Rosenberg E., DeLong E.F., Lory S., Stackebrandt E., Thompson F. (eds) The Prokaryotes.	doi.org/10.1007/978-3-642-30141-4_68
+Assimilation Pathways	The natural and unnatural history of methane-oxidizing bacteria	16147517
+Assimilation Pathways	Methanotrophic bacteria. Microbiol Rev 60, 439 Hanson, R.S., and Hanson, T.E. (1996). 	8801441
+Assimilation Pathways	Metabolic aspects of aerobic obligate methanotrophy	18395128
+Fermentation Pathways	Anaerobic fermentation. In Prokaryotic Metabolism and Physiology (pp. 230-267)	"doi.org/10.1017/9781316761625.008	"
+Aerobic Respiration Pathways	The oxidative pentose phosphate pathway: structure and organisation	12753973
+Aerobic Respiration Pathways	Revisiting the glyoxylate cycle: alternate pathways for microbial acetate assimilation	16856935
+Aerobic Respiration Pathways	Oxidation of acetate through reactions of the citric acid cycle by Geobacter sulfurreducens in pure culture and in syntrophic coculture	11131021
+Aerobic Respiration Pathways	Determination of flux through the branch point of two metabolic cycles. The tricarboxylic acid cycle and the glyoxylate shunt	6378912
+Aerobic Respiration Pathways	Regulation of the enzymes at the branchpoint between the citric acid cycle and the glyoxylate bypass in Escherichia coli	3333001
+Aerobic Respiration Pathways	Control of flux through the citric acid cycle and the glyoxylate bypass in Escherichia coli	3332993
+Aerobic Respiration Pathways	Microbial electron transport and energy conservation - the foundation for optimizing bioelectrochemical systems	26124754
+Aerobic Respiration Pathways	Bacterial Electron Transport Chains Annual Review of Biochemistry Vol. 57:101-132 (Volume publication date July 1988)	3052268
+Anaerobic Respiration Pathways	Anaerobic respiration with elemental sulfur and with disulfides	doi.org/10.1111/j.1574-6976.1998.tb00376.x
+Anaerobic Respiration Pathways	Cell biology and molecular basis of denitrification. Microbiol. Mol. Biol. Rev. 61, 533–616.	9409151
+Anaerobic Respiration Pathways	The microbial nitrogen-cycling network. Nat. Rev. Microbiol. 16, 263–276. doi: 10.1038/nrmicro.2018.9	29398704
+Anaerobic Respiration Pathways	Fumarate as terminal acceptor of phosphorylative electron transport. Biochim. Biophys. Acta 505, 129–145. doi: 10.1016/0304-4173(78)90010-1	363147
+Anaerobic Respiration Pathways	Characterization of the periplasmic redox network that sustains the versatile anaerobic metabolism of Shewanella oneidensis MR-1. Front. Microbiol. 6:665.	26175726
+Anaerobic Respiration Pathways	Dissimilatory Fe(III) and Mn(IV) reduction. Adv. Microb. Physiol. 49, 219–286	15518832
+Anaerobic Respiration Pathways	Transcriptional mechanisms for differential expression of outer membrane cytochrome genes omcA and mtrC in Shewanella oneidensis MR-1. BMC Microbiol. 15:68	25886963
+Anaerobic Respiration Pathways	Bacillus arsenicoselenatis, sp. nov., and Bacillus selenitireducens, sp. nov.: two haloalkaliphiles from Mono Lake, California that respire oxyanions of selenium and arsenic. Arch. Microbiol. 171, 19–30.	9871015
+Anaerobic Respiration Pathways	Structural and mechanistic analysis of the arsenate respiratory reductase provides insight into environmental arsenic transformations. 	30104376
+Anaerobic Respiration Pathways	Growth of Wolinella succinogenes with polysulphide as terminal acceptor of phosphorylative electron transport. 	doi.org/10.1007/BF00249025
+Anaerobic Respiration Pathways	Significance of MccR, MccC, MccD, MccL and 8-methylmenaquinone in sulfite respiration of Wolinella succinogenes.	30342041
+Inorganic Nutrient Oxidation Pathways	Brock Biology of Microorganisms – 14th edition	doi.org/10.3184/003685016X14721564318450c
+Inorganic Nutrient Oxidation Pathways	Expanded diversity of microbial groups that shape the dissimilatory sulfur cycle	29467397
+Photosystem pathways	Evolution of Oxygenic Photosynthesis	10.1146/annurev-earth-060313-054810
+Photosystem pathways	The ecology of cyanobacteria: their diversity in time and space	10.1007/0-306-46855-7
+Photosystem pathways	Oxygenic Photosynthesis	10.1007/978-3-642-60659-5_7
+Photosystem pathways	Archaean Metabolic Evolution of Microbial Mats	https://www.jstor.org/stable/51691
+Photosystem pathways	Biogeochemistry of hypersaline microbial mats illustrates the dynamics of modern microbial ecosystems and the early evolution of the biosphere 	12700147
+Photosystem pathways	Anoxygenic Photosynthesis —A Photochemical Reaction That Does Not Contribute to Oxygen Reproduction	27021204
+Photosystem pathways	Anoxygenic photosynthesis and the delayed oxygenation of Earth’s atmosphere	31289261
+Pigment Synthesis Pathways	Genetic analysis of chlorophyll biosynthesis	9442890
+Pigment Synthesis Pathways	Distribution of bacteriochlorophylla in species of the genus Acidiphilium	 10.1007/BF01575992
+Pigment Synthesis Pathways	Aerobic anoxygenic photosynthetic bacteria with zinc-bacteriochlorophyll	12483616
+Pigment Synthesis Pathways	Adaptive divergence in pigment composition promotes phytoplankton biodiversity	15475947
+Pigment Synthesis Pathways	Colourful coexistence of red and green picocyanobacteria in lakes and seas	18043638
+ROS scavenging enzymes:   catalase	Complex general stress response regulation in Sphingomonas melonis Fr1 revealed by transcriptional analyses	31253827
+ROS scavenging enzymes:   catalase	Homeostatic regulation of intracellular hydrogen peroxide concentration in aerobically growing Escherichia coli.	8990289
+ATP-dependent proteases:   Hsp100/Clp,Lon protease	The Clp proteases of Bacillus subtilis are directly involved in degradation of misfolded proteins.	10809708
+"Low temperature stress tolerance				"	CspA, the major cold-shock protein of Escherichia coli, is anRNAchaperone	8995247
+"Low temperature stress tolerance				"	Characterization of Caulobacter crescentus response to low temperature and identification of genes involved in freezing resistance	18801049
+"Low temperature stress tolerance				"	Molecular basis of thermosensing: a two-component signal transduction thermometer in Bacillus subtilis	11285232
+Desiccation/osmotic/salt stress tolerance	Uptake and synthesis of compatible solutes as microbial stress responses to high-osmolality environments.	9818351
+Desiccation/osmotic/salt stress tolerance	Osmoregulation of the opuE proline transport gene from Bacillus subtilis: contributions of the sigma A- and sigma B-dependent stress-responsive promoters.	9701821
+Desiccation/osmotic/salt stress tolerance	Osmostress response in Bacillus subtilis: characterization of a proline uptake system (OpuE) regulated by high osmolarity and the alternative transcription factor sigma B	11902719
+Desiccation/osmotic/salt stress tolerance	Pipecolic acid is an osmoprotectant for Escherichia coli taken up by the general osmoporters ProU and ProP.	7952193
+Desiccation/osmotic/salt stress tolerance	The osmoprotectant proline betaine is a major substrate for the binding-protein-dependent transport system ProU of Escherichia coli K-12.	7898450
+pH stress tolerance	Amino acids improve acid tolerance and internal pH maintenance in Bacillus cereus ATCC14579 strain	21356439
+pH stress tolerance	The Bifidobacterium dentium Bd1 genome sequence reflects its genetic adaptation to the human oral cavity	20041198
+pH stress tolerance	Glutamate decarboxylase-dependent acid resistance in Brucella spp.: distribution and contribution to fitness under extremely acidic conditions	25381237
+pH stress tolerance	Mutation of His465 alters the pH-dependent spectro- scopic properties of Escherichia coli glutamate decarboxylase and broadens the range of its activity toward more alkaline pH. 	19797049
+pH stress tolerance	Identification and inactivation of genetic loci involved with Lactobacillus acidophilus acid tolerance	15345415
+pH stress tolerance	Compensations for diminished terminal oxidase activity in Escherichia coli cytochrome bd-II-mediated respiration and glutamate metabolism.	20392690
+pH stress tolerance	Acid stress, anaerobiosis and gadCB: lessons from Lactococcus lactis and Escherichia coli.	9675796
+pH stress tolerance	Adenosine deamination increases the survival under acidic conditions in Escherichia coli.	22277147
+pH stress tolerance	Regulation of the Bacillus subtilis fur and perR genes by PerR: not all members of the PerR regulon are peroxide inducible	12029044
+pH stress tolerance	Redox-operated genetic switches: the SoxR and OxyR transcription factors.	11179804
+pH stress tolerance	The oxidative stress response in Bacillus subtilis.	7851732
+oxidative stress tolerance	An Oxygen-Sensing Two-Component System in the Burkholderia cepacia Complex Regulates Biofilm, Intracellular Invasion, and Pathogenicit	28046077
+oxidative stress tolerance	Architecture of the complete oxygen-sensing FixL-FixJ two-component signal transduction system	29636388
+oxidative stress tolerance	The Cpx envelope stress response modifies peptidoglycan cross-linking via the L,Dtranspeptidase LdtD and the novel protein YgaU	25422305
+oxidative stress tolerance	Global analysis of extracytoplasmic stress signaling in Escherichia coli.	19763168
+oxidative stress tolerance	The Escherichia coli Cpx envelope stress response regulates genes of diverse function that impact antibiotic resistance andmembrane integrity.	23564175
+oxidative stress tolerance	Just scratching the surface: an expanding view of the Cpx envelope stress response.	22092948
+oxidative stress tolerance	CpxP, a stress-combative member of the Cpx regulon.	9473036
+oxidative stress tolerance	Interactions between phage-shock proteins in Escherichia coli	12562786
+oxygen limitation tolerance	PspE (phage-shock protein E) of Escherichia coli is a rhodanese	11997041
+	The evolution of bacterial cell size: the internal diffusion-constraint hypothesis	28375214
+	Evolutionary tradeoffs in cellular composition across diverse bacteria	27046336
+codon usage bias	The systemic imprint of growth and its uses in ecological (meta)genomics	20090831
+aa composition	Protein and DNA Sequence Determinants of Thermophilic Adaptation	17222055
+aa composition	Unique amino acid composition of proteins in halophilic bacteria.	12628242
+aa composition	Identification of thermophilic species by the amino acid compositions deduced from their genomes	11266564
+Low temperature stress tolerance	Bacterial growth at −15 °C; molecular insights from the permafrost bacterium Planococcus halocryophilus Or1	23389107
+oxygen limitation tolerance	Genetic and Physiological Responses of Bifidobacterium animalis subsp. lactis to Hydrogen Peroxide Stress	23772066
+stress response	Membrane regulation of the stress response from prokaryotic models to mammalian cells	17656573
+stress response	Membrane lipid homeostasis in bacteria	18264115
+pH stress tolerance	L-glutamine provides acid resistance for Escherichia coli through enzymatic release of ammonia	23337585

@@ -1,0 +1,2 @@
+Genome	rRNA Nucleotide Fraction: A	rRNA Nucleotide Fraction: C	rRNA Nucleotide Fraction: G	rRNA Nucleotide Fraction: T	rRNA GC
+2503283023	0.288862465319065	0.204914783987317	0.307966706302021	0.198256044391597	NA

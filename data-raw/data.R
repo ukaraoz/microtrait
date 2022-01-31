@@ -247,3 +247,50 @@ rename_addtc2hmm_commands = hmms_fromrules %>%
   pull(`rename_addtc2hmm_command`)
 write.table(rename_addtc2hmm_commands,
             file = "./data-raw/rename_addtc2hmm_commands.sh", sep = "\t", quote = F, row.names = F, col.names = F)
+
+# 7.Read regression models for prediction of optimum growth temperature
+# The models are from Sauer & Wang (2019) available at https://github.com/DavidBSauer/OGT_prediction
+model.dir = "/Users/ukaraoz/Work/microtrait/code/github/microtrait/data-raw/regression_models"
+model.dir = "./data-raw/regression_models"
+model.files = list.files(model.dir, full.names = T)
+model.allfeatures = readr::read_delim("/Users/ukaraoz/Work/microtrait/code/github/microtrait/data-raw/regression_models/allfeatures.txt", delim = "\t") %>%
+  dplyr::mutate(feature = factor(feature, levels = feature, ordered = T))
+#
+models = parallel::mclapply(2:length(model.files),
+                                 function(i) {
+                                    rank = strsplit(basename(model.files[i]), "-")[[1]][1]
+                                    clade = strsplit(basename(model.files[i]), "-")[[1]][2]
+                                    firstline = readr::read_lines(model.files[i], n_max = 1)
+                                    R2 = sub("#R2=", "", strsplit(firstline, "\\|")[[1]][1])
+                                    RMSE = sub("RMSE=", "", strsplit(firstline, "\\|")[[1]][2])
+                                    coefficients = readr::read_delim(model.files[i],
+                                                                   col_names = F,
+                                                                   delim = "\t",
+                                                                   comment = "#") %>%
+                                                   setNames(., c("feature", "value"))
+                                    coefficients = model.allfeatures %>%
+                                      dplyr::left_join(coefficients, by = c("feature" = "feature")) %>%
+                                      dplyr::mutate(value = replace_na(value, 0))
+
+                                    model = cbind(rank,
+                                                  clade,
+                                                  R2,
+                                                  RMSE,
+                                                  coefficients)
+                                    model
+                                 },
+                                mc.cores = 4)
+models = do.call(rbind, models) %>% dplyr::as_tibble()
+
+#files = list.files("~/Work/microtrait/code/github/microtrait/inst/extdata/ogt.test/tocompare", full.names = T)
+#allcolnames = matrix(nrow = 0, ncol = 2)
+#for(i in 2:length(files)) {
+#  temp = read.table(files[i], sep = "\t", header = T, check.names = F)
+#  allcolnames = rbind(allcolnames,
+#                      cbind(basename(files[i]), colnames(temp)[3:ncol(temp)])
+#                     )
+#}
+#write.table(allcolnames,
+#            file = "/Users/ukaraoz/Work/microtrait/code/github/microtrait/data-raw/regression_models/allfeatures.xls",
+#            row.names = F, col.names = T, sep = "\t", quote = F)
+
