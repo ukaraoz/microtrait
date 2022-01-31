@@ -33,6 +33,8 @@ microtrait.hmmdb
 inst/extdata/hmm/dbcan/*
 inst/extdata/hmm/hmmpress/*
 inst/extdata/hmm/microtrait-hmmdb/*
+inst/extdata/ogt.test/*
+inst/extdata/genomic/*
 # add exception, to make sure the directories can be committed
 !inst/extdata/hmm/dbcan/.gitkeep
 !inst/extdata/hmm/hmmpress/.gitkeep
