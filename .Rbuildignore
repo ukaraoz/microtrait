@@ -1,5 +1,6 @@
 ^microtrait\.Rproj$
 ^\.Rproj\.user$
+^./R/*backup.R$
 ^./inst/extdata/genomic/in/*$
 ^./inst/extdata/hmm/hmmpress/*$
-^/Users/ukaraoz/Work/microtrait/code/microtrait/scripts$
+^./scripts/*$
