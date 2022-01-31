@@ -3,6 +3,8 @@
 # nucl_seq = readFASTA(prodigal_file)
 
 #a = readDNAStringSet(prodigal_file)
+
+#' @import Biostrings
 analyze_genome <- function(fastafile) {
   # import genomic
   # from Bio import SeqIO
@@ -54,6 +56,7 @@ analyze_genome <- function(fastafile) {
   result
 }
 
+#' @import Biostrings
 analyze_tRNA <- function(fastafile) {
   # import tRNA
   # from Bio import SeqIO
@@ -83,6 +86,7 @@ analyze_tRNA <- function(fastafile) {
   result
 }
 
+#' @import Biostrings
 analyze_rRNA <- function(fastafile) {
   # import rRNA
   # from Bio import SeqIO
@@ -112,6 +116,7 @@ analyze_rRNA <- function(fastafile) {
   result
 }
 
+#' @import Biostrings
 analyze_orfs <- function(fastafile, genomesize) {
   # import ORFs
   # from Bio import SeqIO

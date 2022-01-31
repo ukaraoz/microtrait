@@ -5,7 +5,7 @@
 #' @param outDir directory to write the output file. Default is tempdir()
 #' @param ncores number of cores to use
 #'
-#' @importFrom Biostrings readBStringSet writeXStringSet
+#' @import Biostrings
 #' @return a vector of filename names created
 #'
 #' @export splitSeqsToFiles
