@@ -28,12 +28,14 @@ The following are required for calculating features used in calculating Optimal 
 * **[barrnap](https://github.com/tseemann/barrnap/archive/0.9.tar.gz) (= v0.9)**
 
 ### 2. Data dependencies
+
 * **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)**: gene level profile-HMM database underlying microTrait framework
 * **[dbCAN-HMMdb](http://bcb.unl.edu/dbCAN2/download/Databases/)**: domain level profile-HMM database for Carbohydrate-active enzymes.
 
 See setup section below for deployment of these databases after installation.
 
 ### 3. R package dependencies
+
 The developmental version of *microtrait* can be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package. First install and load [devtools](https://cran.r-project.org/web/packages/devtools/index.html):
 
 ```{r tidy = FALSE}
@@ -47,10 +49,8 @@ Next install R package dependencies for *microTrait*:
 	Missing dependencies available on [CRAN](https://cran.r-project.org/) can be installed as follows:
 
 	```{r tidy = FALSE}
-list_of_packages = c("R.utils", "RColorBrewer", "ape", "assertthat", "checkmate", "coRdon",
- "corrplot", "doParallel", "dplyr", "futile.logger", "gtools", "kmed", "lazyeval",
-  "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", "tictoc", "tidyr")
-newpackages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
+	list_of_packages = c("R.utils", "RColorBrewer", "ape", "assertthat", "checkmate", "coRdon", "corrplot", "doParallel", "dplyr", "futile.logger", "gtools", "kmed", "lazyeval", "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", "tictoc", "tidyr")
+	newpackages <- list_of_packages[!(list_of_packages %in% installed.packages([,"Package"])]
 if(length(new.packages)) install.packages(newpackages)
 ```
 
