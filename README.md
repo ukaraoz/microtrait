@@ -11,10 +11,9 @@ The genome inferred traits represented by *microTrait* are summarized in the fig
 
 ## Installation
 
-### <a name="dependencies_overview"></a> Dependencies:
-microTrait has the following software and data dependencies.
+*microTrait* has the following software and data dependencies.
 
-#### Software
+### 1. Software dependencies
 
 The following binaries should be in your PATH so that they can be accessed regardless of location.
 
@@ -28,41 +27,73 @@ The following are required for calculating features used in calculating Optimal 
 * **[bedtools](https://github.com/arq5x/bedtools2/releases/download/v2.27.1/bedtools-2.27.1.tar.gz) (>= v2.27)**
 * **[barrnap](https://github.com/tseemann/barrnap/archive/0.9.tar.gz) (= v0.9)**
 
-#### Data
+### 2. Data dependencies
 * **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)**: gene level profile-HMM database underlying microTrait framework
 * **[dbCAN-HMMdb](http://bcb.unl.edu/dbCAN2/download/Databases/)**: domain level profile-HMM database for Carbohydrate-active enzymes.
 
 See setup section below for deployment of these databases after installation.
 
-### <a name="install"></a> Installation:
-gRodon has a few dependencies - namely the Biostrings, coRdon, and matrixStats packages which are bioconductor packages and cannot be installed via CRAN. To install them run the following:
-
-The developmental version can be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package.
-```{r tidy = FALSE}
-install.packages("devtools")
-library(devtools)
-```
-[devtools](https://cran.r-project.org/web/packages/devtools/index.html) will sort out CRAN dependencies of microTrait. microTrait also depends on [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html), which is a [Bioconductor](https://bioconductor.org/) package and cannot be installed with CRAN. To install it, run the following:
-```{r tidy = FALSE}
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install("Biostrings")
-```
-To install the R package directly from GitHub, do in R:
+### 3. R package dependencies
+The developmental version of *microtrait* can be installed using the [devtools](https://cran.r-project.org/web/packages/devtools/index.html) package. First install and load [devtools](https://cran.r-project.org/web/packages/devtools/index.html):
 
 ```{r tidy = FALSE}
 install.packages("devtools")
 library(devtools)
+```
+Next install R package dependencies for *microTrait*:
+
+*  [CRAN](https://cran.r-project.org/) package dependencies
+
+	Missing dependencies available on [CRAN](https://cran.r-project.org/) can be installed as follows:
+
+	```{r tidy = FALSE}
+list_of_packages = c("R.utils", "RColorBrewer", "ape", "assertthat", "checkmate", "coRdon",
+ "corrplot", "doParallel", "dplyr", "futile.logger", "gtools", "kmed", "lazyeval",
+  "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", "tictoc", "tidyr")
+newpackages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(newpackages)
+```
+
+* [Bioconductor](https://www.bioconductor.org/) package dependencies
+
+	*microTrait* also depends on [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) and [coRdon](https://github.com/BioinfoHR/coRdon), which are [Bioconductor](https://bioconductor.org/) packages. To install them, run the following:
+
+	```{r tidy = FALSE}
+	if (!requireNamespace("BiocManager", quietly = TRUE))
+		install.packages("BiocManager")
+	BiocManager::install("Biostrings")
+	BiocManager::install("coRdon")
+	```
+
+* Developmental package dependencies
+
+	*microTrait* uses [gRodon](https://github.com/jlw-ecoevo/gRodon) for estimation of maximum growth rates from genomic sequences. Install with [devtools](https://github.com/r-lib/devtools):
+
+	```{r tidy = FALSE}
+	devtools::install_github("jlw-ecoevo/gRodon")
+	```
+
+### 4. Installation of *microTrait*:
+
+Now install *microTrait* with [devtools](https://github.com/r-lib/devtools):
+
+```{r tidy = FALSE}
 devtools::install_github("ukaraoz/microtrait")
 ```
 
-### <a name="setup"></a> Setup of HMM database:
-Due to its large size (~170M), **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** isn't packaged with microTrait. After installation, **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** database has to be downloaded and deployed.
+### 5. <a name="setup"></a> Setup of HMM database:
+Due to its large size (~170M), **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** isn't packaged with *microTrait*. After installation, **[microtrait-hmm](https://github.com/ukaraoz/microtrait-hmm)** database has to be downloaded and deployed.
 
-microTrait includes a function (`prep.hmmmodels()`) that downloads and deploys hmm models that underlie microTrait. This function should be run once after the installation.
+Load *microTrait*:
 
 ```{r tidy = FALSE}
-prep.hmmmodels()
+library(microtrait)
+```
+
+*microTrait* includes a function (`prep.hmmmodels()`) that downloads and deploys hmm models that underlie *microTrait*. This function should be run once after the installation.
+
+```{r tidy = FALSE}
+microtrait::prep.hmmmodels()
 ```
 The following HMM database files should now be available under `microtrait/extdata/hmm` in your default R library path (`.libPaths()`)
 
