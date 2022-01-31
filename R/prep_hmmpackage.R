@@ -34,7 +34,7 @@ download.arcbacribosomal <- function(arcbacribosomalhmmdb_file) {
 }
 
 #' Prepare microtrait database (download and subselect)
-#' @import futile.logger piggyback fs
+#' @import futile.logger fs
 #' @importFrom R.utils gunzip
 download.microtrait <- function(microtraithmmdb_file) {
   futile.logger::flog.info("Downloading microtrait hmm database")
