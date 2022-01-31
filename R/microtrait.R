@@ -5,7 +5,7 @@
 #' @param outDir directory to write the output file. Default is tempdir()
 #' @param ncores number of cores to use
 #'
-#' @import Biostrings
+#' @importFrom Biostrings readBStringSet writeXStringSet
 #' @return a vector of filename names created
 #'
 #' @export splitSeqsToFiles
@@ -18,10 +18,10 @@ splitSeqsToFiles <- function(fasta_file = "/Users/ukaraoz/Work/microtrait/code/i
 
   split.files = parallel::mclapply(1:(length(starts)-1),
                                    function(i) {
-                                     query.tmp <- readBStringSet(fasta_file, nrec = 1, skip = starts[i])
+                                     query.tmp <- Biostrings::readBStringSet(fasta_file, nrec = 1, skip = starts[i])
                                      #filename.out = file.path(outDir, paste(basename(fasta_file), starts[i], runif(1), suffix, sep = "."))
                                      filename.out = file.path(outDir, paste(names(query.tmp), suffix, "fa", sep = "."))
-                                     writeXStringSet(query.tmp, filepath = filename.out, format = "fasta")
+                                     Biostrings::writeXStringSet(query.tmp, filepath = filename.out, format = "fasta")
                                      filename.out
                                    },
                                    mc.cores = ncores)
@@ -31,13 +31,13 @@ splitSeqsToFiles <- function(fasta_file = "/Users/ukaraoz/Work/microtrait/code/i
 #' Add metadata
 #'
 #' @param genomeset_results genomeset_results
-#' @param gp_results gp_results
 #' @param genome_metadata genome_metadata
+#' @param genome_metadata_idcol genome_metadata_idcol
 #' @import dplyr
 #' @return results
 #'
 #' @export add.metadata
-add.metadata <- function(genomeset_results, gp_results, genome_metadata) {
+add.metadata <- function(genomeset_results, genome_metadata, genome_metadata_idcol) {
   results = mylist <- sapply(names(genomeset_results),function(x) NULL)
   genome_metadata = genome_metadata %>%
     dplyr::rename_with(~ sub(" ", "_", .x), starts_with("NCBI")) %>%
@@ -45,32 +45,32 @@ add.metadata <- function(genomeset_results, gp_results, genome_metadata) {
 
   for(i in 1:length(genomeset_results)) {
     results[[i]] = genomeset_results[[i]] %>%
-      dplyr::left_join(gp_results, by = c("id" = "id")) %>%
-      dplyr::select(-c("sdgentime", "nHEG", "nNonHEG")) %>%
-      dplyr::left_join(genome_metadata, by = c("id" = "IMG Taxon ID"))
+      dplyr::left_join(genome_metadata, by = c("id" = genome_metadata_idcol))
+      #dplyr::left_join(gp_results, by = c("id" = "id")) %>%
+      #dplyr::select(-c("sdgentime", "nHEG", "nNonHEG")) %>%
   }
   results
 }
 
-#' Add metadata
+#' Combine microtrait outputs for multiple genomes into trait matrices (genomes x traits)
 #'
-#' @param rds_dir rds_dir
+#' @param rds_files rds_files
 #' @param ncores ncores
 #' @return genomeset_results
 #'
 #' @export make.genomeset.results
 make.genomeset.results <- function(rds_files, ids = NULL, ncores) {
   message("Synthesizing traits at granularity 1")
-  trait_matrixatgranularity1 = combine.results(rds_files, type = "trait_atgranularity1", ids = ids, ncores = 20) %>% tibble::as_tibble()
+  trait_matrixatgranularity1 = combine.results(rds_files, type = "trait_atgranularity1", ids = ids, ncores = ncores) %>% tibble::as_tibble()
   message("Synthesizing traits at granularity 2")
-  trait_matrixatgranularity2 = combine.results(rds_files, type = "trait_atgranularity2", ids = ids, ncores = 20) %>% tibble::as_tibble()
+  trait_matrixatgranularity2 = combine.results(rds_files, type = "trait_atgranularity2", ids = ids, ncores = ncores) %>% tibble::as_tibble()
   message("Synthesizing traits at granularity 3")
-  trait_matrixatgranularity3 = combine.results(rds_files, type = "trait_atgranularity3", ids = ids, ncores = 20) %>% tibble::as_tibble()
+  trait_matrixatgranularity3 = combine.results(rds_files, type = "trait_atgranularity3", ids = ids, ncores = ncores) %>% tibble::as_tibble()
 
   message("Synthesizing hmms results")
-  hmm_matrix = combine.results(rds_files, type = "gene", ids = ids, ncores = 20) %>% tibble::as_tibble()
+  hmm_matrix = combine.results(rds_files, type = "gene", ids = ids, ncores = ncores) %>% tibble::as_tibble()
   message("Synthesizing rule assertions")
-  rule_matrix = combine.results(rds_files, type = "rule", ids = ids, ncores = 20) %>% tibble::as_tibble()
+  rule_matrix = combine.results(rds_files, type = "rule", ids = ids, ncores = ncores) %>% tibble::as_tibble()
 
   genomeset_results = list(trait_matrixatgranularity1 = trait_matrixatgranularity1,
                            trait_matrixatgranularity2 = trait_matrixatgranularity2,
@@ -126,13 +126,22 @@ run.parallel <- function(fna_files, out_dirs, save_tempfiles = F, type = "genomi
   #results
 }
 
-#' Combine results for multiple genomes
+#' Combine microtrait results for multiple genomes
 #'
-#' @param rds_files type
 #' @import parallel doParallel tidyr
-#' @return
 #'
-#' @export combine.results
+#' @description
+#' `combine.results()` builds trait, rule, and hmm matrices by combining microtrait results
+#' for multiple genomes.
+#'
+#' @details
+#'
+#' @param rds_files Full paths to rds files that holds microtrait results.
+#' @param ids ids to be assigned to the genomes, default is the rds file name
+#' @param type microtrait result to be combined
+#' @param ncores Number of cores for computation
+#'
+#' @return trait, rule, or hmm matrix
 combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
   # reminder for "foreach" way to parallelize
   # rds_files = unlist(purrr::map_depth(results, 1, "rds_file"))
@@ -235,4 +244,44 @@ gp.resultsummary <- function(file) {
                 OGT = OGT
   )
   result
+}
+
+# files = list.files("/Users/ukaraoz/Work/microtrait/code/inst/extdata/grodon", pattern = "_growth.rds$", full.names = T)
+combine.grodon.results <- function(files, ids = gsub("\\..*", "", basename(files), perl = T), ncores = 1) {
+  parsed = mclapply(files, readRDS, mc.cores = ncores)
+  # mean of the codon usage bias of each highly expressed gene relative to all other genes
+  temp.CUBHE <- mclapply(parsed, "[[", 1, mc.cores = ncores)
+
+  #mean of the codon usage bias of each highly expressed gene relative to all other highly expressed genes
+  temp.ConsistencyHE <- mclapply(parsed, "[[", 2, mc.cores = ncores)
+
+  #genome-wide codon pair bias
+  temp.codonpairbias <- mclapply(parsed, "[[", 3, mc.cores = ncores)
+
+  #number of sequences filtered due to length
+  temp.FilteredSequences <- mclapply(parsed, "[[", 4, mc.cores = ncores)
+
+  #estimated minimal doubling time in hours
+  temp.mingentime <- mclapply(parsed, "[[", 5, mc.cores = ncores)
+
+  #95% confidence intervals for `d`
+  temp.LowerCI <- mclapply(parsed, "[[", 6, mc.cores = ncores)
+  temp.UpperCI <- mclapply(parsed, "[[", 7, mc.cores = ncores)
+  temp.genes_file <- mclapply(parsed, "[[", 8, mc.cores = ncores)
+  temp.highlyexpressed_file <- mclapply(parsed, "[[", 9, mc.cores = ncores)
+  temp.nhighlyexpressed <- mclapply(parsed, "[[", 10, mc.cores = ncores)
+
+  results = data.frame(id = ids,
+                       CUBHE = as.numeric(unlist(temp.CUBHE)),
+                       ConsistencyHE = as.numeric(unlist(temp.ConsistencyHE)),
+                       codonpairbias = as.numeric(unlist(temp.codonpairbias)),
+                       FilteredSequences = as.numeric(unlist(temp.FilteredSequences)),
+                       mingentime = as.numeric(unlist(temp.mingentime)),
+                       LowerCI = as.numeric(unlist(temp.LowerCI)),
+                       UpperCI = as.numeric(unlist(temp.UpperCI)),
+                       genes_file = unlist(temp.genes_file),
+                       highlyexpressed_file = unlist(temp.highlyexpressed_file),
+                       nhighlyexpressed = as.numeric(unlist(temp.nhighlyexpressed)),
+                       stringsAsFactors = F) %>% tibble::as_tibble()
+  results
 }

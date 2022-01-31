@@ -5,9 +5,9 @@
 \title{Apply rules to a set of detected genes}
 \usage{
 \method{extract}{traits}(
-  in_file = system.file("extdata/genomic/in", "2896129707.fna", package = "microtrait",
+  in_file = system.file("extdata/genomic", "2695420375.fna", package = "microtrait",
     mustWork = TRUE),
-  out_dir = system.file("extdata/genomic/out", package = "microtrait", mustWork = TRUE),
+  out_dir = system.file("extdata/genomic", package = "microtrait", mustWork = TRUE),
   type = "genomic",
   mode = "single",
   save_tempfiles = F

@@ -2,18 +2,18 @@
 % Please edit documentation in R/microtrait.R
 \name{make.genomeset.results}
 \alias{make.genomeset.results}
-\title{Add metadata}
+\title{Combine microtrait outputs for multiple genomes into trait matrices (genomes x traits)}
 \usage{
 make.genomeset.results(rds_files, ids = NULL, ncores)
 }
 \arguments{
-\item{ncores}{ncores}
+\item{rds_files}{rds_files}
 
-\item{rds_dir}{rds_dir}
+\item{ncores}{ncores}
 }
 \value{
 genomeset_results
 }
 \description{
-Add metadata
+Combine microtrait outputs for multiple genomes into trait matrices (genomes x traits)
 }

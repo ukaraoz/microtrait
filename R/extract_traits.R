@@ -3,7 +3,7 @@
 #' @param fasta_file type out_dir
 #'
 #' @return
-#' @import fs dplyr tictoc
+#' @import fs dplyr tictoc gRodon
 #' @importFrom assertthat assert_that
 #' @export extract.traits
 #'
@@ -17,7 +17,7 @@
 #'                system.file("extdata/examples/2619619645/out", "2619619645.genes.faa.dbcan.domtblout", package = "microtrait", mustWork = TRUE))
 #' }
 #' type = "domtblout"
-extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.fna", package = "microtrait", mustWork = TRUE),
+extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.fna", package = "microtrait", mustWork = TRUE),
                            out_dir = system.file("extdata/genomic", package = "microtrait", mustWork = TRUE),
                            type = "genomic", mode = "single", save_tempfiles = F) {
   result <- c(call = match.call())
@@ -54,7 +54,9 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.
 
     tictoc::tic("run.prodigal")
     fasta_file = in_file
-    proteins_file = run.prodigal(genome_file = fasta_file, faa_file = tempfile(), mode = mode)
+    result = run.prodigal(genome_file = fasta_file, fa_file = tempfile(), faa_file = tempfile(), mode = mode)
+    cds_file = result$fa_file
+    proteins_file = result$faa_file
     nseq = countseq.fasta(proteins_file)
     tictoc::toc(log = "TRUE")
 
@@ -76,6 +78,7 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.
       tictoc::tic("run.hmmsearch")
       microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
       dbcan_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "dbcan")
+      #ribosomal_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "ribosomal")
       tictoc::toc(log = "TRUE")
     }
   }
@@ -88,6 +91,7 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.
     tictoc::tic("run.hmmsearch")
     microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
     dbcan_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "dbcan")
+    #ribosomal_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "ribosomal")
     tictoc::toc(log = "TRUE")
   }
   if(type == "domtblout") {  # run gene finder
@@ -96,6 +100,7 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.
 
     microtrait_domtblout_file = in_file[[1]]
     dbcan_domtblout_file = in_file[[2]]
+    #ribosomal_domtblout_file = in_file[[3]]
   }
 
   tictoc::tic("read.domtblout")
@@ -103,6 +108,7 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.
   microtrait_domtblout <- read.domtblout(microtrait_domtblout_file)
   # dbcan_domtblout_file = "/Users/ukaraoz/Work/microtrait/code/microtrait/inst/extdata/examples/2619619645/out/2619619645.genes.faa.dbcan.domtblout"
   dbcan_domtblout <- read.domtblout(dbcan_domtblout_file)
+  #ribosomal_domtblout <- read.domtblout(ribosomal_domtblout_file)
   tictoc::toc(log = "TRUE")
 
   tictoc::tic("map.traits.fromdomtblout")
@@ -112,6 +118,8 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.
   tictoc::toc(log = "TRUE")
 
   if(save_tempfiles == T) {
+    file.copy(cds_file,
+              file.path(out_dir, paste0(id, ".prodigal.fa")))
     file.copy(proteins_file,
               file.path(out_dir, paste0(id, ".prodigal.faa")))
     file.copy(microtrait_domtblout_file,
@@ -120,6 +128,8 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2503283023.
               file.path(out_dir, paste0(id, ".dbcan.domtblout")))
   }
   map.traits.result$id = id
+  map.traits.result$cds_file = file.path(out_dir, paste0(id, ".prodigal.fa"))
+  map.traits.result$proteins_file = file.path(out_dir, paste0(id, ".prodigal.faa"))
   map.traits.result$norfs = nseq
   map.traits.result$time_log = tictoc::tic.log()
   rds_file = file.path(out_dir, paste0(id, ".microtrait.rds"))

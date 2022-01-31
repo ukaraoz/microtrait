@@ -1,3 +1,4 @@
+library(dplyr)
 library(ggplot2)
 
 base = "/Users/ukaraoz/Work/microtrait/code/inst/extdata"
@@ -16,4 +17,3 @@ for(i in 1:length(objects)) {
             file = file.path(base, paste0(dataset, ".", objects[i], "_prevalence.xls")),
             row.names = F, col.names = T, sep = "\t", quote = F)
 }
-

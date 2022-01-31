@@ -4,14 +4,14 @@
 \alias{add.metadata}
 \title{Add metadata}
 \usage{
-add.metadata(genomeset_results, gp_results, genome_metadata)
+add.metadata(genomeset_results, genome_metadata, genome_metadata_idcol)
 }
 \arguments{
 \item{genomeset_results}{genomeset_results}
 
-\item{gp_results}{gp_results}
-
 \item{genome_metadata}{genome_metadata}
+
+\item{genome_metadata_idcol}{genome_metadata_idcol}
 }
 \value{
 results

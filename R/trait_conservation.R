@@ -77,9 +77,6 @@ build.taxa.model <- function(trait_matrix, trait, species = TRUE, optimizer = "n
 
 #' Run consentrait script
 #'
-#' @import data.table
-#' @import adephylo
-#' @import ape
 #' @return result
 #'
 #' @export run.consentrait.singletrait

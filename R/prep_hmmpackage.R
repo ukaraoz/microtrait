@@ -19,6 +19,20 @@ download.dbcan <- function(dbcan_version = 8, dbcanhmmdb_selectids_file, dbcanhm
   }
 }
 
+#' Prepare database for PFAM models for ribosomal proteins
+#'
+#' @import futile.logger
+download.arcbacribosomal <- function(arcbacribosomalhmmdb_file) {
+  futile.logger::flog.info("Downloading PFAM hmm models for detection of ribosomal proteins")
+
+  arcbacribosomal_hmmdb_url = "https://github.com/ukaraoz/microtrait-hmm/releases/download/latest/arcbacribosomal.hmmdb.gz"
+  download.file(arcbacribosomal_hmmdb_url,
+                destfile = arcbacribosomalhmmdb_file)
+
+  arcbacribosomalhmmdb_unzippedfile = R.utils::gunzip(arcbacribosomalhmmdb_file, remove = F, overwrite = T)
+  return(arcbacribosomalhmmdb_unzippedfile[1])
+}
+
 #' Prepare microtrait database (download and subselect)
 #' @import futile.logger piggyback fs
 #' @importFrom R.utils gunzip
@@ -38,7 +52,13 @@ download.microtrait <- function(microtraithmmdb_file) {
   return(microtraithmmdb_unzippedfile[1])
 }
 
-#' Prepare microtrait database (download and subselect)
+#' Prepare microtrait database
+#'
+#' @description
+#' `prep.hmmmodels` downloads and prepares hmm models required by microtrait.
+#'
+#' @details
+#'
 #' @import futile.logger
 #' @export prep.hmmmodels
 prep.hmmmodels <- function(output_dir=system.file("extdata", package = "microtrait")) {
@@ -47,6 +67,7 @@ prep.hmmmodels <- function(output_dir=system.file("extdata", package = "microtra
 
   # start clean
   unlink(file.path(output_dir, "hmm", "dbcan", "*"))
+  unlink(file.path(output_dir, "hmm", "arcbacribosomal", "*"))
   unlink(file.path(output_dir, "hmm", "microtrait-hmmdb", "*"))
   unlink(file.path(output_dir, "hmm", "hmmpress", "*"))
 
@@ -65,9 +86,19 @@ prep.hmmmodels <- function(output_dir=system.file("extdata", package = "microtra
   file.copy(paste(dbcanhmmdb_file, hmmpress.extensions, sep = "."), hmmpress_dir)
   file.remove(paste(dbcanhmmdb_file, hmmpress.extensions, sep = "."))
 
+  microtraithmmdb_file = file.path(output_dir, "hmm", "microtrait-hmmdb", "microtrait.hmmdb.gz")
+
+  arcbacribosomalhmmdb_file = file.path(output_dir, "hmm", "arcbacribosomal.hmmdb.gz")
+  arcbacribosomalhmmdb_unzippedfile = download.arcbacribosomal(arcbacribosomalhmmdb_file)
+  futile.logger::flog.info("Preparing arcaeal bacterial ribosomal proteins hmm database")
+  system(paste("hmmpress", arcbacribosomalhmmdb_unzippedfile))
+
+  file.copy(paste(arcbacribosomalhmmdb_unzippedfile, hmmpress.extensions, sep = "."), hmmpress_dir)
+  file.remove(paste(arcbacribosomalhmmdb_unzippedfile, hmmpress.extensions, sep = "."))
+
   # microtraithmmdb_file = "/Users/ukaraoz/Work/microtrait/code/microtrait/inst/extdata/hmm/microtrait-hmmdb/microtrait.hmmdb.tar.gz"
   microtraithmmdb_unzippedfile = download.microtrait(microtraithmmdb_file)
-  futile.logger::flog.info("Preparing microtrait hmmdb")
+  futile.logger::flog.info("Preparing microtrait hmm database")
   system(paste("hmmpress", microtraithmmdb_unzippedfile))
 
   file.copy(paste(microtraithmmdb_unzippedfile, hmmpress.extensions, sep = "."), hmmpress_dir)

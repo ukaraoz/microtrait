@@ -7,7 +7,8 @@
 run.prodigal(
   genome_file = system.file("extdata/examples/2619619645/in", "2619619645.genes.fna",
     package = "microtrait", mustWork = TRUE),
-  faa_file,
+  fa_file = gsub(".fna", ".prodigal.fa", genome_file),
+  faa_file = gsub(".fna", ".prodigal.faa", genome_file),
   mode = "single",
   transtab = 11,
   maskN = FALSE,

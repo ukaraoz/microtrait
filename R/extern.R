@@ -31,12 +31,13 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
   }
   )
 
-  hmm = match.arg(hmm, c("microtrait", "dbcan"))
+  hmm = match.arg(hmm, c("microtrait", "dbcan", "ribosomal"))
   hmm_file = switch(hmm,
                     #"microtrait" = file.path("/Users/ukaraoz/Work/microtrait/code/microtrait", "inst/extdata/hmm/hmmpress/microtrait.hmmdb"),
                     #"dbcan" = file.path("/Users/ukaraoz/Work/microtrait/code/microtrait", "inst/extdata/hmm/hmmpress/dbcan.select.v8.hmmdb")
                     "microtrait" = file.path(system.file(package="microtrait"), "extdata/hmm/hmmpress/microtrait.hmmdb"),
-                    "dbcan" = file.path(system.file(package="microtrait"), "extdata/hmm/hmmpress/dbcan.select.v8.hmmdb")
+                    "dbcan" = file.path(system.file(package="microtrait"), "extdata/hmm/hmmpress/dbcan.select.v8.hmmdb"),
+                    "ribosomal" = file.path(system.file(package="microtrait"), "extdata/hmm/hmmpress/arcbacribosomal.hmmdb")
   )
   #hmmsearch --cpu $ncpus --domtblout $faafile".microtrait.domtblout" $hmm $faafile > /dev/null
   result <- NULL
@@ -50,24 +51,47 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
     #                 ">/dev/null")
     message("Running hmmsearch for ", fs::path_file(faa_file))
     #message(command)
-    if(hmm == "microtrait") {
-      system2("hmmsearch",
-              args = c("--domtblout", domtblout_file,
-                       "--cpu", n_threads,
-                       "--noali",
-                       "--cut_tc ", # CRUCIAL, otherwise doesn't use model specific thresholds
-                       hmm_file, faa_file
-              ), stdout = "/dev/null")
-    } else if(hmm == "dbcan") {
-      system2("hmmsearch",
-              args = c("--domtblout", domtblout_file,
-                       "--cpu", n_threads,
-                       "--noali",
-                       hmm_file, faa_file
-              ), stdout = "/dev/null")
-    }
 
+    #if(hmm == "microtrait") {
+    #  system2("hmmsearch",
+    #          args = c("--domtblout", domtblout_file,
+    #                   "--cpu", n_threads,
+    #                   "--noali",
+    #                   "--cut_tc ", # CRUCIAL, otherwise doesn't use model specific thresholds
+    #                   hmm_file, faa_file
+    #          ), stdout = "/dev/null")
+    #} else if(hmm == "dbcan") {
+    #  system2("hmmsearch",
+    #          args = c("--domtblout", domtblout_file,
+    #                   "--cpu", n_threads,
+    #                   "--noali",
+    #                   hmm_file, faa_file
+    #          ), stdout = "/dev/null")
+    #}
     #file.remove(tmp.file)
+    switch(hmm,
+           microtrait = system2("hmmsearch",
+                                args = c("--domtblout", domtblout_file,
+                                         "--cpu", n_threads,
+                                         "--noali",
+                                         "--cut_tc ", # CRUCIAL, otherwise doesn't use model specific thresholds
+                                         hmm_file, faa_file
+                                ), stdout = "/dev/null"),
+           dbcan = system2("hmmsearch",
+                           args = c("--domtblout", domtblout_file,
+                                    "--cpu", n_threads,
+                                    "--noali",
+                                    hmm_file, faa_file
+                           ), stdout = "/dev/null"),
+           ribosomal = system2("hmmsearch",
+                               args = c("--domtblout", domtblout_file,
+                                        "--cpu", n_threads,
+                                        "--noali",
+                                        "--cut_ga ",
+                                        hmm_file, faa_file
+                               ), stdout = "/dev/null"),
+           stop("Invalid `hmm` value")
+    )
     return(domtblout_file)
   }
 }
@@ -105,7 +129,8 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
 #'
 #' @seealso
 run.prodigal <- function(genome_file = system.file("extdata/examples/2619619645/in", "2619619645.genes.fna", package = "microtrait", mustWork = TRUE),
-                         faa_file,
+                         fa_file = gsub(".fna", ".prodigal.fa", genome_file),
+                         faa_file = gsub(".fna", ".prodigal.faa", genome_file),
                          mode = "single",
                          transtab = 11,
                          maskN = FALSE,
@@ -148,7 +173,6 @@ run.prodigal <- function(genome_file = system.file("extdata/examples/2619619645/
   #n_jobs <- as.integer(checkmate::qassert(n_jobs, paste0("X1[1,", parallel::detectCores(), "]")))
   #prodigal -i ./2775507255/2775507255.fna -o ./2775507255.prodigal -a ./2775507255.prodigal.faa -p single -q -f gff -m -n -g 11
 
-  result <- NULL
   if(available.external("prodigal")){
     maskN <- ifelse(maskN, "-m", "")
     bypassSD <- ifelse(bypassSD, "-n", "")
@@ -161,13 +185,185 @@ run.prodigal <- function(genome_file = system.file("extdata/examples/2619619645/
                      "-p", mode,
                      maskN, bypassSD,
                      "-i", genome_file,
+                     "-d", fa_file,
                      "-a", faa_file,
                      "-o", tempfile(pattern = "prodigal", fileext = "gff")
             ),
             stdout = "/dev/null",stderr = "/dev/null"
     )
     #file.remove(tmp.file)
-    return(faa_file)
+    return(list(fa_file = fa_file, faa_file = faa_file))
+  }
+}
+
+
+run.tRNAscan <-function(genome_file) {
+  # Check arguments
+  genome_file = tryCatch({
+    assertthat::assert_that(file.exists(genome_file))
+    genome_file
+  },
+  error = function(e) {
+    message("Genome file ", `genome_file`, " doesn't exist.")
+    print(e)
+  }
+  )
+
+  result <- NULL
+  if(available.external("tRNAscan")){
+    message("Running tRNAscan-SE for ", fs::path_file(genome_file))
+    # to do: reimplement with processx
+    tempfilebase = tempfile(pattern = "tRNAscan")
+    tempfile_trnascanstr = paste0(tempfilebase, ".str")
+    tempfile_trnascangff = paste0(tempfilebase, ".gff")
+    tempfile_trnascanfa = paste0(tempfilebase, ".fa")
+    tempfile_trnascanstderr = paste0(tempfilebase, ".stderr")
+    #genome_file = "/opt/OGT_prediction-1.0.2/prediction/genomes/cyanobacterium_stanieri/2503283023.fa"
+    system2("tRNAscan-SE",
+             args = c("-G --brief ",
+                      "--struct", tempfile_trnascanstr,
+                      "--output", tempfile_trnascangff,
+                      "--fasta", tempfile_trnascanfa,
+                      " ", genome_file),
+             stdin = "",
+             stdout = "/dev/null",
+             stderr = tempfile_trnascanstderr
+    )
+    check = grep("No tRNAs found", readLines(tempfile_trnascanstderr))
+    if(length(check) == 0) {
+      found = 1
+    } else {
+      found = 0
+    }
+    #file.remove(tmp.file)
+    result = list(found = found,
+                  tRNA_str = tempfile_trnascanstr,
+                  tRNA_gff = tempfile_trnascangff,
+                  tRNA_fa = tempfile_trnascanfa)
+    return(result)
+  }
+}
+
+
+#barrnap --quiet --threads 1 --kingdom bac /Users/ukaraoz/Work/microtrait/code/github/test/microtrait/inst/extdata/genomic/2503283023.fna \
+#> ./output/genomes/desulfotomaculum_kuznetsovii/Desulfotomaculum_kuznetsovii_dsm_6115_ASM21470v1_dna_toplevel/barrnap/Bacteria.txt
+run.barrnap <- function(genome_file = system.file("extdata", "2503283023.fna", package = "microtrait", mustWork = TRUE),
+                        threads = 1,
+                        kingdom = "bac",
+                        quiet = ON) {
+  # Check arguments
+  genome_file = tryCatch({
+    assertthat::assert_that(file.exists(genome_file))
+    genome_file
+  },
+  error = function(e) {
+    message("Genome file ", `genome_file`, " doesn't exist.")
+    print(e)
+  }
+  )
+
+  kingdom = tryCatch({
+    assertthat::assert_that(kingdom %in% c("euk", "bac", "arc", "mito"))
+    kingdom
+  },
+  error = function(e) {
+    message("Kingdom has to be one of `euk`, `bac`, arc`, `mito` .")
+    print(e)
+  }
+  )
+  #checkmate::qexpect(genome_file, "S1", info = "info", label = "Genome fasta file")
+  #checkmate::qassert(faa_file, "S1")
+  #checkmate::assertChoice(mode, c("single", "meta"))
+  #checkmate::qassert(maskN, "B")
+  #checkmate::qassert(bypassSD, "B")
+  #n_jobs <- as.integer(checkmate::qassert(n_jobs, paste0("X1[1,", parallel::detectCores(), "]")))
+  #prodigal -i ./2775507255/2775507255.fna -o ./2775507255.prodigal -a ./2775507255.prodigal.faa -p single -q -f gff -m -n -g 11
+
+  result <- NULL
+  if(available.external("barrnap")){
+    message("Running barrnap for ", fs::path_file(genome_file))
+    # to do: reimplement with processx
+    tempfilebase = tempfile(pattern = "barrnap")
+    tempfile_rnafa = paste0(tempfilebase, ".fa")
+    tempfile_rnagff = paste0(tempfilebase, ".gff")
+    tempfile_16S = paste0(tempfilebase, ".16S.txt")
+
+    system2("barrnap",
+            args = c("--quiet",
+                     "--threads", threads,
+                     "--kingdom", kingdom,
+                     "--outseq", tempfile_rnafa
+                    ),
+            stdin = genome_file,
+            stdout = tempfile_rnagff,
+            stderr = "/dev/null"
+    )
+    system2("grep",
+            args = c("-e", "Name=16S_rRNA"),
+            stdin = tempfile_rnagff,
+            stdout = tempfile_16S,
+            stderr = "/dev/null"
+           )
+    #file.remove(tmp.file)
+    result = list(rRNA_fa = tempfile_rnafa,
+                  rRNA_gff = tempfile_rnagff,
+                  tempfile_16S = tempfile_16S)
+    return(result)
+  }
+}
+
+run.bedtools <- function(genome_file = system.file("extdata", "2503283023.fna", package = "microtrait", mustWork = TRUE),
+                         bed16S_file) {
+  # Check arguments
+  genome_file = tryCatch({
+    assertthat::assert_that(file.exists(genome_file))
+    genome_file
+  },
+  error = function(e) {
+    message("Genome file ", `genome_file`, " doesn't exist.")
+    print(e)
+  }
+  )
+
+  bed16S_file = tryCatch({
+    assertthat::assert_that(file.exists(bed16S_file))
+    bed16S_file
+  },
+  error = function(e) {
+    message("16S bed file ", `bed16S_file`, " doesn't exist.")
+    print(e)
+  }
+  )
+  #checkmate::qexpect(genome_file, "S1", info = "info", label = "Genome fasta file")
+  #checkmate::qassert(faa_file, "S1")
+  #checkmate::assertChoice(mode, c("single", "meta"))
+  #checkmate::qassert(maskN, "B")
+  #checkmate::qassert(bypassSD, "B")
+  #n_jobs <- as.integer(checkmate::qassert(n_jobs, paste0("X1[1,", parallel::detectCores(), "]")))
+  #prodigal -i ./2775507255/2775507255.fna -o ./2775507255.prodigal -a ./2775507255.prodigal.faa -p single -q -f gff -m -n -g 11
+  result <- NULL
+
+  #bedtools getfasta -s -name -fi genome_file -bed tempfile_16S
+  # -fo ./output/genomes/desulfotomaculum_kuznetsovii/Desulfotomaculum_kuznetsovii_dsm_6115_ASM21470v1_dna_toplevel/barrnap/barrnap_results_assigned.fa
+
+  if(available.external("bedtools")){
+    message("Running bedtools for ", fs::path_file(genome_file), " and ", fs::path_file(bed16S_file))
+    # to do: reimplement with processx
+    tempfilebase = tempfile(pattern = "barrnap")
+    tempfile_16Sfa = paste0(tempfilebase, ".16S.fa")
+
+    system2("bedtools",
+            args = c("getfasta",
+                     "-s -name",
+                     "-fi", genome_file,
+                     "-bed", bed16S_file,
+                     "-fo", tempfile_16Sfa
+            ),
+            stdout = "/dev/null",
+            stderr = "/dev/null"
+    )
+    #file.remove(tmp.file)
+    return(tempfile_16Sfa)
   }
 }
 
@@ -200,7 +396,7 @@ available.external <- function(what) {
     }
   }
 
-  if(what == "hmmpress"){
+  if(what == "hmmpress") {
     chr <- NULL
     try(chr <- system2("hmmpress", args = "-h", stdout = TRUE, stderr= TRUE), silent = TRUE)
     if(is.null(chr)){
@@ -214,7 +410,7 @@ available.external <- function(what) {
     }
   }
 
-  if(what == "prodigal"){
+  if(what == "prodigal") {
     chr <- NULL
     try(chr <- system2("prodigal", args = "-v", stdout = TRUE, stderr= TRUE), silent = TRUE)
     if(is.null(chr)){
@@ -222,6 +418,48 @@ available.external <- function(what) {
                  'Please install barrnap from: https://github.com/hyattpd/Prodigal',
                  'After installation, make sure prodigal can be run from a shell/terminal, ',
                  'using the command \'prodigal -h\', then restart the R session.', sep = '\n'))
+      return(FALSE)
+    } else {
+      return(TRUE)
+    }
+  }
+
+  if(what == "tRNAscan") {
+    chr <- NULL
+    try(chr <- system2("barrnap", args = "-v", stdout = TRUE, stderr= TRUE), silent = TRUE)
+    if(is.null(chr)){
+      stop(paste('tRNAscan-SE was not found by R.',
+                 'Please install tRNAscan-SE from: http://lowelab.ucsc.edu/tRNAscan-SE/',
+                 'After installation, make sure tRNAscan-SE can be run from a shell/terminal, ',
+                 'using the command \'tRNAscan-SE -h\', then restart the R session.', sep = '\n'))
+      return(FALSE)
+    } else {
+      return(TRUE)
+    }
+  }
+
+  if(what == "barrnap") {
+    chr <- NULL
+    try(chr <- system2("barrnap", args = "-v", stdout = TRUE, stderr= TRUE), silent = TRUE)
+    if(is.null(chr)){
+      stop(paste('barrnap was not found by R.',
+                 'Please install barrnap from: https://github.com/tseemann/barrnap',
+                 'After installation, make sure barrnap can be run from a shell/terminal, ',
+                 'using the command \'barrnap -h\', then restart the R session.', sep = '\n'))
+      return(FALSE)
+    } else {
+      return(TRUE)
+    }
+  }
+
+  if(what == "bedtools") {
+    chr <- NULL
+    try(chr <- system2("bedtools", args = "--version", stdout = TRUE, stderr= TRUE), silent = TRUE)
+    if(is.null(chr)){
+      stop(paste('bedtools was not found by R.',
+                 'Please install bedtools from: https://github.com/arq5x/bedtools2/releases',
+                 'After installation, make sure bedtools can be run from a shell/terminal, ',
+                 'using the command \'bedtools --help\', then restart the R session.', sep = '\n'))
       return(FALSE)
     } else {
       return(TRUE)

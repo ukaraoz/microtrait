@@ -2,16 +2,26 @@
 % Please edit documentation in R/microtrait.R
 \name{combine.results}
 \alias{combine.results}
-\title{Combine results for multiple genomes}
+\title{Combine microtrait results for multiple genomes}
 \usage{
 combine.results(rds_files, ids = NULL, type, ncores = 1)
 }
 \arguments{
-\item{rds_files}{type}
+\item{rds_files}{Full paths to rds files that holds microtrait results.}
+
+\item{ids}{ids to be assigned to the genomes, default is the rds file name}
+
+\item{type}{microtrait result to be combined}
+
+\item{ncores}{Number of cores for computation}
 }
 \value{
-
+trait, rule, or hmm matrix
 }
 \description{
-Combine results for multiple genomes
+\code{combine.results()} builds trait, rule, and hmm matrices by combining microtrait results
+for multiple genomes.
+}
+\details{
+
 }
