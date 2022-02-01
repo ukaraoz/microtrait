@@ -105,8 +105,8 @@ write.genomeset.results <- function(genomeset_results, out_dir, datasetid) {
 #' @import tictoc parallel doParallel foreach
 #' @return results
 #'
-#' @export run.parallel
-run.parallel <- function(fna_files, out_dirs, save_tempfiles = F, type = "genomic", ncores) {
+#' @export extract.traits.parallel
+extract.traits.parallel <- function(fna_files, out_dirs, save_tempfiles = F, type = "genomic", ncores) {
   tictoc::tic(paste0("Running microtrait for ", length(fna_files), " genomes"))
   parallel::mclapply(1:length(fna_files),
                      function(i) {

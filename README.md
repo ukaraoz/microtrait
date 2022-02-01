@@ -120,7 +120,7 @@ genome_file <- system.file("extdata/genomic/2695420375.fna", package="microtrait
 microtrait_result = extract.traits(genome_file)
 ```
 
-microTrait packages its results into an R list with the following names components:
+*microTrait* packages its results into an R list with the following names components:
 
 * `microtrait_result$id`: genome id, currently set to fasta filename for the genome sequence
 * `microtrait_result$genes_detected`: microtrait-hmm models detected in the genome sequence (using the benchmarked TC thresholds)
@@ -132,8 +132,11 @@ microTrait packages its results into an R list with the following names componen
 
 #### Multiple (thousands) genomes (parallel workflow)
 
-A simple data level parallelization of microtrait for multiple genomes can be easily implemented using `foreach` and `parallel` R packages. Using a parallel workflow, microTrait is able to process a few thousands of genomes within 2 hours on a 64 core Intel environment.
+A simple data level parallelization of *microTrait* for multiple genomes can be easily implemented using `foreach` and `parallel` R packages. Using a parallel workflow, *microTrait* is able to process a few thousands of genomes within 2 hours on a 64 core Intel environment.
 
+To exemplify the processing of multiple genomes with *microTrait*, we will a test dataset of 100 genomes from IMG available [here](https://100genomes.s3.us-west-1.amazonaws.com/100genomes.tar.gz). Download it:
+
+<!--
 To exemplify the processing of multiple genomes with microtrait, we will use 2545 metagenome assembled genomes (MAGs) from [Anantharaman et al. 2016] (https://www.nature.com/articles/ncomms13219#ref20) ("Thousands of microbial genomes shed light on interconnected biogeochemical processes in an aquifer system". The data has been deposited to NCBI under [PRJNA288027](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA288027). GenBank Assembly IDs are accessible in a downloadable table from [PRJNA288027](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA288027), and also provided [PRJNA288027-accession-list.txt](LINK).
 
 To bulk download these genomes, we will use [ncbi-genome-download](https://github.com/kblin/ncbi-genome-download) as follows (replace genomes_dir with path to your output folder):
@@ -141,13 +144,12 @@ To bulk download these genomes, we will use [ncbi-genome-download](https://githu
 ``
 ncbi-genome-download -s genbank -F fasta,protein-fasta -A PRJNA386568-accession-list.txt --parallel 4 --retries 4 --output-folder genomes_dir all
 gunzip -r $genomes_dir
-``
+-->
 
 First determine, on your machine/server, the number of "cores", or computational units with `detectCores()` function:
 
 ```{r detectCores, warning=FALSE, message=FALSE}
-library("parallel")
-detectCores()
+parallel::detectCores()
 ```
 
 ```{r detectCores, warning=FALSE, message=FALSE}
