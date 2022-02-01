@@ -217,7 +217,7 @@ names(genomeset_results)
 To demonstrate analysis of trait data from a set of genomes, we will use a dataset consisting of all environmental isolate genomes from IMG database. The process to combine *microTrait* results for multiple genomes is as above. Here, we use the precomputed `microTrait` outputs for this set that are available as part of the `microTrait` package.
 
 ```{r make.genomeset.results, warning=FALSE, message=FALSE}
-base_dir = system.file("extdata/genomic/precomputed",package = "microtrait")
+base_dir = system.file("extdata/precomputed",package = "microtrait")
 dataset = "environmentalgenomes"
 genomeset_results = readRDS(file.path(base_dir, paste0(dataset, ".microtraitresults.rds")))
 lapply(genomeset_results, dim)
@@ -330,7 +330,7 @@ maov_results_list = parallel::mclapply(2:length(nguilds),
 We will read precomputed results:
 
 ```
-maov_results_list = readRDS(system.file("extdata/genomic/precomputed/soilgenomes_maov_results_list.rds", package="microtrait"))
+maov_results_list = readRDS(system.file("extdata/precomputed/soilgenomes_maov_results_list.rds", package="microtrait"))
 
 maov_results = matrix(nrow = 0, ncol = 4)
 for(i in 1:length(maov_results_list)) {
