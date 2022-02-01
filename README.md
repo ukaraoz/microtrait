@@ -269,7 +269,7 @@ Use `microtrait::trait2trait_corr()` to plot trait correlation matrix and write 
 trait2trait_corr(trait_matrixatgranularity3_binary, verbose = TRUE, idcol = "id", outdir = base_dir, dataset = "soilgenomes")
 ```
 
-<img src="https://github.com/ukaraoz/microtrait/blob/master/trait2trait-correlation.png" width="60%">
+<img src="https://github.com/ukaraoz/microtrait/blob/master/trait2trait-correlation.png" width="120%">
 
 #### Defining guilds
 ##### Generate genome-to-genome distance matrix
