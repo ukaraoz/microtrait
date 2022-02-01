@@ -303,7 +303,7 @@ cluster_traitmatrix(trait_matrix = trait_matrixatgranularity3_binary,
                     bottomannotation_height = height*0.005,
                     outdir = base_dir, dataset = "soilgenomes", pdf = TRUE)
 ```
-<img src="https://github.com/ukaraoz/microtrait/blob/master/traitmatrix.png" width="60%">
+<img src="https://github.com/ukaraoz/microtrait/blob/master/traitmatrix.png" width="100%">
 
 
 ##### Quantification of inter-guild variance
@@ -372,5 +372,5 @@ defined_guilds = microtrait::define_guilds(trait_matrixatgranularity3_binary,
 
 <img src="https://github.com/ukaraoz/microtrait/blob/master/guildsize-dist.png" width="100%">
 
-<img src="https://github.com/ukaraoz/microtrait/blob/master/guildprofiles.png" width="70%">
+<img src="https://github.com/ukaraoz/microtrait/blob/master/guildprofiles.png" width="100%">
 
