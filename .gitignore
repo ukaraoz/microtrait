@@ -9,39 +9,41 @@
 .Ruserdata
 
 # Example code in package build process
-*-Ex.R
+#*-Ex.R
 
 # Output files from R CMD build
-/*.tar.gz
+#/*.tar.gz
 
 # Output files from R CMD check
-/*.Rcheck/
+#/*.Rcheck/
 
 # RStudio files
 .Rproj.user/
-/*.Rproj
+#/*.Rproj
 
 # produced vignettes
-vignettes/*.html
-vignettes/*.pdf
+#vignettes/*.html
+#vignettes/*.pdf
 
 # temp directory
 tmp/*
 
 # large data (i.e.hmm database)
-microtrait.hmmdb
+inst/extdata/hmm/arcbacribosomal/*
 inst/extdata/hmm/dbcan/*
 inst/extdata/hmm/hmmpress/*
 inst/extdata/hmm/microtrait-hmmdb/*
 inst/extdata/ogt.test/*
-inst/extdata/genomic/*
+inst/extdata/ogt.test/ogt.test.tar.gz
+inst/extdata/genomic/100genomes/*
 # add exception, to make sure the directories can be committed
+!inst/extdata/hmm/arcbacribosomal/.gitkeep
 !inst/extdata/hmm/dbcan/.gitkeep
 !inst/extdata/hmm/hmmpress/.gitkeep
 !inst/extdata/hmm/microtrait-hmmdb/.gitkeep
 
 # OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
-.httr-oauth
+# .httr-oauth
 
 # knitr and R markdown default cache directories
 *_cache/

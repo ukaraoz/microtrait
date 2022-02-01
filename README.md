@@ -99,12 +99,14 @@ microtrait::prep.hmmmodels()
 ```
 The following HMM database files should now be available under `microtrait/extdata/hmm` in your default R library path (`.libPaths()`)
 
-```{r tidy = FALSE}
+```{r tidy = TRUE}
 list.files(file.path(.libPaths(), "microtrait/extdata/hmm/hmmpress"))
-[1] "dbcan.select.v8.hmmdb.h3f" "dbcan.select.v8.hmmdb.h3i"
-[3] "dbcan.select.v8.hmmdb.h3m" "dbcan.select.v8.hmmdb.h3p"
-[5] "microtrait.hmmdb.h3f"      "microtrait.hmmdb.h3i"     
-[7] "microtrait.hmmdb.h3m"      "microtrait.hmmdb.h3p"
+ [1] "arcbacribosomal.hmmdb.h3f" "arcbacribosomal.hmmdb.h3i"
+ [3] "arcbacribosomal.hmmdb.h3m" "arcbacribosomal.hmmdb.h3p"
+ [5] "dbcan.select.v8.hmmdb.h3f" "dbcan.select.v8.hmmdb.h3i"
+ [7] "dbcan.select.v8.hmmdb.h3m" "dbcan.select.v8.hmmdb.h3p"
+ [9] "microtrait.hmmdb.h3f"      "microtrait.hmmdb.h3i"     
+[11] "microtrait.hmmdb.h3m"      "microtrait.hmmdb.h3p"     
 ```
 
 ## Usage
