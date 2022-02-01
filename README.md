@@ -53,7 +53,7 @@ Next install R package dependencies for *microTrait*:
 	 "coRdon", "corrplot", "doParallel", "dplyr", "futile.logger", "gtools", "kmed",
 	  "lazyeval", "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", 
 	  "tictoc", "tidyr")
-	newpackages <- list_of_packages[!(list_of_packages %in% installed.packages([,"Package"])]
+	newpackages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
 	if(length(new.packages)) install.packages(newpackages)```
 
 * [Bioconductor](https://www.bioconductor.org/) package dependencies
