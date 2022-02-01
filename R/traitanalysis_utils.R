@@ -183,11 +183,14 @@ calc_mixeddist = function(trait_matrix, idcol = "id", col2ignore, method = "wish
 #'
 #' @import RColorBrewer corrplot ggplot2
 #' @export
-trait2trait_corr = function(trait_matrix_bin, idcol = "id", verbose = T, outdir, dataset) {
+trait2trait_corr = function(trait_matrix_bin, idcol = "id", annot_cols = c("mingentime", "ogt"), verbose = T, outdir, dataset) {
   ##############
   ### trait-to-trait correlation
   ##############
   trait_matrix_bin_df = trait_matrix_bin %>% dplyr::select(-all_of(idcol)) %>% as.data.frame()
+
+  # trait_matrix_bin_df = trait_matrix_bin %>% dplyr::select(-all_of(idcol)) %>% dplyr::select(-all_of(annot_cols)) %>% as.data.frame()
+
   if(verbose) {message}
   # remove all absent/all present traits
   ngenomes = nrow(trait_matrix_bin_df)
@@ -219,7 +222,7 @@ trait2trait_corr = function(trait_matrix_bin, idcol = "id", verbose = T, outdir,
   col5 = colorRampPalette(RColorBrewer::brewer.pal(n = 11, name = "RdBu"))
 
   pdf(height = 40, width = 40,
-      file.path(outdir, paste0(dataset, ".traitcorrplot.pdf")))
+      file.path(outdir, paste0(dataset, "_traitcorr-plot.pdf")))
   corrplot::corrplot(cor_matrix,
            order = 'hclust', hclust.method = "ward.D",
            # c("complete", "ward", "ward.D", "ward.D2", "single", "average","mcquitty", "median", "centroid")
@@ -235,9 +238,8 @@ trait2trait_corr = function(trait_matrix_bin, idcol = "id", verbose = T, outdir,
            #type = 'full', tl.pos='n'
   )
   dev.off()
-  if(verbose) {message("Generated trait correlation heatmap: ", file.path(outdir, paste0(dataset, ".alltraits.cov.ward-ordered.nolegend.pdf")))}
-
-
+  if(verbose) {message("Generated trait correlation heatmap: ",
+                       file.path(outdir, paste0(dataset, "_traitcorr-plot.pdf")))}
   #cor_melted1 = cor_melted %>% as_tibble() %>%
   #  tidyr::separate(variable1, c("strategy1"), sep = ":", remove = F) %>%
   #  tidyr::separate(variable2, c("strategy2"), sep = ":", remove = F) %>%
@@ -390,7 +392,7 @@ cluster_traitmatrix = function(trait_matrix,
   # data that goes into the heatmap
   toplot = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-annot_cols) %>% as.data.frame()
   rownames(toplot) = trait_matrix %>% dplyr::pull(idcol)
-  colnames = colnames(toplot) %>% as.tibble() %>% dplyr::rename(`microtrait_trait-name` = value)
+  colnames = colnames(toplot) %>% tibble::as.tibble() %>% dplyr::rename(`microtrait_trait-name` = value)
 
   annotation_colors = list(`microtrait_trait-strategy` = c("Resource Acquisition" = "red",
                                                            "Resource Use" = "blue",
@@ -617,7 +619,7 @@ define_guilds = function(trait_matrix,
     dplyr::left_join(guild2size, by = c("guild" = "guild")) %>%
     dplyr::summarise(across(everything(), mean)) %>%
     dplyr::mutate_at(count_traits,
-                     funs((. - min(.)) / (max(.) - min(.)))) %>% 
+                     funs((. - min(.)) / (max(.) - min(.)))) %>%
     dplyr::arrange(desc(numberofgenomes)) %>%
     dplyr::select(c("guild", "numberofgenomes", everything())) %>% as.data.frame()
   # variability of positivity
@@ -674,7 +676,7 @@ define_guilds = function(trait_matrix,
     annotation_name_gp = gpar(fontsize = 10)
   )
   ############
-  
+
 
   #guild2traitprofile_selectguilds = trait_matrix_bin %>%
   #  dplyr::left_join(genome2guild, by = c("id" = "genome")) %>%
@@ -693,16 +695,16 @@ define_guilds = function(trait_matrix,
       as.character()
   all_traits = all_traits %>% intersect(colnames(guild2traitprofile))
 
-  selectguilds = guild2size %>% 
+  selectguilds = guild2size %>%
     dplyr::arrange(desc(numberofgenomes)) %>%
-    dplyr::filter(numberofgenomes >= guildsizecutoff) %>% 
+    dplyr::filter(numberofgenomes >= guildsizecutoff) %>%
     dplyr::pull(guild)
 
   guild2traitprofile_selectguilds = guild2traitprofile %>%
     dplyr::filter(guild %in% selectguilds) %>%
     tibble::column_to_rownames(var = "guild")
 
-  
+
   # significance testing
   trait_matrixforsign = trait_matrix %>%
     dplyr::left_join(genome2guild, by = c("id" = "genome")) %>%
@@ -711,31 +713,31 @@ define_guilds = function(trait_matrix,
     dplyr::filter(guild %in% selectguilds)
   trait_matrix_p = matrix(nrow = 0, ncol = 2)
   for(c in 1:length(count_traits)) {
-    temp = trait_matrixforsign %>% 
-      dplyr::select(c("guild", count_traits[c])) %>% 
-      dplyr::mutate(guild = factor(guild)) %>% 
+    temp = trait_matrixforsign %>%
+      dplyr::select(c("guild", count_traits[c])) %>%
+      dplyr::mutate(guild = factor(guild)) %>%
       as.data.frame
     pvalue = kruskal.test(get(colnames(temp)[2]) ~ guild, data = temp)$p.value
     effsize = temp %>% rstatix::kruskal_effsize(get(colnames(temp)[2]) ~ guild) %>% dplyr::select(effsize)
-    trait_matrix_p = rbind(trait_matrix_p, 
+    trait_matrix_p = rbind(trait_matrix_p,
                            c(count_traits[c], pvalue, effsize))
     #cat(c, "\t", pvalue, "\n")
   }
   for(c in 1:length(binary_traits)) {
-    temp = trait_matrixforsign %>% 
-      dplyr::select(c("guild", binary_traits[c])) %>% 
-      dplyr::mutate(guild = factor(guild)) %>% 
+    temp = trait_matrixforsign %>%
+      dplyr::select(c("guild", binary_traits[c])) %>%
+      dplyr::mutate(guild = factor(guild)) %>%
       as.data.frame
     table = t(table(temp))
     pvalue = chisq.test(table)$p.value
-    trait_matrix_p = rbind(trait_matrix_p, 
+    trait_matrix_p = rbind(trait_matrix_p,
                            c(binary_traits[c], pvalue))
     #cat(c, "\t", pvalue, "\n")
   }
   colnames(trait_matrix_p) = c("trait", "pvalue")
   trait_matrix_p = data.frame(trait_matrix_p,
                               pvalue.star = gtools::stars.pval(as.numeric(trait_matrix_p[,"pvalue"])))
-  
+
 
 
   # right side annotations
@@ -769,14 +771,14 @@ define_guilds = function(trait_matrix,
 
   toplot = guild2traitprofile_selectguilds
   selecttraits = guild2variability %>% dplyr::filter(sd > traitvariability_threshold) %>% dplyr::pull(`trait`)
-  toplot = toplot %>% 
+  toplot = toplot %>%
     dplyr::select(selecttraits) %>% as.data.frame()
   row_labels = paste0(rownames(toplot), " (",
-                      rownames(toplot) %>% as_tibble() %>% 
-                        dplyr::rename(guild = value) %>% 
-                        dplyr::left_join(guild2size) %>% 
+                      rownames(toplot) %>% as_tibble() %>%
+                        dplyr::rename(guild = value) %>%
+                        dplyr::left_join(guild2size) %>%
                         dplyr::pull(numberofgenomes), " genomes)")
-  
+
   p_top = ComplexHeatmap::HeatmapAnnotation(`variability` = anno_barplot(guild2variability[guild2variability$trait %in% selecttraits, "sd"],
                                                                          gp = gpar(col = "black", fill = "darkblue", lty = "blank"),
                                                                          axis_param = list(at = seq(0,0.5,0.1),
@@ -805,7 +807,7 @@ define_guilds = function(trait_matrix,
     show_legend = TRUE)
 
   p_bottom = ComplexHeatmap::HeatmapAnnotation(
-    strategy = colnames(toplot) %>% as_tibble() %>% 
+    strategy = colnames(toplot) %>% as_tibble() %>%
                 dplyr::rename(`microtrait_trait-name` = value) %>%
                 dplyr::left_join(traits_listbygranularity[[3]], keep = TRUE, by = c("microtrait_trait-name" = "microtrait_trait-name"), suffix = c("", ".y")) %>%
                 dplyr::pull(`microtrait_trait-strategy`),
@@ -818,7 +820,7 @@ define_guilds = function(trait_matrix,
     annotation_name_gp = gpar(fontsize = 16),
     show_legend = FALSE)
 
- 
+
   p_main = ComplexHeatmap::Heatmap(toplot,
                                    col = colorRamp2(c(0, 1), c("white", "#CB181D")),
                                    #col = colorRampPalette(RColorBrewer::brewer.pal(n = 7, name = "Reds"))(20),
@@ -845,7 +847,7 @@ define_guilds = function(trait_matrix,
          "COLUMN_ANNO_PADDING" = unit(0.05, "inches"),
          heatmap_border = TRUE)
   draw(p_main, padding = unit(c(10, 0, 0, 0), "inches"))
-  
+
   # add reference lines
   ComplexHeatmap::decorate_annotation("mingentime", {
     #grid.text("Age", unit(8, "mm"), just = "right")
@@ -865,7 +867,7 @@ define_guilds = function(trait_matrix,
   })
   dev.off()
 
-  
+
   # outfile = file.path(outdir, paste0(dataset, ".selectguild.profiles.pdf"))
   # pheatmap::pheatmap(guild2traitprofile_selectguilds_toplot[, trait_order],
   #          color=colorRampPalette(RColorBrewer::brewer.pal(n = 7, name = "Reds"))(20),

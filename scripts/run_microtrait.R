@@ -19,22 +19,31 @@ genome_metadata = readRDS(file.path(base_dir, paste0(dataset, ".metadata.rds")))
 genomeset_results_wmetadata = add.metadata(genomeset_results, genome_metadata, genome_metadata_idcol = "IMG Taxon ID")
 
 gp_results = readRDS(file.path(base_dir, paste0(dataset, ".gp.rds"))) %>%
-  dplyr::select(-c("sdgentime", "nNonHEG")) %>%
-  dplyr::rename(nHEG.VieiraSilva = nHEG) %>%
-  dplyr::rename(mingentime.VieiraSilva = mingentime) %>%
-  dplyr::rename(ogt.Zeldovich = OGT)
-genomeset_results_wmetadata = add.metadata(genomeset_results_wmetadata, gp_results, genome_metadata_idcol = "id")
+  dplyr::select(-c("sdgentime", "nNonHEG", "nHEG", "OGT")) # %>%
+  #dplyr::rename(nHEG.VieiraSilva = nHEG) %>%
+  #dplyr::rename(mingentime.VieiraSilva = mingentime) %>%
+  #dplyr::rename(ogt.Zeldovich = OGT)
+
+#genomeset_results_wmetadata = add.metadata(genomeset_results_wmetadata, gp_results, genome_metadata_idcol = "id")
 
 grodon.results = combine.grodon.results(list.files("/Users/ukaraoz/Work/microtrait/code/inst/extdata/grodon", pattern = "_growth.rds$", full.names = T)) %>%
-  dplyr::select(c("id", "nhighlyexpressed", "mingentime")) %>%
-  dplyr::rename(nHEG = nhighlyexpressed)
-genomeset_results_wmetadata = add.metadata(genomeset_results_wmetadata, grodon.results, genome_metadata_idcol = "id")
+  dplyr::select(c("id", "mingentime")) # %>%
+  #dplyr::rename(nHEG = nhighlyexpressed)
+#genomeset_results_wmetadata = add.metadata(genomeset_results_wmetadata, grodon.results, genome_metadata_idcol = "id")
 
 ogt.sauer.results = read.table("/Users/ukaraoz/Work/microtrait/code/inst/extdata/organisms_habitatfiltered_matchedbyanalysis_wIMGTaxonID_taxonids.OGT.txt", header = T, sep = "\t") %>%
   as.tibble() %>%
   dplyr::select(c("id", "ogt")) %>%
   dplyr::mutate(id = as.character(id)) %>%
   dplyr::rename(ogt = ogt)
+
+for(i in 1:3) {
+  genomeset_results[[i]] = genomeset_results[[i]] %>%
+    dplyr::left_join(grodon.results, by = c("id" = "id")) %>%
+    dplyr::left_join(ogt.sauer.results, by = c("id" = "id"))
+}
+saveRDS(genomeset_results, file.path(base_dir, paste0(dataset, ".microtraitresults.rds")))
+
 genomeset_results_wmetadata = add.metadata(genomeset_results_wmetadata, ogt.sauer.results, genome_metadata_idcol = "id")
 genomeset_results_wmetadata = genomeset_results_wmetadata %>% convert_traitdatatype(binarytype = "logical")
 #saveRDS(genomeset_results_wmetadata, file.path(base_dir, paste0(dataset, ".microtraitresults.rds")))

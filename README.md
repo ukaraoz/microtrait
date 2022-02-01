@@ -50,21 +50,21 @@ Next install R package dependencies for *microTrait*:
 
 	```{r tidy=TRUE}
 	list_of_packages = c("R.utils", "RColorBrewer", "ape", "assertthat", "checkmate",
-	 "coRdon", "corrplot", "doParallel", "dplyr", "futile.logger", "gtools", "kmed",
-	  "lazyeval", "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", 
+	 "coRdon", "corrplot", "doParallel", "dplyr", "futile.logger", "grid", "gtools", "kmed", "lazyeval", "magrittr", "parallel", "pheatmap", "readr", "stringr", "tibble", 
 	  "tictoc", "tidyr")
 	newpackages <- list_of_packages[!(list_of_packages %in% installed.packages()[,"Package"])]
 	if(length(new.packages)) install.packages(newpackages)```
 
 * [Bioconductor](https://www.bioconductor.org/) package dependencies
 
-	*microTrait* also depends on [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html) and [coRdon](https://github.com/BioinfoHR/coRdon), which are [Bioconductor](https://bioconductor.org/) packages. To install them, run the following:
+	*microTrait* also depends on [Biostrings](https://bioconductor.org/packages/release/bioc/html/Biostrings.html), [coRdon](https://github.com/BioinfoHR/coRdon), and [ComplexHeatmap](https://www.bioconductor.org/packages/release/bioc/html/ComplexHeatmap.html), which are [Bioconductor](https://bioconductor.org/) packages. To install them, run the following:
 
 	```{r tidy = FALSE}
 	if (!requireNamespace("BiocManager", quietly = TRUE))
 		install.packages("BiocManager")
 	BiocManager::install("Biostrings")
 	BiocManager::install("coRdon")
+	BiocManager::install("ComplexHeatmap")
 	```
 
 * Developmental package dependencies
@@ -132,10 +132,28 @@ microtrait_result = extract.traits(genome_file)
 
 #### Multiple (thousands) genomes (parallel workflow)
 
-A simple data level parallelization of *microTrait* for multiple genomes can be easily implemented using `foreach` and `parallel` R packages. Using a parallel workflow, *microTrait* is able to process a few thousands of genomes within 2 hours on a 64 core Intel environment.
+A simple data level parallelization of *microTrait* for multiple genomes is implemented using `foreach` and `parallel` R packages in the `microtrait::extract.traits.parallel`` function.
 
-To exemplify the processing of multiple genomes with *microTrait*, we will a test dataset of 100 genomes from IMG available [here](https://100genomes.s3.us-west-1.amazonaws.com/100genomes.tar.gz). Download it:
+<!--Using a parallel workflow, *microTrait* is able to process a few thousands of genomes within 2 hours on a 64 core Intel environment.-->
 
+
+To exemplify the processing of multiple genomes with *microTrait*, we will process a test dataset of 100 genomes from IMG available [here](https://100genomes.s3.us-west-1.amazonaws.com/100genomes.tar.gz). Download and unpack it under your package install directory:
+
+
+```{r download100genomes, warning=FALSE, message=FALSE, tidy = TRUE}
+download.file("https://github.com/ukaraoz/microtrait-hmm/releases/download/latest/100genomes.tar.gz",
+    system.file("extdata/genomic/100genomes.tar.gz", package = "microtrait"))
+untar(system.file("extdata/genomic/100genomes.tar.gz", package = "microtrait"), 
+      exdir = system.file("extdata/genomic", package = "microtrait"))
+```
+
+The downloaded files will be under the following `genomes_dir` directory:
+
+```{r}
+genomes_dir = system.file("extdata/genomic/100genomes", package = "microtrait")
+genomes_files = list.files(genomes_dir, full.names = T, recursive = T, pattern = ".fna$")
+```
+	
 <!--
 To exemplify the processing of multiple genomes with microtrait, we will use 2545 metagenome assembled genomes (MAGs) from [Anantharaman et al. 2016] (https://www.nature.com/articles/ncomms13219#ref20) ("Thousands of microbial genomes shed light on interconnected biogeochemical processes in an aquifer system". The data has been deposited to NCBI under [PRJNA288027](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA288027). GenBank Assembly IDs are accessible in a downloadable table from [PRJNA288027](https://www.ncbi.nlm.nih.gov/bioproject/?term=PRJNA288027), and also provided [PRJNA288027-accession-list.txt](LINK).
 
@@ -146,97 +164,145 @@ ncbi-genome-download -s genbank -F fasta,protein-fasta -A PRJNA386568-accession-
 gunzip -r $genomes_dir
 -->
 
-First determine, on your machine/server, the number of "cores", or computational units with `detectCores()` function:
+Determine the number of "cores", or computational units on your machine/server using [`parallel::detectCores()`](https://www.rdocumentation.org/packages/parallel/versions/3.6.2/topics/detectCores) function:
 
 ```{r detectCores, warning=FALSE, message=FALSE}
-parallel::detectCores()
+message("Number of cores:", parallel::detectCores(), "\n")
 ```
 
-```{r detectCores, warning=FALSE, message=FALSE}
+Here, we use ~70% of the available cores to process 100 genomes:
+
+```{r extract.traits.parallel, warning=FALSE, message=FALSE}
 library("tictoc")
-#genomes_dir="/global/homes/u/ukaraoz/m3260RR/microtrait-hmm/prep-ncbimags/download/test"
-bioproject_id = "PRJNA288027"
-genomes_dir = paste0("/global/homes/u/ukaraoz/m3260RR/microtrait-hmm/prep-ncbimags/download/", bioproject_id)
-genomes_files = list.files(genomes_dir, full.names = T, recursive = T, pattern = "genomic.fna$")
-r=extracttraits(genomes_files[1])
-cache_dir = "/global/homes/u/ukaraoz/m3260RR/microtrait-hmm/prep-ncbimags"
-results <- mclapply(1:4,
-             FUN=function(i) extracttraits(genomes_files[i]),
-             mc.cores = 10)
-message("Running on: ", system("cat /proc/cpuinfo | grep \"model name\" | uniq | sed 's/.*: //'", intern = TRUE), "\n")
-message("Number of cores:", detectCores(), "\n")
 tictoc::tic.clearlog()
-tictoc::tic(paste0("Running microtrait for ", length(genomes_files), " genomes from ", bioproject_id))
-result <- mclapply(1:length(genomes_files), function(i) {
-        r = extracttraits(genomes_files[i])
-        saveRDS(r, file = file.path(cache_dir, paste0(fs::path_file(genomes_files[i]), ".microtrait.rds")))
-        r}, mc.cores = 62)
+tictoc::tic(paste0("Running microtrait for ", length(genomes_files)))
+microtrait_results = extract.traits.parallel(genomes_files, dirname(genomes_files), ncores = floor(parallel::detectCores()*0.7)
 tictoc::toc(log = "TRUE")
-Running microtrait for 2545 genomes from PRJNA288027: 4509.458 sec elapsed
-}
 ```
-### Building trait matrix from microtrait outputs
-`microtrait::make.genomeset.results` combines microtrait outputs for multiple genomes into trait matrices (genomes x traits). Additionally, the resulting object will hold rules and hmm matrices. This specific example will use 80% of all cores available.
+
+When completed, `microtrait_results` will hold a list of lists for *microTrait* results. We can pull the paths to the corresponding "rds" files as follows:
+
+<!--
+rds_files = list.files(system.file("extdata/genomic/100genomes",package = "microtrait"),
+                       full.names = T, recursive = F, pattern = ".microtrait.rds$")
+-->
+
+
+```{r, tidy = TRUE}
+rds_files = unlist(mclapply(microtrait_results, "[[", "rds_file", mc.cores = ncores))
+```
+
+Next, using these `rds_files` we will combine these results from multiple genomes.
+
+### Building trait matrices from *microTrait* outputs
+`microtrait::make.genomeset.results()` combines microtrait outputs for multiple genomes into trait matrices (genomes x traits). Additionally, the resulting object will hold rules and hmm matrices.
 
 ```{r make.genomeset.results, warning=FALSE, message=FALSE}
-rds_files = list.files(file.path(base_dir, "microtrait-out"),
-                       full.names = T, recursive = F, pattern = ".microtrait.rds$")
 genomeset_results = make.genomeset.results(rds_files = rds_files,
                                            ids = sub(".microtrait.rds", "", basename(rds_files)),
-                                           ncores = floor(0.8*detectCores()))
-saveRDS(genomeset_results, file.path(base_dir, paste0(dataset, ".microtraitresults.rds")))
+                                           ncores = 1)
 ```
-If you have genome metadata, you can add them to the resulting matrices as additional columns using `microtrait::add.metadata`.
+
+The output `genomeset_results` will be a list with 5 elements, each of which is data.frame corresponding to extracted traits at different granularities, rules, and microtrait-hmm hits.
+
+```{r warning=FALSE, message=FALSE}
+names(genomeset_results)
+[1] "trait_matrixatgranularity1" "trait_matrixatgranularity2"
+[3] "trait_matrixatgranularity3" "hmm_matrix"                
+[5] "rule_matrix"
+```
+
+------
+### Analyzing trait data from a set of genomes
+To demonstrate analysis of trait data from a set of genomes, we will use a dataset consisting of all environmental isolate genomes from IMG database. The process to combine *microTrait* results for multiple genomes is as above. Here, we use the precomputed `microTrait` outputs for this set that are available as part of the `microTrait` package.
+
+```{r make.genomeset.results, warning=FALSE, message=FALSE}
+base_dir = system.file("extdata/genomic/precomputed",package = "microtrait")
+dataset = "environmentalgenomes"
+genomeset_results = readRDS(file.path(base_dir, paste0(dataset, ".microtraitresults.rds")))
+lapply(genomeset_results, dim)
+```
+
+If you have genome metadata, you can append them to the resulting matrices as additional columns using `microtrait::add.metadata`. Here we use GOLD metadata for these genomes, also available as part of the package.
 
 ```{r add.metadata, warning=FALSE, message=FALSE}
+library(dplyr)
 genome_metadata = readRDS(file.path(base_dir, paste0(dataset, ".metadata.rds")))
-genomeset_results_wmetadata = add.metadata(genomeset_results, genome_metadata, genome_metadata_idcol = "IMG Taxon ID") %>% convert_traitdatatype(binarytype = "logical")
+genomeset_results_wmetadata = microtrait::add.metadata(genomeset_results, genome_metadata, genome_metadata_idcol = "IMG Taxon ID") %>% convert_traitdatatype(binarytype = "logical")
 saveRDS(genomeset_results_wmetadata, file.path(base_dir, paste0(dataset, ".microtraitresults.rds")))
 ```
-### Analyzing trait data from a set of genomes
 #### Normalize count traits
-The utility function `microtrait::trait.normalize` will correct the count traits for a given metric from the metadata column. Here, we use genome size (*Estimated Size*) to normalize count traits.
+The utility function `microtrait::trait.normalize()` will correct the count traits for a given metric from the metadata column. Here, we use genome size (*Estimated Size*) to normalize count traits.
 
 ```{r trait.normalize, warning=FALSE, message=FALSE}
 genomeset_results_wmetadata_norm = genomeset_results_wmetadata %>% trait.normalize(normby = "Estimated Size")
 ```
 #### Trait-to-trait associations
-Given the trait values across a large number of genomes, we can explore the association structure between traits. For this analysis, we use the trait measurements at the most granular level (*trait_matrixatgranularity3*) and focus on non-aquatic genomes.
+Given the trait values across a large number of genomes, we can explore the association structure between traits. 
+
+For this analysis, we use the trait measurements at the most granular level (*trait_matrixatgranularity3*) and focus on soil genomes.
 
 ```{r trait2traitcorrelations, warning=FALSE, message=FALSE}
+traits = traits_listbygranularity[[3]] %>%
+  dplyr::select(`microtrait_trait-name`) %>%
+  dplyr::filter(`microtrait_trait-name` != "Resource Use:Chemotrophy:chemolithoautotrophy:anaerobic ammonia oxidation") %>%
+  dplyr::pull(`microtrait_trait-name`)
 trait_matrixatgranularity3 = genomeset_results_wmetadata_norm[["trait_matrixatgranularity3"]] %>%
   dplyr::filter(`Ecosystem_Category` %in% c("Terrestrial", "Plants")) %>%
   dplyr::filter(`Ecosystem_Type` %in% c("Soil", "Rhizoplane", "Rhizosphere", "Roots")) %>%
-  dplyr::select(-`Resource Use:Chemotrophy:chemolithoautotrophy:anaerobic ammonia oxidation`) %>%
-  dplyr::select(c(1:189))
+  dplyr::select(c("id", traits, "mingentime", "ogt")) %>%
+  #dplyr::slice(1:100) %>%
+  dplyr::filter(`mingentime` < 100) %>%   # max out mingentime at 25 days to avoid errors
+  dplyr::filter(!is.na(`mingentime`) & !is.na(`ogt`))
 ```
 
-We first transform continous traits into binary traits, treating them as presence/absence traits.
+We first transform continous traits into binary traits (with `microtrait:: trait.continuous2binary()`), treating them as presence/absence traits.
 
 ```{r trait2traitcorrelations, warning=FALSE, message=FALSE}
-trait_matrixatgranularity3_binary = trait_matrixatgranularity3 %>% trait.continuous2binary
+trait_matrixatgranularity3_binary = trait_matrixatgranularity3 %>% microtrait::trait.continuous2binary()
+
 ```
 
-Use `microtrait::trait2trait_corr` to plot trait correlation matrix and write correlations into a tab-delimited file.
+Use `microtrait::trait2trait_corr()` to plot trait correlation matrix and write correlations into a tab-delimited file.
 
 ```{r trait2traitcorrelations, warning=FALSE, message=FALSE}
-microtrait::trait2trait_corr(trait_matrixatgranularity3_binary, verbose = TRUE, idcol = "id", outdir = base_dir, dataset = "soilgenomes")
+trait2trait_corr(trait_matrixatgranularity3_binary, verbose = TRUE, idcol = "id", outdir = base_dir, dataset = "soilgenomes")
 ```
 
 #### Defining guilds
-##### Generate distance matrix
-Use `microtrait::calc_mixeddist` to generate the genome to genome distance matrix based on the trait profiles. for The default distance metric is [Wishart (2003)](https://doi.org/10.1007/978-3-642-55721-7_23) distance.
+##### Generate genome-to-genome distance matrix
+Use `microtrait::calc_mixeddist()` to generate the genome to genome distance matrix based on the trait profiles. The default distance metric is [Wishart (2003)](https://doi.org/10.1007/978-3-642-55721-7_23) distance for mixed data types.
 
 ```
-genomeset_distances = trait_matrixatgranularity3 %>% microtrait::calc_mixeddist()
+genomeset_distances = trait_matrixatgranularity3 %>% microtrait::calc_mixeddist(idcol = "id", col2ignore = c("mingentime", "ogt"), method = "wishart", binarytype = "logical", byrow = 1, verbose = TRUE)
 ```
 
+Also compute trait prevalence in the dataset with `microtrait::compute.prevalence()`:
 ```
-clusters_traitmatrix = cluster_traitmatrix(trait_matrixatgranularity3_binary,
-                                  clustering_distance_rows = genomeset_distances,
-                                  clustering_distance_cols = "binary",
-                                  outdir = base_dir, dataset = "soilgenomes")
+prevalence = compute.prevalence(trait_matrixatgranularity3_binary, type="trait_matrixatgranularity3")
 ```
+
+Now, apply hierarchical clustering based on the distance matrix and plot the corresponding heatmap. We use `unit` function from `grid` package.
+
+```
+library(grid)
+library(ComplexHeatmap)
+library(tibble)
+A4_ratio = 11.75/8.25
+width = grid::unit(8.25*4, "inches")
+height = grid::unit(8.25*4*A4_ratio, "inches")
+cluster_traitmatrix(trait_matrix = trait_matrixatgranularity3_binary,
+                    idcol = "id", annot_cols = c("mingentime", "ogt"), granularity = 3,
+                    clustering_distance_rows = genomeset_distances, clustering_distance_cols = "binary",
+                    width = width, height = height,
+                    heatmap_width = width*0.8, heatmap_height = height*0.70,
+                    row_dend_width = width*0.05, column_dend_height = height*0.02,
+                    rightannotation_width = width*0.1, topannotation_height = height*0.02,
+                    bottomannotation_height = height*0.005,
+                    outdir = base_dir, dataset = "soilgenomes", pdf = TRUE)
+```
+
+##### Quantification of inter-guild variance
 
 We quantify the variance in the distance matrix as a function of the number of guilds. This is compute-heavy, a compute environment with high parallelization capability is warrented.
 First generate a range for number of guilds across which we want to quantify variance. As an example, we go from 2 guilds to the total number of genomes with a step size of 2.
@@ -244,6 +310,8 @@ First generate a range for number of guilds across which we want to quantify var
 ```
 nguilds = seq(2, nrow(trait_matrixatgranularity3), 2)
 hclust_rows = clusters_traitmatrix[[1]]
+
+
 maov_results_list = parallel::mclapply(2:length(nguilds),
                      function(i) {
                        v = cutree(hclust_rows, nguilds[i])
@@ -253,6 +321,13 @@ maov_results_list = parallel::mclapply(2:length(nguilds),
                        adonis_results
                      },
                      mc.cores = floor(0.8*detectCores()))
+```
+
+We will read precomputed results:
+
+```
+maov_results_list = readRDS(system.file("extdata/genomic/precomputed/soilgenomes_maov_results_list.rds", package="microtrait"))
+
 maov_results = matrix(nrow = 0, ncol = 4)
 for(i in 1:length(maov_results_list)) {
   #cat(i, "\n")
@@ -279,7 +354,7 @@ ggsave(p, height = 6, width = 12,
        filename = file.path(base_dir, paste0(dataset, ".guilds.percentvariance.pdf")))
 ```
 
-Use `microtrait::defineguilds` to define guilds at a given percent variance explained. We will define guilds so as to capture 70% of inter-genome trait variation.
+Use `microtrait::defineguilds()` to define guilds at a given percent variance explained. We will define guilds so as to capture 70% of inter-genome trait variation.
 
 ```
 nguildsat70perc = maov_results[which.min(abs(maov_results[,2]-70)), "number of guilds"]
