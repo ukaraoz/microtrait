@@ -269,6 +269,8 @@ Use `microtrait::trait2trait_corr()` to plot trait correlation matrix and write 
 trait2trait_corr(trait_matrixatgranularity3_binary, verbose = TRUE, idcol = "id", outdir = base_dir, dataset = "soilgenomes")
 ```
 
+<img src="https://github.com/ukaraoz/microtrait/blob/master/trait2trait-correlation.png" width="60%">
+
 #### Defining guilds
 ##### Generate genome-to-genome distance matrix
 Use `microtrait::calc_mixeddist()` to generate the genome to genome distance matrix based on the trait profiles. The default distance metric is [Wishart (2003)](https://doi.org/10.1007/978-3-642-55721-7_23) distance for mixed data types.
@@ -301,6 +303,8 @@ cluster_traitmatrix(trait_matrix = trait_matrixatgranularity3_binary,
                     bottomannotation_height = height*0.005,
                     outdir = base_dir, dataset = "soilgenomes", pdf = TRUE)
 ```
+<img src="https://github.com/ukaraoz/microtrait/blob/master/traitmatrix.png" width="60%">
+
 
 ##### Quantification of inter-guild variance
 
@@ -353,6 +357,7 @@ dataset = "soilgenomes"
 ggsave(p, height = 6, width = 12,
        filename = file.path(base_dir, paste0(dataset, ".guilds.percentvariance.pdf")))
 ```
+<img src="https://github.com/ukaraoz/microtrait/blob/master/traitvariance.png" width="60%">
 
 Use `microtrait::defineguilds()` to define guilds at a given percent variance explained. We will define guilds so as to capture 70% of inter-genome trait variation.
 
@@ -364,3 +369,8 @@ defined_guilds = microtrait::define_guilds(trait_matrixatgranularity3_binary,
                                         guildsizecutoff = 50,
                                         outdir, dataset, verbose = TRUE)
 ```
+
+<img src="https://github.com/ukaraoz/microtrait/blob/master/guildsize-dist.png" width="100%">
+
+<img src="https://github.com/ukaraoz/microtrait/blob/master/guildprofiles.png" width="70%">
+
