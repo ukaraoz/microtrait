@@ -1,0 +1,56 @@
+FROM kbase/sdkbase2:python
+
+MAINTAINER Ulas Karaoz <ukaraoz@lbl.gov>
+
+ENV HMMER_VERSION='3.3.2'
+ENV prodigal_VERSION='2.6.3'
+
+# the repo urls started failing at some point, giving 404 errors, replacing them with archive paths
+# deb http://archive.debian.org/debian stretch main
+# deb http://archive.debian.org/debian-security stretch/updates main
+RUN sed -i 's/httpredir/archive/' /etc/apt/sources.list && \
+	sed -i 's/security.debian.org/archive.debian.org\/debian-security/' /etc/apt/sources.list 
+
+RUN apt-get update && apt-get install -y gnupg && \
+# apt-key requires gnupg, needed expliciti intall if starting from ubuntu
+	apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys B8F25A8A73EACF41 && \
+	sudo add-apt-repository 'deb http://cloud.r-project.org/bin/linux/debian stretch-cran35/' && \
+	apt update && \
+	apt-get install -y r-base
+
+WORKDIR /tmp
+RUN \
+	curl http://eddylab.org/software/hmmer/hmmer-${HMMER_VERSION}.tar.gz > hmmer-${HMMER_VERSION}.tar.gz && \
+	tar xfz hmmer-${HMMER_VERSION}.tar.gz && \
+	ln -s hmmer-${HMMER_VERSION} hmmer && \
+	rm -f hmmer-${HMMER_VERSION}.tar.gz
+WORKDIR /tmp/hmmer
+RUN \
+	./configure --prefix /usr/local && \
+	make && \
+	make install
+
+# Prodigal
+#RUN apt-get install --yes gcc=4:6.3.0-4 && \
+#    apt-get install --yes --reinstall zlibc=0.9k-4.3 zlib1g=1:1.2.8.dfsg-5 zlib1g-dev=1:1.2.8.dfsg-5
+WORKDIR /tmp
+RUN curl --location https://github.com/hyattpd/Prodigal/releases/download/v${prodigal_VERSION}/prodigal.linux > prodigal && \
+	chmod +x prodigal && \
+	cp prodigal /usr/local/bin/
+
+RUN R -e "install.packages(c('ape', 'assertthat', 'checkmate', 'fs', 'futile.logger', \
+'gtools', 'lazyeval', 'magrittr', 'R.utils', \
+'RColorBrewer', 'corrplot', 'doParallel', 'tictoc', \
+'stringr', 'tibble', 'dplyr', 'tidyr', 'kmed', \
+'readr', 'pheatmap', 'BiocManager'), \
+repos = 'https://cloud.r-project.org')"
+
+RUN R -e "BiocManager::install('ComplexHeatmap')"
+
+RUN curl --location https://github.com/ukaraoz/microtrait/releases/download/kb/microtrait_1.0.0-kb.tar.gz > /tmp/microtrait_1.0.0-kb.tar.gz && \
+	R CMD INSTALL /tmp/microtrait_1.0.0-kb.tar.gz
+
+RUN R -e "install.packages(c('optparse', 'testthat'))"
+RUN mkdir -p /data
+COPY ./fna /data
+COPY ./run_microtrait.R /usr/local/bin
