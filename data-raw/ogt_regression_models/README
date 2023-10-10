@@ -1,0 +1,5 @@
+This folder contains multiple regression models from:
+https://github.com/DavidBSauer/OGT_prediction/tree/master/data/calculations/prediction/regression_models/other_submodels
+Sauer & Wang. Predicting the optimal growth temperatures of prokaryotes using only genome derived features.
+Bioinformatics (2019) https://doi.org/10.1093/bioinformatics/btz059.
+

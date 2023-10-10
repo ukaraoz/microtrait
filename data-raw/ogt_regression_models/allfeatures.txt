@@ -1,0 +1,175 @@
+feature_class	feature
+genomic_features	genomic Nucleotide Fraction: A
+genomic_features	genomic Nucleotide Fraction: C
+genomic_features	genomic Nucleotide Fraction: G
+genomic_features	genomic Nucleotide Fraction: T
+genomic_features	genomic Dinucleotide Fraction: AA
+genomic_features	genomic Dinucleotide Fraction: AC
+genomic_features	genomic Dinucleotide Fraction: AG
+genomic_features	genomic Dinucleotide Fraction: AT
+genomic_features	genomic Dinucleotide Fraction: CA
+genomic_features	genomic Dinucleotide Fraction: CC
+genomic_features	genomic Dinucleotide Fraction: CG
+genomic_features	genomic Dinucleotide Fraction: CT
+genomic_features	genomic Dinucleotide Fraction: GA
+genomic_features	genomic Dinucleotide Fraction: GC
+genomic_features	genomic Dinucleotide Fraction: GG
+genomic_features	genomic Dinucleotide Fraction: GT
+genomic_features	genomic Dinucleotide Fraction: TA
+genomic_features	genomic Dinucleotide Fraction: TC
+genomic_features	genomic Dinucleotide Fraction: TG
+genomic_features	genomic Dinucleotide Fraction: TT
+genomic_features	genomic GC
+genomic_features	genomic Total Size
+genomic_features	genomic J2
+ORF_features	ORF Density
+ORF_features	ORF Length
+ORF_features	ORF Coding_Noncoding
+ORF_features	ORF Coding
+ORF_features	ORF Nucleotide Fraction: A
+ORF_features	ORF Nucleotide Fraction: C
+ORF_features	ORF Nucleotide Fraction: G
+ORF_features	ORF Nucleotide Fraction: T
+ORF_features	ORF Codon: AAA
+ORF_features	ORF Codon: AAC
+ORF_features	ORF Codon: AAG
+ORF_features	ORF Codon: AAT
+ORF_features	ORF Codon: ACA
+ORF_features	ORF Codon: ACC
+ORF_features	ORF Codon: ACG
+ORF_features	ORF Codon: ACT
+ORF_features	ORF Codon: AGA
+ORF_features	ORF Codon: AGC
+ORF_features	ORF Codon: AGG
+ORF_features	ORF Codon: AGT
+ORF_features	ORF Codon: ATA
+ORF_features	ORF Codon: ATC
+ORF_features	ORF Codon: ATG
+ORF_features	ORF Codon: ATT
+ORF_features	ORF Codon: CAA
+ORF_features	ORF Codon: CAC
+ORF_features	ORF Codon: CAG
+ORF_features	ORF Codon: CAT
+ORF_features	ORF Codon: CCA
+ORF_features	ORF Codon: CCC
+ORF_features	ORF Codon: CCG
+ORF_features	ORF Codon: CCT
+ORF_features	ORF Codon: CGA
+ORF_features	ORF Codon: CGC
+ORF_features	ORF Codon: CGG
+ORF_features	ORF Codon: CGT
+ORF_features	ORF Codon: CTA
+ORF_features	ORF Codon: CTC
+ORF_features	ORF Codon: CTG
+ORF_features	ORF Codon: CTT
+ORF_features	ORF Codon: GAA
+ORF_features	ORF Codon: GAC
+ORF_features	ORF Codon: GAG
+ORF_features	ORF Codon: GAT
+ORF_features	ORF Codon: GCA
+ORF_features	ORF Codon: GCC
+ORF_features	ORF Codon: GCG
+ORF_features	ORF Codon: GCT
+ORF_features	ORF Codon: GGA
+ORF_features	ORF Codon: GGC
+ORF_features	ORF Codon: GGG
+ORF_features	ORF Codon: GGT
+ORF_features	ORF Codon: GTA
+ORF_features	ORF Codon: GTC
+ORF_features	ORF Codon: GTG
+ORF_features	ORF Codon: GTT
+ORF_features	ORF Codon: TAA
+ORF_features	ORF Codon: TAC
+ORF_features	ORF Codon: TAG
+ORF_features	ORF Codon: TAT
+ORF_features	ORF Codon: TCA
+ORF_features	ORF Codon: TCC
+ORF_features	ORF Codon: TCG
+ORF_features	ORF Codon: TCT
+ORF_features	ORF Codon: TGA
+ORF_features	ORF Codon: TGC
+ORF_features	ORF Codon: TGG
+ORF_features	ORF Codon: TGT
+ORF_features	ORF Codon: TTA
+ORF_features	ORF Codon: TTC
+ORF_features	ORF Codon: TTG
+ORF_features	ORF Codon: TTT
+ORF_features	ORF Start Codon: ATG
+ORF_features	ORF Start Codon: GTG
+ORF_features	ORF Start Codon: TTG
+ORF_features	ORF Stop Codon: TAA
+ORF_features	ORF Stop Codon: TAG
+ORF_features	ORF Stop Codon: TGA
+ORF_features	ORF GC
+ORF_features	ORF AG
+ORF_features	ORF Dinucleotide Fraction: AA
+ORF_features	ORF Dinucleotide Fraction: AC
+ORF_features	ORF Dinucleotide Fraction: AG
+ORF_features	ORF Dinucleotide Fraction: AT
+ORF_features	ORF Dinucleotide Fraction: CA
+ORF_features	ORF Dinucleotide Fraction: CC
+ORF_features	ORF Dinucleotide Fraction: CG
+ORF_features	ORF Dinucleotide Fraction: CT
+ORF_features	ORF Dinucleotide Fraction: GA
+ORF_features	ORF Dinucleotide Fraction: GC
+ORF_features	ORF Dinucleotide Fraction: GG
+ORF_features	ORF Dinucleotide Fraction: GT
+ORF_features	ORF Dinucleotide Fraction: TA
+ORF_features	ORF Dinucleotide Fraction: TC
+ORF_features	ORF Dinucleotide Fraction: TG
+ORF_features	ORF Dinucleotide Fraction: TT
+protein_features	protein Length
+protein_features	protein AA: A
+protein_features	protein AA: C
+protein_features	protein AA: D
+protein_features	protein AA: E
+protein_features	protein AA: F
+protein_features	protein AA: G
+protein_features	protein AA: H
+protein_features	protein AA: I
+protein_features	protein AA: K
+protein_features	protein AA: L
+protein_features	protein AA: M
+protein_features	protein AA: N
+protein_features	protein AA: P
+protein_features	protein AA: Q
+protein_features	protein AA: R
+protein_features	protein AA: S
+protein_features	protein AA: T
+protein_features	protein AA: V
+protein_features	protein AA: W
+protein_features	protein AA: Y
+protein_features	protein Charged
+protein_features	protein Polar-Uncharged
+protein_features	protein Thermolabile
+protein_features	protein EK_QH
+protein_features	protein EK_QT
+protein_features	protein EFMR
+protein_features	protein Polar_Charged
+protein_features	protein Polar_Hydrophobic
+protein_features	protein ERK
+protein_features	protein LK_Q
+protein_features	protein IVYWREL
+protein_features	protein IVWL
+protein_features	protein KVYWREP
+protein_features	protein GARP
+protein_features	protein MFILVWYERP
+protein_features	protein ILVYER
+protein_features	protein MILVWYER
+protein_features	protein MFILVYERP
+protein_features	protein FILVYERP
+protein_features	protein ILVWYEHR
+protein_features	protein FILVWYERP
+protein_features	protein ILVWYGERKP
+protein_features	protein ILVYEHR
+rRNA_features	rRNA Nucleotide Fraction: A
+rRNA_features	rRNA Nucleotide Fraction: C
+rRNA_features	rRNA Nucleotide Fraction: G
+rRNA_features	rRNA Nucleotide Fraction: T
+rRNA_features	rRNA GC
+tRNA_features	tRNA Nucleotide Fraction: A
+tRNA_features	tRNA Nucleotide Fraction: C
+tRNA_features	tRNA Nucleotide Fraction: G
+tRNA_features	tRNA Nucleotide Fraction: T
+tRNA_features	tRNA GC
+intercept	intercept

@@ -1,0 +1,9 @@
+#R2=0.6685498804151042|RMSE=7.333840112231229
+rRNA Nucleotide Fraction: T	-289.7990778996916
+genomic Total Size	-1.9375166197834054e-06
+genomic J2	39.264109708182936
+rRNA Nucleotide Fraction: G	77.9246983295213
+genomic Dinucleotide Fraction: CT	128.13937256235712
+rRNA Nucleotide Fraction: A	-49.86420311342835
+genomic Dinucleotide Fraction: AG	115.69547020579878
+intercept	76.43668411889244
