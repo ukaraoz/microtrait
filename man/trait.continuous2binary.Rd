@@ -6,6 +6,9 @@
 \usage{
 trait.continuous2binary(feature_matrix)
 }
+\arguments{
+\item{feature_matrix}{feature_matrix}
+}
 \value{
 results
 }

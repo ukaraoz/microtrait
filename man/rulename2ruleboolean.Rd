@@ -10,7 +10,7 @@ rulename2ruleboolean(rule)
 \item{rule}{(Required). microtrait rule.}
 }
 \value{
-
+boolean rule.
 }
 \description{
 Get genes from rule

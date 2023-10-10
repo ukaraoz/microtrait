@@ -6,6 +6,11 @@
 \usage{
 \method{compute}{prevalence}(feature_matrix, type, idcol = "id")
 }
+\arguments{
+\item{type}{type}
+
+\item{genomes_matrix}{genomes_matrix}
+}
 \value{
 results
 }

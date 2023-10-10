@@ -1,13 +1,16 @@
 #' predictGrowth from codon usage bias
 #'
 #' @param cds_file proteins_file
-#' @import Biostrings gRodon
-#' @return
-#'
+#' @importFrom Biostrings readDNAStringSet
+#' @importFrom dplyr pull
+#' @import gRodon
+#' @returns
+#' predicted minimum generation time.
 #' @export run.predictGrowth
 run.predictGrowth <- function(cds_file, proteins_file, mode = "full", temperature = "none", training_set = "vs", depth_of_coverage = NULL, fragments = FALSE) {
   tictoc::tic.clearlog()
   tictoc::tic("predictGrowth")
+  message("Running predictGrowth for ", fs::path_file(cds_file), " and ", fs::path_file(proteins_file))
 
   result <- c(call = match.call())
 
@@ -17,6 +20,7 @@ run.predictGrowth <- function(cds_file, proteins_file, mode = "full", temperatur
   genes <- Biostrings::readDNAStringSet(cds_file)
   names(genes) = sub(" .*", "", names(genes))
   highlyexpressed_genes = ribosomal_domtblout %>% dplyr::pull(`gene_name`)
+  ribosomal_genes = ribosomal_domtblout %>% dplyr::select(c("gene_name", "hmm_name"))
   highlyexpressed_logical = tryCatch(names(genes) %in% (highlyexpressed_genes),error=function(e) NULL)
 
   if(!is.null(highlyexpressed_logical)) {
@@ -34,6 +38,7 @@ run.predictGrowth <- function(cds_file, proteins_file, mode = "full", temperatur
     returnList$genes_file = basename(cds_file)
     returnList$highlyexpressed_genes = highlyexpressed_genes
     returnList$nhighlyexpressed = length(highlyexpressed_genes)
+    returnList$ribosomal_domtblout_file = ribosomal_domtblout_file
   } else {
     returnList$CUBHE = NA
     returnList$ConsistencyHE = NA
@@ -45,6 +50,7 @@ run.predictGrowth <- function(cds_file, proteins_file, mode = "full", temperatur
     returnList$genes_file = basename(cds_file)
     returnList$highlyexpressed_genes = highlyexpressed_genes
     returnList$nhighlyexpressed = length(highlyexpressed_genes)
+    returnList$ribosomal_domtblout_file = ribosomal_domtblout_file
     returnList$warning = NA
     returnList$error = NA
   }

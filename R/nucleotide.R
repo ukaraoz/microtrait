@@ -4,47 +4,46 @@
 
 #a = readDNAStringSet(prodigal_file)
 
-#' @import Biostrings
+#' @importFrom Biostrings readDNAStringSet oligonucleotideFrequency
 analyze_genome <- function(fastafile) {
-  # import genomic
-  # from Bio import SeqIO
-  # data = SeqIO.index("/opt/OGT_prediction-1.0.2/prediction/genomes/cyanobacterium_stanieri/2503283023.fa", "fasta")
-  # #data = SeqIO.index("/opt/OGT_prediction-1.0.2/prediction/genomes/cyanobacterium_stanieri/test.fa", "fasta")
-  # results = {}
-  # N_counts = genomic.counter(data)
-  # results['Nucleotide Fraction']=genomic.nucleotide_freq(N_counts)
-  # results['Dinucleotide Fraction']=genomic.dinucleotide_freq(data)
-  # results['GC']=genomic.GC(N_counts)
-  # results['Total Size']=genomic.t_size(N_counts)
-  # results['J2']=genomic.j2(data)
-  # results2 = {}
-  # for key in results.keys():
-  #   if isinstance(results[key],dict):
-  #     for subkey in results[key].keys():
-  #       results2[key+': '+subkey]=results[key][subkey]
-  #   else:
-  #     results2[key] = results[key]
-  #fastafile = "/opt/OGT_prediction-1.0.2/prediction/genomes/cyanobacterium_stanieri/2503283023.fa"
-  dinucleotides = c("AA", "AC", "AG", "AT", "CA", "CC", "CG", "CT", "GA", "GC", "GG", "GT", "TA", "TC", "TG", "TT")
-  genome = Biostrings::readDNAStringSet(fastafile)
   results = list()
+  dinucleotides = c("AA", "AC", "AG", "AT", "CA", "CC", "CG", "CT", "GA", "GC", "GG", "GT", "TA", "TC", "TG", "TT")
+
+  genome = Biostrings::readDNAStringSet(fastafile)
+
   N_counts = Biostrings::oligonucleotideFrequency(genome, width = 1, as.prob = FALSE, simplify.as = "collapsed")
   N_freq = N_counts/sum(N_counts)
   names(N_freq) = paste0("genomic Nucleotide Fraction: ", names(N_freq))
 
-  # this doesn't generate same results due to the way dinucleotides are counted
+  ###
+  ## dinucleotide frequencies of the genome, dinucleotides with N not taken into account
+  ###
+  # this doesn't work here due to the way dinucleotides are counted
   # Biostrings::dinucleotideFrequency(genome, as.prob = TRUE)
-  dinucleotide_counts = stringr::str_count(as.character(genome), dinucleotides)
-  names(dinucleotide_counts) = dinucleotides
+  # suppress warning for odd length sequences
+  dinucleotide_counts = suppressWarnings(lapply(as.character(genome), stringr::str_count, c(pattern = dinucleotides)))
+  # apply(as.matrix(dinucleotide_counts), sum, 2); doesn't work here due to the returned class type
+  dinucleotide_counts = do.call("rbind", dinucleotide_counts)
+  colnames(dinucleotide_counts) = dinucleotides
+  dinucleotide_counts = apply(dinucleotide_counts, 2, sum)
   dinucleotide_freqs = dinucleotide_counts/sum(dinucleotide_counts)
   names(dinucleotide_freqs) = paste0("genomic Dinucleotide Fraction: ", names(dinucleotide_freqs))
 
+  ###
+  ## percent GC of the genome
+  ###
   GC = (N_counts["G"] + N_counts["C"])/sum(N_counts)
   names(GC) = "genomic GC"
 
+  ###
+  ## genome size
+  ###
   total_size = sum(N_counts)
   names(total_size) = "genomic Total Size"
 
+  ###
+  ## J2 metric of the genome
+  ###
   J2 = j2(genome)
   names(J2) = "genomic J2"
 
@@ -56,32 +55,18 @@ analyze_genome <- function(fastafile) {
   result
 }
 
-#' @import Biostrings
+#' @importFrom Biostrings readBStringSet letterFrequency
 analyze_tRNA <- function(fastafile) {
-  # import tRNA
-  # from Bio import SeqIO
-  # data = SeqIO.index("/opt/OGT_prediction-1.0.2/prediction/output/genomes/cyanobacterium_stanieri/2503283023/trnascan_result.fa", "fasta")
-  # results ={}
-  # N_counts = tRNA.counter(data)
-  # results['Nucleotide Fraction']=tRNA.nucleotide_freq(N_counts)
-  # results['GC']=tRNA.GC(N_counts)
-  # results2 = {}
-  # for key in results.keys():
-  #   if isinstance(results[key],dict):
-  #     for subkey in results[key].keys():
-  #       results2[key+': '+subkey]=results[key][subkey]
-  # else:
-  #   results2[key] = results[key]
-  #fastafile = "/opt/OGT_prediction-1.0.2/prediction/output/genomes/cyanobacterium_stanieri/2503283023/trnascan_result_masked.fa"
-  tRNA = Biostrings::readDNAStringSet(fastafile)
+  tRNA = Biostrings::readBStringSet(fastafile)
+
   results = list()
-  N_counts = Biostrings::oligonucleotideFrequency(tRNA, width = 1, as.prob = FALSE, simplify.as = "collapsed")
+  N_counts = Biostrings::letterFrequency(tRNA, letters= c("A", "C", "G", "T"), collapse=T)
+
   N_freq = N_counts/sum(N_counts)
+  GC = as.numeric((N_counts["G"] + N_counts["C"])/sum(N_counts))
+
   names(N_freq) = paste0("tRNA Nucleotide Fraction: ", names(N_freq))
-
-  GC = as.numeric((N_counts["tRNA Nucleotide Fraction: G"] + N_counts["tRNA Nucleotide Fraction: C"])/sum(N_counts))
   names(GC) = paste0("tRNA GC")
-
   result = c(N_freq, GC)
   result
 }
@@ -143,8 +128,8 @@ analyze_orfs <- function(fastafile, genomesize) {
   #     results2[key] = results[key]
   # genomesize = 3163381
   #fastafile = "/opt/OGT_prediction-1.0.2/prediction/output/genomes/cyanobacterium_stanieri/2503283023/mrna.fna"
-  orfs = readDNAStringSet(fastafile)
-  N_counts = oligonucleotideFrequency(orfs, width = 1, as.prob = FALSE, simplify.as = "collapsed")
+  orfs = Biostrings::readDNAStringSet(fastafile)
+  N_counts = Biostrings::oligonucleotideFrequency(orfs, width = 1, as.prob = FALSE, simplify.as = "collapsed")
   N_genes = length(orfs)
   density = N_genes/genomesize
 
@@ -165,19 +150,19 @@ analyze_orfs <- function(fastafile, genomesize) {
              "CAA", "CAC", "CAG", "CAT", "CCA", "CCC", "CCG", "CCT", "CGA", "CGC", "CGG", "CGT", "CTA", "CTC", "CTG", "CTT",
              "GAA", "GAC", "GAG", "GAT", "GCA", "GCC", "GCG", "GCT", "GGA", "GGC", "GGG", "GGT", "GTA", "GTC", "GTG", "GTT",
              "TAA", "TAC", "TAG", "TAT", "TCA", "TCC", "TCG", "TCT", "TGA", "TGC", "TGG", "TGT", "TTA", "TTC", "TTG", "TTT")
-  codon_counts = apply(oligonucleotideFrequency(orfs, width = 3, step = 3), 2, sum)
+  codon_counts = apply(Biostrings::oligonucleotideFrequency(orfs, width = 3, step = 3), 2, sum)
   codon_counts = codon_counts/sum(codon_counts)
 
   # calculate the fraction of each start codon
-  orfs_startcodon = subseq(orfs, start = 1, end = 3)
-  startcodon = apply(oligonucleotideFrequency(orfs_startcodon, width = 3), 2, sum)
+  orfs_startcodon = Biostrings::subseq(orfs, start = 1, end = 3)
+  startcodon = apply(Biostrings::oligonucleotideFrequency(orfs_startcodon, width = 3), 2, sum)
   startcodon = startcodon[c("ATG","GTG","TTG")]
   startcodon_freq = startcodon/sum(startcodon)
 
   # calculate the fraction of each stop codon
   temp = as.character(orfs)
-  orfs_stopcodon = DNAStringSet(substr(temp, nchar(temp) - 2, nchar(temp)))
-  stopcodon = apply(oligonucleotideFrequency(orfs_stopcodon, width = 3), 2, sum)
+  orfs_stopcodon = Biostrings::DNAStringSet(substr(temp, nchar(temp) - 2, nchar(temp)))
+  stopcodon = apply(Biostrings::oligonucleotideFrequency(orfs_stopcodon, width = 3), 2, sum)
   stopcodon = stopcodon[c("TAA","TAG","TGA")]
   stopcodon_freq = stopcodon/sum(stopcodon)
 
@@ -185,7 +170,7 @@ analyze_orfs <- function(fastafile, genomesize) {
   AG = as.numeric((N_counts["G"] + N_counts["A"])/sum(N_counts))
 
   dinucleotides = c("AA", "AC", "AG", "AT", "CA", "CC", "CG", "CT", "GA", "GC", "GG", "GT", "TA", "TC", "TG", "TT")
-  dinucleotide_counts = lapply(orfs, function(x) {stringr::str_count(as.character(x), dinucleotides)})
+  dinucleotide_counts = suppressWarnings(lapply(as.character(orfs), stringr::str_count, c(pattern = dinucleotides)))
   dinucleotide_counts = do.call("rbind", dinucleotide_counts)
   colnames(dinucleotide_counts) = dinucleotides
   dinucleotide_counts = apply(dinucleotide_counts, 2, sum)
@@ -205,8 +190,8 @@ analyze_orfs <- function(fastafile, genomesize) {
   names(dinucleotide_freq) = paste0("ORF Dinucleotide Fraction: ", names(dinucleotide_freq))
 
   result = c(density, length, coding_noncoding, coding,
-    nucleotide_freq, codon_counts, startcodon_freq, stopcodon_freq,
-    GC, AG, dinucleotide_freq)
+             nucleotide_freq, codon_counts, startcodon_freq, stopcodon_freq,
+             GC, AG, dinucleotide_freq)
   return(result)
 }
 
@@ -224,4 +209,3 @@ j2 <- function(x) {
   RY = RY/total
   return(YY+RR-YR-RY)
 }
-

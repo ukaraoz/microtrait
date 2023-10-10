@@ -26,7 +26,11 @@ define_guilds(
 )
 }
 \arguments{
-\item{nguilds}{}
+\item{trait_matrix}{trait_matrix}
+
+\item{nguilds}{nguilds}
+
+\item{clusters_traitmatrix}{clusters_traitmatrix}
 }
 \description{
 Define guild matrix.

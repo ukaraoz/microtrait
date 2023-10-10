@@ -13,7 +13,8 @@ rule2parts <- function(rule_boolean) {
 #' Unwraps complex rules.
 #'
 #' @param rule (Required). microtrait rule.
-#' @import dplyr stringr tidyr
+#' @import stringr tidyr
+#' @importFrom dplyr arrange as_tibble bind_rows count filter group_by inner_join left_join mutate mutate_at pull rename rename_with select slice summarise top_n
 #' @return rule parts
 #' @export unwrap.rules
 unwrap.rules <- function(rule_table) {
@@ -45,7 +46,7 @@ unwrap.rules <- function(rule_table) {
 
   rule_table = rule_table %>%
     dplyr::mutate(`microtrait_rule-booleanunwrapped` = rule_table %>%
-                                                        pull(`microtrait_rule-boolean`) %>%
+                                                        dplyr::pull(`microtrait_rule-boolean`) %>%
                                                         stringr::str_replace_all(lookuptable) %>%
                                                         stringr::str_replace_all(lookuptable) %>%
                                                         stringr::str_replace_all(lookuptable) %>%
@@ -60,8 +61,9 @@ unwrap.rules <- function(rule_table) {
 #' Get genes from rule
 #'
 #' @param rule (Required). microtrait rule.
-#' @import dplyr
-#' @return
+#' @importFrom dplyr filter select pull
+#' @returns
+#' boolean rule.
 rulename2ruleboolean <- function(rule) {
   return(unwrap.rules(rules %>% dplyr::filter(`rule_name` %in% rule)) %>%
            dplyr::select(`rule_boolean`) %>% dplyr::pull()
@@ -72,7 +74,8 @@ rulename2ruleboolean <- function(rule) {
 #'
 #' @param rule (Required). microtrait rule.
 #'
-#' @return
+#' @returns
+#' genes for the rule
 #' @export rule2genes
 rule2genes <- function(rule) {
   return(removequotes(unique(rule2parts(rulename2ruleboolean(rule)))))
@@ -90,7 +93,8 @@ add_quotes <- function(string) {
 #'
 #' @param boolean
 #'
-#' @return
+#' @returns
+#' result from evaluated boolean
 evaluate.rule <- function(boolean){
   eval(parse(text=paste("as.logical(", boolean, ")", sep = "")))
 }

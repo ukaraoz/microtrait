@@ -2,7 +2,8 @@
 #'
 #' @param domtblout cov_threshold
 #' @import dplyr
-#' @return
+#' @returns
+#' hmm hit table.
 detect.genes.fromdomtblout <- function(domtblout, cov_threshold = 80){
   #hmmhits = read_domtblout(domtblout_file)
   # just to make sure
@@ -21,8 +22,9 @@ detect.genes.fromdomtblout <- function(domtblout, cov_threshold = 80){
 #' Apply rules to a set of detected genes
 #'
 #' @param domtblout cov_threshold
-#' @import dplyr
-#' @return
+#' @import stringr dplyr
+#' @returns
+#' hmm hit table.
 detect.domains.fromdomtblout <- function(domtblout, cov_threshold = 35){
   hmmhits = domtblout %>%
     dplyr::mutate(hmm_name = stringr::str_replace(hmm_name, ".hmm", ""))
@@ -38,9 +40,9 @@ detect.domains.fromdomtblout <- function(domtblout, cov_threshold = 35){
 #' Apply rules to a set of detected genes
 #'
 #' @param rules_asserted trait_granularity
+#' @returns
+#' asserted rules table.
 #' @import dplyr
-#' @return
-#'
 #' @export count.traitsforgenome
 count.traitsforgenome <- function(rules_asserted, trait_granularity = 3) {
   options( warn = -1 )
@@ -117,8 +119,8 @@ count.traitsforgenome <- function(rules_asserted, trait_granularity = 3) {
 #' Apply rules to a set of detected genes
 #'
 #' @param genes domains cov_threshold
-#' @import dplyr
-#' @return
+#' @returns
+#' asserted rules for genome.
 assert.rulesforgenome <- function(genes, domains, cov_threshold = 80){
   #genes_detected = detect_genesfromdomtblout(domtblout_file1)
   #domains_detected = detect_domainsfromdomtblout(domtblout_file2)
@@ -132,8 +134,9 @@ assert.rulesforgenome <- function(genes, domains, cov_threshold = 80){
 #' Apply rules to a set of detected genes
 #'
 #' @param genes gene list
-#' @import dplyr stringr
-#' @return
+#' @import stringr dplyr
+#' @returns
+#' rules_evaluated
 assert.rules <- function(hmms){
   #profile = set.geneprofile(genes)
   #rules_genestatus = unlist(lapply(rules[, "microtrait_rule-booleanunwrapped"],
@@ -168,7 +171,8 @@ assert.rules <- function(hmms){
 #'
 #' @param genes gene list
 #'
-#' @return
+#' @returns
+#' gene profiles.
 set.geneprofile <- function(genes){
   microtrait_hmmnames = hmms_fromrules %>% pull(`microtrait_hmm-name`)
   microtrait_hmmnames = add_quotes(microtrait_hmmnames)

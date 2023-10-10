@@ -10,7 +10,7 @@ assert.rules(hmms)
 \item{genes}{gene list}
 }
 \value{
-
+rules_evaluated
 }
 \description{
 Apply rules to a set of detected genes

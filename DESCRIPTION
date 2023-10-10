@@ -7,12 +7,12 @@ Authors@R:
            role = c("aut", "cre"),
            email = "ukaraoz@lbl.gov",
            comment = c(ORCID = "0000-0002-8238-6757"))
-Description: Extracts environmental fitness traits from microbial genomes
+Description: Extracts environmental fitness traits from microbial genomes.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.3
 Depends: R (>= 2.10)
 NeedsCompilation: no
 Packaged: 2021-06-04 18:16:36 UTC; ukaraoz

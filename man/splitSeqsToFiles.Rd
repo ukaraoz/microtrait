@@ -5,8 +5,8 @@
 \title{Split DNA sequences in a fasta file into single sequence files.}
 \usage{
 splitSeqsToFiles(
- 
-    fasta_file = "/Users/ukaraoz/Work/microtrait/code/inst/extdata/GIG_1C_0-10cm_R1-3.slf.fa",
+  fasta_file =
+    "/Users/ukaraoz/Work/microtrait/code/inst/extdata/GIG_1C_0-10cm_R1-3.slf.fa",
   suffix = "temp",
   outDir = tempdir(),
   ncores = 4

@@ -27,7 +27,7 @@ run.prodigal(
 \item{bypass.SD}{Bypass Shine-Dalgarno filter (logical)}
 }
 \value{
-
+prodigal outputs
 }
 \description{
 Finding coding genes in genomic DNA using the Prodigal software.
@@ -50,7 +50,4 @@ for a Shine-Dalgarno motif.
 \note{
 The prodigal software must be installed on the system for this function to work, i.e. the command
 \samp{system("prodigal -h")} must be recognized as a valid command if you run it in the Console window.
-}
-\seealso{
-
 }

@@ -10,7 +10,7 @@ assert.rulesforgenome(genes, domains, cov_threshold = 80)
 \item{genes}{domains cov_threshold}
 }
 \value{
-
+asserted rules for genome.
 }
 \description{
 Apply rules to a set of detected genes

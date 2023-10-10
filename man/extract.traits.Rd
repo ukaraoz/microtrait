@@ -10,6 +10,7 @@
   out_dir = system.file("extdata/genomic", package = "microtrait", mustWork = TRUE),
   type = "genomic",
   mode = "single",
+  growthrate_predict = T,
   save_tempfiles = F
 )
 }
@@ -17,7 +18,7 @@
 \item{fasta_file}{type out_dir}
 }
 \value{
-
+extracted traits.
 }
 \description{
 Apply rules to a set of detected genes

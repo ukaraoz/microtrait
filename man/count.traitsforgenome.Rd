@@ -10,7 +10,7 @@
 \item{rules_asserted}{trait_granularity}
 }
 \value{
-
+asserted rules table.
 }
 \description{
 Apply rules to a set of detected genes

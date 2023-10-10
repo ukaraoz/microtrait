@@ -7,7 +7,7 @@
 convert_traitdatatype(genomeset_results, binarytype = "logical")
 }
 \arguments{
-\item{genomeset_results}{}
+\item{genomeset_results}{genomeset_results}
 }
 \value{
 genomeset_results

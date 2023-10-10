@@ -4,7 +4,14 @@
 \alias{trait2trait_corr}
 \title{Analyze trait2trait correlations.}
 \usage{
-trait2trait_corr(trait_matrix_bin, idcol = "id", verbose = T, outdir, dataset)
+trait2trait_corr(
+  trait_matrix_bin,
+  idcol = "id",
+  annot_cols = c("mingentime", "ogt"),
+  verbose = T,
+  outdir,
+  dataset
+)
 }
 \arguments{
 \item{trait_matrix_bin}{}

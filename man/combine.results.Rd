@@ -22,6 +22,3 @@ trait, rule, or hmm matrix
 \code{combine.results()} builds trait, rule, and hmm matrices by combining microtrait results
 for multiple genomes.
 }
-\details{
-
-}

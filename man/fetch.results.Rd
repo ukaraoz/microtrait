@@ -10,7 +10,7 @@ fetch.results(rds_file, id, type)
 \item{rds_file}{id type}
 }
 \value{
-
+fetched results from a single genome.
 }
 \description{
 Fetch results for a single genome

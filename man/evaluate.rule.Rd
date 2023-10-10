@@ -10,7 +10,7 @@ evaluate.rule(boolean)
 \item{boolean}{}
 }
 \value{
-
+result from evaluated boolean
 }
 \description{
 Evaluate a boolean rule.

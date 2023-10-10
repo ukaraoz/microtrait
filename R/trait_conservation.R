@@ -2,6 +2,7 @@
 #'
 #' @importFrom ape varcomp
 #' @importFrom nlme lme
+#' @importFrom dplyr rename_with bind_rows
 #' @return model
 #'
 #' @export build.taxa.model

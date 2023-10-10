@@ -1,3 +1,4 @@
+#' @export protdict_setup
 protdict_setup <- function() {
   protdict = list(AA = c("A", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "Y"),
                   charged = c("D", "E", "K", "R"),
@@ -27,11 +28,13 @@ protdict_setup <- function() {
                   FILVWYERP = c("F","I","L","V","W","Y","E","R","P"),
                   ILVWYGERKP = c("I","L","V","W","Y","G","E","R","K","P"),
                   ILVYEHR = c("I","L","V","Y","E","H","R")
-                )
+  )
   return(protdict)
 }
 
-prot_analysis <- function(fastafile) {
+#' @importFrom Biostrings readAAStringSet letterFrequency
+#' @export analyze_proteins
+analyze_proteins <- function(fastafile) {
   #fastafile = "/opt/OGT_prediction-1.0.2/prediction/output/genomes/cyanobacterium_stanieri/2503283023/translated.faa"
   #import protein
   #import pprint
@@ -43,8 +46,8 @@ prot_analysis <- function(fastafile) {
   #pp.pprint(result)
 
   protdict = protdict_setup()
-  proteins = readAAStringSet(fastafile)
-  AA_count_matrix = letterFrequency(proteins, letters = protdict$AA)
+  proteins = Biostrings::readAAStringSet(fastafile)
+  AA_count_matrix = Biostrings::letterFrequency(proteins, letters = protdict$AA)
   AA_counts = apply(AA_count_matrix, 2, sum)
 
   mean_length = sum(AA_counts)/length(proteins)
@@ -149,4 +152,3 @@ prot_analysis <- function(fastafile) {
              ratio_ILVYEHR)
   result
 }
-

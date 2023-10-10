@@ -10,7 +10,7 @@ detect.genes.fromdomtblout(domtblout, cov_threshold = 80)
 \item{domtblout}{cov_threshold}
 }
 \value{
-
+hmm hit table.
 }
 \description{
 Apply rules to a set of detected genes

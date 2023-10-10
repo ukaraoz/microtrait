@@ -10,7 +10,7 @@ gp.resultsummary(file)
 \item{file}{file}
 }
 \value{
-
+fetches growthpred results.
 }
 \description{
 Fetch growthpred results for a single genome

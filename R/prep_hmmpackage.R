@@ -1,6 +1,6 @@
 #' Prepare dbcan database (download and subselect)
 #'
-#' @import futile.logger
+#' @importFrom futile.logger flog.info
 download.dbcan <- function(dbcan_version = 8, dbcanhmmdb_selectids_file, dbcanhmmdb_file) {
   futile.logger::flog.info("Downloading dbcan hmm database")
 
@@ -21,7 +21,7 @@ download.dbcan <- function(dbcan_version = 8, dbcanhmmdb_selectids_file, dbcanhm
 
 #' Prepare database for PFAM models for ribosomal proteins
 #'
-#' @import futile.logger
+#' @importFrom futile.logger flog.info
 download.arcbacribosomal <- function(arcbacribosomalhmmdb_file) {
   futile.logger::flog.info("Downloading PFAM hmm models for detection of ribosomal proteins")
 
@@ -34,7 +34,8 @@ download.arcbacribosomal <- function(arcbacribosomalhmmdb_file) {
 }
 
 #' Prepare microtrait database (download and subselect)
-#' @import futile.logger fs
+#' @importFrom futile.logger flog.info
+#' @import fs
 #' @importFrom R.utils gunzip
 download.microtrait <- function(microtraithmmdb_file) {
   futile.logger::flog.info("Downloading microtrait hmm database")
@@ -56,8 +57,6 @@ download.microtrait <- function(microtraithmmdb_file) {
 #'
 #' @description
 #' `prep.hmmmodels` downloads and prepares hmm models required by microtrait.
-#'
-#' @details
 #'
 #' @import futile.logger
 #' @export prep.hmmmodels

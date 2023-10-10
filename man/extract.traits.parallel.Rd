@@ -4,7 +4,13 @@
 \alias{extract.traits.parallel}
 \title{Run microtrait for genomes in parallel using mclapply}
 \usage{
-\method{extract}{traits.parallel}(fna_files, out_dirs, save_tempfiles = F, type = "genomic", ncores)
+\method{extract}{traits.parallel}(
+  fna_files,
+  out_dirs = dirname(fna_files),
+  ncores = floor(parallel::detectCores() * 0.7),
+  save_tempfiles = F,
+  type = "genomic"
+)
 }
 \arguments{
 \item{fna_files}{cache_dir out_dir}

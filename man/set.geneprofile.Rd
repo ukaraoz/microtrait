@@ -10,7 +10,7 @@ set.geneprofile(genes)
 \item{genes}{gene list}
 }
 \value{
-
+gene profiles.
 }
 \description{
 Set gene profiles using detected genes

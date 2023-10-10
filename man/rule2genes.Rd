@@ -10,7 +10,7 @@ rule2genes(rule)
 \item{rule}{(Required). microtrait rule.}
 }
 \value{
-
+genes for the rule
 }
 \description{
 Get genes from rule

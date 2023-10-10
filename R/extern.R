@@ -122,12 +122,11 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
 #' for a Shine-Dalgarno motif.
 #'
 #' @importFrom assertthat assert_that
-#' @return
+#' @returns prodigal outputs
 #'
 #' @note The prodigal software must be installed on the system for this function to work, i.e. the command
 #' \samp{system("prodigal -h")} must be recognized as a valid command if you run it in the Console window.
 #'
-#' @seealso
 run.prodigal <- function(genome_file = system.file("extdata/examples/2619619645/in", "2619619645.genes.fna", package = "microtrait", mustWork = TRUE),
                          fa_file = gsub(".fna", ".prodigal.fa", genome_file),
                          faa_file = gsub(".fna", ".prodigal.faa", genome_file),
@@ -210,36 +209,45 @@ run.tRNAscan <-function(genome_file) {
   )
 
   result <- NULL
-  if(available.external("tRNAscan")){
+  if(available.external("tRNAscan") & available.external("cmsearch")){
     message("Running tRNAscan-SE for ", fs::path_file(genome_file))
     # to do: reimplement with processx
     tempfilebase = tempfile(pattern = "tRNAscan")
     tempfile_trnascanstr = paste0(tempfilebase, ".str")
     tempfile_trnascangff = paste0(tempfilebase, ".gff")
     tempfile_trnascanfa = paste0(tempfilebase, ".fa")
+    # final output with lowercase nucleotides kept as they are
+    # pulled and converted to fasta from .str
+    tempfile_trnascanlcfa = paste0(tempfilebase, ".lc.fa")
     tempfile_trnascanstderr = paste0(tempfilebase, ".stderr")
     #genome_file = "/opt/OGT_prediction-1.0.2/prediction/genomes/cyanobacterium_stanieri/2503283023.fa"
     system2("tRNAscan-SE",
-             args = c("-G --brief ",
-                      "--struct", tempfile_trnascanstr,
-                      "--output", tempfile_trnascangff,
-                      "--fasta", tempfile_trnascanfa,
-                      " ", genome_file),
-             stdin = "",
-             stdout = "/dev/null",
-             stderr = tempfile_trnascanstderr
+            args = c("-G --brief -q ",
+                     "--struct", tempfile_trnascanstr,
+                     "--output", tempfile_trnascangff,
+                     "--fasta", tempfile_trnascanfa,
+                     " ", genome_file),
+            stdin = "",
+            stdout = "/dev/null",
+            stderr = tempfile_trnascanstderr
     )
     check = grep("No tRNAs found", readLines(tempfile_trnascanstderr))
     if(length(check) == 0) {
-      found = 1
+      found = as.logical(TRUE)
     } else {
-      found = 0
+      found = as.logical(FALSE)
     }
+    temp = readLines(tempfile_trnascanstr)
+    temp = temp[grep('^Seq:.*', temp)]
+    towrite = c(rbind(paste0(">tRNA_", 1:length(temp)), sub("Seq: ", "", temp)))
+    write(x = towrite, file = tempfile_trnascanlcfa)
+
     #file.remove(tmp.file)
     result = list(found = found,
                   tRNA_str = tempfile_trnascanstr,
                   tRNA_gff = tempfile_trnascangff,
-                  tRNA_fa = tempfile_trnascanfa)
+                  tRNA_fa = tempfile_trnascanfa,
+                  tRNA_lcfa = tempfile_trnascanlcfa)
     return(result)
   }
 }
@@ -280,20 +288,20 @@ run.barrnap <- function(genome_file = system.file("extdata", "2503283023.fna", p
   #prodigal -i ./2775507255/2775507255.fna -o ./2775507255.prodigal -a ./2775507255.prodigal.faa -p single -q -f gff -m -n -g 11
 
   result <- NULL
-  if(available.external("barrnap")){
+  if(available.external("barrnap") & available.external("bedtools")){
     message("Running barrnap for ", fs::path_file(genome_file))
     # to do: reimplement with processx
     tempfilebase = tempfile(pattern = "barrnap")
-    tempfile_rnafa = paste0(tempfilebase, ".fa")
-    tempfile_rnagff = paste0(tempfilebase, ".gff")
-    tempfile_16S = paste0(tempfilebase, ".16S.txt")
+    tempfile_rnafa = paste0(tempfilebase, ".", kingdom, ".fa")
+    tempfile_rnagff = paste0(tempfilebase, ".", kingdom, ".gff")
+    tempfile_16S = paste0(tempfilebase, ".", kingdom, ".16S.txt")
 
     system2("barrnap",
             args = c("--quiet",
                      "--threads", threads,
                      "--kingdom", kingdom,
                      "--outseq", tempfile_rnafa
-                    ),
+            ),
             stdin = genome_file,
             stdout = tempfile_rnagff,
             stderr = "/dev/null"
@@ -303,7 +311,7 @@ run.barrnap <- function(genome_file = system.file("extdata", "2503283023.fna", p
             stdin = tempfile_rnagff,
             stdout = tempfile_16S,
             stderr = "/dev/null"
-           )
+    )
     #file.remove(tmp.file)
     result = list(rRNA_fa = tempfile_rnafa,
                   rRNA_gff = tempfile_rnagff,
@@ -426,12 +434,26 @@ available.external <- function(what) {
 
   if(what == "tRNAscan") {
     chr <- NULL
-    try(chr <- system2("barrnap", args = "-v", stdout = TRUE, stderr= TRUE), silent = TRUE)
+    try(chr <- system2("tRNAscan-SE", args = "-h", stdout = TRUE, stderr= TRUE), silent = TRUE)
     if(is.null(chr)){
       stop(paste('tRNAscan-SE was not found by R.',
                  'Please install tRNAscan-SE from: http://lowelab.ucsc.edu/tRNAscan-SE/',
                  'After installation, make sure tRNAscan-SE can be run from a shell/terminal, ',
                  'using the command \'tRNAscan-SE -h\', then restart the R session.', sep = '\n'))
+      return(FALSE)
+    } else {
+      return(TRUE)
+    }
+  }
+
+  if(what == "cmsearch") {
+    chr <- NULL
+    try(chr <- system2("cmsearch", args = "-h", stdout = TRUE, stderr= TRUE), silent = TRUE)
+    if(is.null(chr)){
+      stop(paste('cmsearch was not found by R.',
+                 'Please install cmsearch from: http://eddylab.org/infernal/',
+                 'After installation, make sure cmsearch can be run from a shell/terminal, ',
+                 'using the command \'cmsearch -h\', then restart the R session.', sep = '\n'))
       return(FALSE)
     } else {
       return(TRUE)

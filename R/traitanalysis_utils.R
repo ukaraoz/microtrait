@@ -548,11 +548,12 @@ cluster_traitmatrix = function(trait_matrix,
 
 #' Define guild matrix.
 #'
-#' @param trait_matrix
-#' @param clusters_traitmatrix
-#' @param nguilds
+#' @param trait_matrix trait_matrix
+#' @param clusters_traitmatrix clusters_traitmatrix
+#' @param nguilds nguilds
 #'
-#' @import pheatmap gtools
+#' @import pheatmap
+#' @importFrom gtools stars.pval
 #' @export
 define_guilds = function(trait_matrix,
                          hclust_rows,
@@ -930,9 +931,8 @@ melt_dist <- function(dist, order = NULL, dist_name = 'dist') {
 
 #' Count prevalence of traits, rules, or hmms
 #'
-#' @param genomes_matrix
-#' @param type
-#' @import dplyr
+#' @param genomes_matrix genomes_matrix
+#' @param type type
 #' @return results
 #'
 #' @export compute.prevalence

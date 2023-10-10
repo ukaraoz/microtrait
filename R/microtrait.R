@@ -5,7 +5,8 @@
 #' @param outDir directory to write the output file. Default is tempdir()
 #' @param ncores number of cores to use
 #'
-#' @import Biostrings
+#' @importFrom Biostrings readBStringSet
+#' @importFrom Biostrings writeXStringSet
 #' @return a vector of filename names created
 #'
 #' @export splitSeqsToFiles
@@ -33,7 +34,7 @@ splitSeqsToFiles <- function(fasta_file = "/Users/ukaraoz/Work/microtrait/code/i
 #' @param genomeset_results genomeset_results
 #' @param genome_metadata genome_metadata
 #' @param genome_metadata_idcol genome_metadata_idcol
-#' @import dplyr
+#' @importFrom dplyr bind_rows filter left_join mutate rename_with select
 #' @return results
 #'
 #' @export add.metadata
@@ -137,13 +138,13 @@ extract.traits.parallel <- function(fna_files,
 #' `combine.results()` builds trait, rule, and hmm matrices by combining microtrait results
 #' for multiple genomes.
 #'
-#' @details
 #'
 #' @param rds_files Full paths to rds files that holds microtrait results.
 #' @param ids ids to be assigned to the genomes, default is the rds file name
 #' @param type microtrait result to be combined
 #' @param ncores Number of cores for computation
 #'
+#' @import tibble tidyr
 #' @return trait, rule, or hmm matrix
 combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
   # reminder for "foreach" way to parallelize
@@ -175,8 +176,9 @@ combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
 #' Fetch results for a single genome
 #'
 #' @param rds_file id type
-#' @import tibble dplyr
-#' @return
+#' @import tibble
+#' @returns
+#' fetched results from a single genome.
 #' @export
 fetch.results <- function(rds_file, id, type) {
   temp = readRDS(rds_file)
@@ -232,7 +234,8 @@ combine.gp.results <- function(files, ids, ncores = 1) {
 #' Fetch growthpred results for a single genome
 #'
 #' @param file file
-#' @return
+#' @returns
+#' fetches growthpred results.
 gp.resultsummary <- function(file) {
   temp = readLines(file, n = -1)
   mingentime = gsub("Predicted minimum generation time:  (.*) hours \\+/- (.*)  ", "\\1", temp[1], perl=TRUE)

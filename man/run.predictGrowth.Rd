@@ -18,7 +18,7 @@ run.predictGrowth(
 \item{cds_file}{proteins_file}
 }
 \value{
-
+predicted minimum generation time.
 }
 \description{
 predictGrowth from codon usage bias

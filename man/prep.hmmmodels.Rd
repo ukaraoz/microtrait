@@ -9,6 +9,3 @@ prep.hmmmodels(output_dir = system.file("extdata", package = "microtrait"))
 \description{
 \code{prep.hmmmodels} downloads and prepares hmm models required by microtrait.
 }
-\details{
-
-}

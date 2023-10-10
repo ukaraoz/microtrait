@@ -94,7 +94,6 @@ parse.hmmeroutput <- function(file, type){
 #' Read a file created through the '----domtblout' option
 #'
 #' @param file Filename
-#' @import dplyr
 #' @importFrom checkmate expect_file expect_choice expect_number
 #' @return data.frame
 #' @export filter.bycoverage.domtblout

@@ -10,7 +10,8 @@ map.traits.fromdomtblout(microtrait_domtblout, dbcan_domtblout)
 \item{domtblout_file1}{domtblout_file2 out_file}
 }
 \value{
-
+mapped traits from hmm hit tables.
+import dplyr
 }
 \description{
 Apply rules to a set of detected genes

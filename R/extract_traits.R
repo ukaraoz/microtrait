@@ -2,8 +2,9 @@
 #'
 #' @param fasta_file type out_dir
 #'
-#' @return
-#' @import fs dplyr tictoc gRodon
+#' @returns
+#' extracted traits.
+#' @import fs tictoc gRodon
 #' @importFrom assertthat assert_that
 #' @export extract.traits
 #'
@@ -19,7 +20,8 @@
 #' type = "domtblout"
 extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.fna", package = "microtrait", mustWork = TRUE),
                            out_dir = system.file("extdata/genomic", package = "microtrait", mustWork = TRUE),
-                           type = "genomic", mode = "single", save_tempfiles = F) {
+                           type = "genomic", mode = "single",
+                           growthrate_predict = T, optimalT_predict = T, save_tempfiles = F) {
   result <- c(call = match.call())
 
   tictoc::tic.clearlog()
@@ -72,6 +74,18 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
       map.traits.result$id = id
       map.traits.result$norfs = nseq
       map.traits.result$time_log = tictoc::tic.log()
+      if(growthrate_predict == "TRUE") {
+        map.traits.result$growthrate_CUBHE = NULL
+        map.traits.result$growthrate_ConsistencyHE = NULL
+        map.traits.result$growthrate_CPB = NULL
+        map.traits.result$growthrate_d = NULL
+        map.traits.result$growthrate_LowerCI = NULL
+        map.traits.result$growthrate_UpperCI = NULL
+      }
+      if(optimalT_predict == "TRUE") {
+        map.traits.result$allfeatures = NULL
+        map.traits.result$ogt = NULL
+      }
       returnList = list(microtrait_result = map.traits.result, rds_file = NULL)
       return(returnList)
     } else {
@@ -115,6 +129,37 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
   map.traits.result = map.traits.fromdomtblout(microtrait_domtblout, dbcan_domtblout)
   tictoc::toc(log = "TRUE")
 
+  if(growthrate_predict == "TRUE") {
+    tictoc::tic("run.predictGrowth")
+    growth.results = run.predictGrowth(cds_file = cds_file,
+                                       proteins_file = proteins_file)
+    if(save_tempfiles == T) {
+      file.copy(growth.results$ribosomal_domtblout_file,
+                file.path(out_dir, paste0(id, ".ribosomalproteins.domtblout")))
+    }
+    map.traits.result$growthrate_CUBHE = growth.results$CUBHE
+    map.traits.result$growthrate_ConsistencyHE = growth.results$ConsistencyHE
+    map.traits.result$growthrate_CPB = growth.results$CPB
+    map.traits.result$growthrate_d = growth.results$d
+    map.traits.result$growthrate_LowerCI = growth.results$LowerCI
+    map.traits.result$growthrate_UpperCI = growth.results$UpperCI
+    tictoc::toc(log = "TRUE")
+  }
+
+  if(optimalT_predict == "TRUE") {
+    tictoc::tic("run_ogtmodel")
+    allfeatures = extract_features(genome_file = genome_file,
+                                    cds_file = cds_file,
+                                    proteins_file = proteins_file)
+    if(save_tempfiles == T) {
+      write.table(allfeatures[,-1], sep = "\t", quote = F, row.names = F, col.names = F,
+                  file = file.path(out_dir, paste0(id, ".allfeatures.txt")))
+    }
+    ogt = run_ogtmodel(allfeatures)
+    map.traits.result$allfeatures = allfeatures
+    map.traits.result$ogt = ogt
+    tictoc::toc(log = "TRUE")
+  }
   tictoc::toc(log = "TRUE")
 
   if(save_tempfiles == T) {
@@ -141,9 +186,9 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
 #' Apply rules to a set of detected genes
 #'
 #' @param domtblout_file1 domtblout_file2 out_file
-#' @import dplyr
-#' @return
-#'
+#' @returns
+#' mapped traits from hmm hit tables.
+#' import dplyr
 #' @export map.traits.fromdomtblout
 map.traits.fromdomtblout <- function(microtrait_domtblout, dbcan_domtblout) {
   result <- c(call = match.call())

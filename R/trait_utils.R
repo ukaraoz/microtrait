@@ -1,8 +1,8 @@
 #' Make sure binary traits are of type logical
 #'
-#' @param genomeset_results
+#' @param genomeset_results genomeset_results
+#' @importFrom dplyr filter pull mutate_at
 #'
-#' @import dplyr
 #' @return genomeset_results
 #' @export
 convert_traitdatatype = function(genomeset_results, binarytype = "logical") {
@@ -46,7 +46,7 @@ convert_traitdatatype = function(genomeset_results, binarytype = "logical") {
 #'
 #' @param genomeset_results
 #'
-#' @import dplyr
+#' @importFrom dplyr filter pull mutate_at
 #' @return genomeset_results
 #' @export
 trait.normalize <- function(genomeset_results,
@@ -98,8 +98,8 @@ trait.normalize <- function(genomeset_results,
 
 #' Convert continuous traits to binary
 #'
-#' @param feature_matrix
-#' @import dplyr
+#' @param feature_matrix feature_matrix
+#' @importFrom dplyr mutate_at
 #' @return results
 #'
 #' @export trait.continuous2binary

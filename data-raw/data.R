@@ -208,13 +208,6 @@ hmms_fromrules = bind_rows(hmms_fromrules_wkegg,
 #hmms_fromrules %>%
 #  anti_join(hmm_performance, by = c("microtrait_hmm-dbxref_kegg" = "microtrait_hmm-dbxref_kegg"))
 
-#usethis::use_data(hmms, overwrite = TRUE)
-#usethis::use_data(substrate2rule, overwrite = TRUE)
-usethis::use_data(hmms_fromrules, overwrite = TRUE)
-usethis::use_data(rules, overwrite = TRUE)
-usethis::use_data(rule2trait, overwrite = TRUE)
-usethis::use_data(traits_listbygranularity, overwrite = TRUE)
-
 write.table(rules,
             file = "./data-raw/microtrait_ruleunwrapped.txt",
             sep = "\t", quote = F, row.names = F, col.names = F)
@@ -250,37 +243,50 @@ write.table(rename_addtc2hmm_commands,
 
 # 7.Read regression models for prediction of optimum growth temperature
 # The models are from Sauer & Wang (2019) available at https://github.com/DavidBSauer/OGT_prediction
-model.dir = "/Users/ukaraoz/Work/microtrait/code/github/microtrait/data-raw/regression_models"
-model.dir = "./data-raw/regression_models"
-model.files = list.files(model.dir, full.names = T)
-model.allfeatures = readr::read_delim("/Users/ukaraoz/Work/microtrait/code/github/microtrait/data-raw/regression_models/allfeatures.txt", delim = "\t") %>%
+model.dir = "./data-raw/ogt_regression_models"
+model.files = file.path(model.dir, c("superkingdom-all_species-genomic+ORF+protein.txt", "superkingdom-all_species-genomic+tRNA+rRNA+ORF.txt",
+                                     "superkingdom-all_species-genomic+rRNA+ORF+protein.txt", "superkingdom-all_species-genomic+tRNA+rRNA.txt",
+                                     "superkingdom-all_species-genomic+rRNA.txt", "superkingdom-all_species-genomic+tRNA.txt",
+                                     "superkingdom-all_species-genomic+tRNA+ORF+protein.txt", "superkingdom-all_species-genomic.txt"))
+
+model.allfeatures = readr::read_delim(file.path(model.dir, "allfeatures.txt"), delim = "\t") %>%
   dplyr::mutate(feature = factor(feature, levels = feature, ordered = T))
 #
-models = parallel::mclapply(2:length(model.files),
-                                 function(i) {
-                                    rank = strsplit(basename(model.files[i]), "-")[[1]][1]
-                                    clade = strsplit(basename(model.files[i]), "-")[[1]][2]
-                                    firstline = readr::read_lines(model.files[i], n_max = 1)
-                                    R2 = sub("#R2=", "", strsplit(firstline, "\\|")[[1]][1])
-                                    RMSE = sub("RMSE=", "", strsplit(firstline, "\\|")[[1]][2])
-                                    coefficients = readr::read_delim(model.files[i],
-                                                                   col_names = F,
-                                                                   delim = "\t",
-                                                                   comment = "#") %>%
-                                                   setNames(., c("feature", "value"))
-                                    coefficients = model.allfeatures %>%
-                                      dplyr::left_join(coefficients, by = c("feature" = "feature")) %>%
-                                      dplyr::mutate(value = replace_na(value, 0))
+models = parallel::mclapply(1:length(model.files),
+                            function(i) {
+                              rank = strsplit(basename(model.files[i]), "-")[[1]][1]
+                              clade = strsplit(basename(model.files[i]), "-")[[1]][2]
+                              model_type = sub(".txt", "", strsplit(basename(model.files[i]), "-")[[1]][3])
+                              firstline = readr::read_lines(model.files[i], n_max = 1)
+                              R2 = sub("#R2=", "", strsplit(firstline, "\\|")[[1]][1])
+                              RMSE = sub("RMSE=", "", strsplit(firstline, "\\|")[[1]][2])
+                              coefficients = readr::read_delim(model.files[i],
+                                                               col_names = F,
+                                                               col_type = "cc", # read the coefficients as text
+                                                               delim = "\t",
+                                                               comment = "#") %>%
+                                setNames(., c("feature", "value"))
+                              coefficients = model.allfeatures %>%
+                                dplyr::left_join(coefficients, by = c("feature" = "feature")) %>%
+                                dplyr::mutate(value = tidyr::replace_na(value, "0"))
 
-                                    model = cbind(rank,
-                                                  clade,
-                                                  R2,
-                                                  RMSE,
-                                                  coefficients)
-                                    model
-                                 },
-                                mc.cores = 4)
+                              model = cbind(rank,
+                                            clade,
+                                            model_type,
+                                            R2,
+                                            RMSE,
+                                            coefficients)
+                              model
+                            },
+                            mc.cores = 4)
 models = do.call(rbind, models) %>% dplyr::as_tibble()
+#usethis::use_data(hmms, overwrite = TRUE)
+#usethis::use_data(substrate2rule, overwrite = TRUE)
+usethis::use_data(hmms_fromrules, overwrite = TRUE)
+usethis::use_data(rules, overwrite = TRUE)
+usethis::use_data(rule2trait, overwrite = TRUE)
+usethis::use_data(traits_listbygranularity, overwrite = TRUE)
+usethis::use_data(models, overwrite = TRUE)
 
 #files = list.files("~/Work/microtrait/code/github/microtrait/inst/extdata/ogt.test/tocompare", full.names = T)
 #allcolnames = matrix(nrow = 0, ncol = 2)
