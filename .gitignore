@@ -33,8 +33,6 @@ inst/extdata/hmm/arcbacribosomal/*
 inst/extdata/hmm/dbcan/*
 inst/extdata/hmm/hmmpress/*
 inst/extdata/hmm/microtrait-hmmdb/*
-inst/extdata/ogt.test/*
-inst/extdata/ogt.test/ogt.test.tar.gz
 #inst/extdata/genomic/100genomes
 # add exception, to make sure the directories can be committed
 !inst/extdata/hmm/arcbacribosomal/.gitkeep

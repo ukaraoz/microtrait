@@ -49,7 +49,7 @@ run.hmmsearch <- function(faa_file = system.file("extdata", "2619619645.genes.fa
     #                 hmm,
     #                 faa_file,
     #                 ">/dev/null")
-    message("Running hmmsearch for ", fs::path_file(faa_file))
+    message("Running hmmsearch for ", fs::path_file(faa_file), " with ", hmm, " models.")
     #message(command)
 
     #if(hmm == "microtrait") {

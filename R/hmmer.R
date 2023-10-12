@@ -86,7 +86,7 @@ parse.hmmeroutput <- function(file, type){
       perl = TRUE
     ) %>%
     paste0(collapse="\n") %>%
-    readr::read_tsv(col_names=c('a', 'acc'), comment='#', na='-') %>%
+    readr::read_tsv(col_names=c('a', 'acc'), col_types = cols(), comment='#', na='-') %>%  # col_types to turn off the messages
     tidyr::separate(.data$a, head(names(col_types$cols), -1), sep=' +') %>%
     readr::type_convert(col_types=col_types)
 }

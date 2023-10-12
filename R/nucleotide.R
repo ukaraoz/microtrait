@@ -195,13 +195,20 @@ analyze_orfs <- function(fastafile, genomesize) {
   return(result)
 }
 
-j2 <- function(x) {
+j2 <- function(genome) {
   # x is of type XStringSet
   # calculate the J2 metric of the genome
-  YY = sum(stringr::str_count(as.character(x), c("TT","CC","TC","CT")))
-  RR = sum(stringr::str_count(as.character(x), c("AA","GG","AG","GA")))
-  YR = sum(stringr::str_count(as.character(x), c("TA","TG","CA","CG")))
-  RY = sum(stringr::str_count(as.character(x), c("AT","AC","GT","GC")))
+  dinucleotides = c("TT","CC","TC","CT","AA","GG","AG","GA",
+                    "TA","TG","CA","CG", "AT","AC","GT","GC")
+  dinucleotide_counts = suppressWarnings(lapply(as.character(genome), stringr::str_count, c(pattern = dinucleotides)))
+  dinucleotide_counts = do.call("rbind", dinucleotide_counts)
+  colnames(dinucleotide_counts) = dinucleotides
+  dinucleotide_counts = apply(dinucleotide_counts, 2, sum)
+
+  YY = sum(dinucleotide_counts[c("TT","CC","TC","CT")])
+  RR = sum(dinucleotide_counts[c("AA","GG","AG","GA")])
+  YR = sum(dinucleotide_counts[c("TA","TG","CA","CG")])
+  RY = sum(dinucleotide_counts[c("AT","AC","GT","GC")])
   total = YY+RR+YR+RY
   YY = YY/total
   RR = RR/total

@@ -60,9 +60,10 @@ add.metadata <- function(genomeset_results, genome_metadata, genome_metadata_idc
 #' @return genomeset_results
 #'
 #' @export make.genomeset.results
-make.genomeset.results <- function(rds_files, ids = NULL, ncores) {
+make.genomeset.results <- function(rds_files, ids = NULL, growthrate = T, optimumT = T, ncores) {
   message("Synthesizing traits at granularity 1")
   trait_matrixatgranularity1 = combine.results(rds_files, type = "trait_atgranularity1", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+
   message("Synthesizing traits at granularity 2")
   trait_matrixatgranularity2 = combine.results(rds_files, type = "trait_atgranularity2", ids = ids, ncores = ncores) %>% tibble::as_tibble()
   message("Synthesizing traits at granularity 3")
@@ -72,6 +73,33 @@ make.genomeset.results <- function(rds_files, ids = NULL, ncores) {
   hmm_matrix = combine.results(rds_files, type = "gene", ids = ids, ncores = ncores) %>% tibble::as_tibble()
   message("Synthesizing rule assertions")
   rule_matrix = combine.results(rds_files, type = "rule", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+
+  if(growthrate == T) {
+    growthrates = combine.results(rds_files, type = "growthrate", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+    trait_matrixatgranularity1 = trait_matrixatgranularity1 %>%
+      dplyr::left_join(growthrates, by = c("id" = "id"))
+    trait_matrixatgranularity2 = trait_matrixatgranularity2 %>%
+      dplyr::left_join(growthrates, by = c("id" = "id"))
+    trait_matrixatgranularity3 = trait_matrixatgranularity3 %>%
+      dplyr::left_join(growthrates, by = c("id" = "id"))
+    hmm_matrix = hmm_matrix %>%
+      dplyr::left_join(growthrates, by = c("id" = "id"))
+    rule_matrix = rule_matrix %>%
+      dplyr::left_join(growthrates, by = c("id" = "id"))
+  }
+  if(optimumT == T) {
+    optimumTs = combine.results(rds_files, type = "optimumT", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+    trait_matrixatgranularity1 = trait_matrixatgranularity1 %>%
+      dplyr::left_join(optimumTs, by = c("id" = "id"))
+    trait_matrixatgranularity2 = trait_matrixatgranularity2 %>%
+      dplyr::left_join(optimumTs, by = c("id" = "id"))
+    trait_matrixatgranularity3 = trait_matrixatgranularity3 %>%
+      dplyr::left_join(optimumTs, by = c("id" = "id"))
+    hmm_matrix = hmm_matrix %>%
+      dplyr::left_join(optimumTs, by = c("id" = "id"))
+    rule_matrix = rule_matrix %>%
+      dplyr::left_join(optimumTs, by = c("id" = "id"))
+  }
 
   genomeset_results = list(trait_matrixatgranularity1 = trait_matrixatgranularity1,
                            trait_matrixatgranularity2 = trait_matrixatgranularity2,
@@ -154,7 +182,7 @@ combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
   }
   cl <- parallel::makeCluster(ncores)
   doParallel::registerDoParallel(cl)
-  results_rowbinded = foreach(i = 1:length(rds_files), .packages = c("dplyr", "tibble"), .combine = "rbind") %dopar% {
+  results_rowbinded = foreach(i = 1:length(rds_files), .packages = c("dplyr", "tibble"), .export = "fetch.results", .combine = "rbind") %dopar% {
     fetch.results(rds_files[i], ids[i], type = type)
   }
   results_rowbinded = results_rowbinded %>% tibble::as_tibble()
@@ -165,7 +193,9 @@ combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
     # distinct() needed here, multiple hits/genome
     # drop=FALSE to add columns for undetected hmms
     gene = {results_rowbinded %>% tibble::add_column(n = factor(1, levels = c(0,1), ordered = T)) %>% distinct() %>% tidyr::spread(hmm, n, drop = FALSE, fill = 0)},
-    rule = {results_rowbinded %>% tidyr::spread(`microtrait_rule-name`, `microtrait_rule-asserted`)}
+    rule = {results_rowbinded %>% tidyr::spread(`microtrait_rule-name`, `microtrait_rule-asserted`)},
+    growthrate = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)},
+    optimumT = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)}
   )
   parallel::stopCluster(cl)
   # todo: NULLify rownames earlier
@@ -206,6 +236,16 @@ fetch.results <- function(rds_file, id, type) {
   if(type == "rule") {
     result = temp$rules_asserted %>%
       select(c("microtrait_rule-name", "microtrait_rule-asserted"))
+  }
+  if(type == "growthrate") {
+    result = data.frame(`microtrait_trait-name` = "growthrate",
+                        `microtrait_trait-value` = temp$growthrate_d,
+                        check.names = F) %>% tibble::as_tibble()
+  }
+  if(type == "optimumT") {
+    result = data.frame(`microtrait_trait-name` = "optimumT",
+                        `microtrait_trait-value` = temp$ogt,
+                        check.names = F) %>% tibble::as_tibble()
   }
   result = result %>%
     tibble::add_column(id = as.character(id)) %>%

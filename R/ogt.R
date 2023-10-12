@@ -20,7 +20,7 @@ extract_features <- function(genome_file, cds_file, proteins_file) {
   message("Extracting tRNA features")
   trna_results = run.tRNAscan(genome_file = genome_file)
   if(trna_results$found) {
-    genome_tRNAfeatures = analyze_tRNA(trna_results$tRNA_fa)
+    genome_tRNAfeatures = analyze_tRNA(trna_results$tRNA_lcfa)
     # write.table(rbind(c(Genome = id, genome_tRNAfeatures)),
     #             file = file.path(outdir, paste0(id, "_tRNA_features.txt")),
     #             row.names = F, col.names = T, sep = "\t", quote = F)

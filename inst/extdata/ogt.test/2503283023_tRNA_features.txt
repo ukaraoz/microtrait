@@ -1,2 +1,0 @@
-Genome	tRNA Nucleotide Fraction: A	tRNA Nucleotide Fraction: C	tRNA Nucleotide Fraction: G	tRNA Nucleotide Fraction: T	tRNA GC
-2503283023	0.196570728720147	0.253214941824862	0.316901408450704	0.233312921004287	NA

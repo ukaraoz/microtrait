@@ -11,6 +11,7 @@
   type = "genomic",
   mode = "single",
   growthrate_predict = T,
+  optimalT_predict = T,
   save_tempfiles = F
 )
 }
