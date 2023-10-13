@@ -60,7 +60,7 @@ add.metadata <- function(genomeset_results, genome_metadata, genome_metadata_idc
 #' @return genomeset_results
 #'
 #' @export make.genomeset.results
-make.genomeset.results <- function(rds_files, ids = NULL, growthrate = T, optimumT = T, ncores) {
+make.genomeset.results <- function(rds_files, ids = NULL, growthrate = T, optimumT = T, ncores = 1) {
   message("Synthesizing traits at granularity 1")
   trait_matrixatgranularity1 = combine.results(rds_files, type = "trait_atgranularity1", ids = ids, ncores = ncores) %>% tibble::as_tibble()
 
