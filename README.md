@@ -137,7 +137,6 @@ result = extract.traits(genome_file)
 * `result$microtrait_result$proteins_file`: Fasta file for translated protein coding gene predictions (from prodigal)
 * `result$microtrait_result$norfs`: Number of predicted protein coding genes (ORFs)
 * `microtrait_result$time_log`: Run time logs
-* `result$rds_file`:
 
 #### Multiple (thousands) genomes (parallel workflow)
 
