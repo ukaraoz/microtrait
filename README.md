@@ -20,12 +20,11 @@ The following binaries should be in your PATH so that they can be accessed regar
 * **[HMMER](http://hmmer.org/) (>= v3.1b2)**
 * **[Prodigal](https://github.com/hyattpd/Prodigal) (>= v2.6.3)**
 
-The following are required for calculating features used in calculating Optimal Growth Temperatures based on regression models from [Sauer (2009)](https://doi.org/10.1093/bioinformatics/btz059)
+The following are required for calculating features used in calculating Optimal Growth Temperatures based on regression model from [Sauer (2009)](https://doi.org/10.1093/bioinformatics/btz059) based on genomic, ORF, protein and tRNA features.
 
 * **[Infernal](http://eddylab.org/infernal/infernal-1.1.2.tar.gz) (= v1.1.2)**
 * **[tRNAscan-SE](http://trna.ucsc.edu/software/trnascan-se-2.0.0.tar.gz) (= v2.0.0)**
 * **[bedtools](https://github.com/arq5x/bedtools2/releases/download/v2.27.1/bedtools-2.27.1.tar.gz) (>= v2.27)**
-* **[barrnap](https://github.com/tseemann/barrnap/archive/0.9.tar.gz) (= v0.9)**
 
 ### 2. Data dependencies
 
@@ -118,18 +117,27 @@ Once *microTrait* is correctly setup, you can extract traits from a genome seque
 ```{r tidy = FALSE}
 library(microtrait)
 genome_file <- system.file("extdata/genomic/2695420375.fna", package="microtrait")
-microtrait_result = extract.traits(genome_file)
+result = extract.traits(genome_file)
 ```
 
-*microTrait* packages its results into an R list with the following names components:
+*microTrait* packages its results into an R list with the following named components. The information under the component "microtrait_result" is also saved permanently as an R object (.rds file) with path stored in `result$rds_file`.
 
-* `microtrait_result$id`: genome id, currently set to fasta filename for the genome sequence
-* `microtrait_result$genes_detected`: microtrait-hmm models detected in the genome sequence (using the benchmarked TC thresholds)
-
-* `microtrait_result$genes_detected`: microtrait-hmm models detected in the genome sequence (using the benchmarked TC thresholds)
-* `microtrait_result$domains_detected`: CAZy domains detected in the genome sequence
-* `microtrait_result$all_traits`: Extracted traits
+* `result$microtrait_result$id`: genome id, by default set to fasta filename for the genome sequence
+* `result$microtrait_result$genes_detected_table`: microtrait-hmm model hit table for genes detected in the genome sequence (using the benchmarked TC thresholds)
+* `result$microtrait_result$genes_detected`: microtrait-hmm models detected in the genome sequence (using the benchmarked TC thresholds)
+* `result$microtrait_result$domains_detected`: CAZy domains detected in the genome sequence
+* `result$microtrait_result$rules_asserted`: Assertions for the microtrait-rules
+* `result$microtrait_result$trait_counts_atgranularity1`: Extracted traits summarized at granularity level 1
+* `result$microtrait_result$trait_counts_atgranularity2`: Extracted traits summarized at granularity level 2
+* `result$microtrait_result$trait_counts_atgranularity3`: Extracted traits summarized at granularity level 3
+* `result$microtrait_result$growthrate_d`: Estimated growth rate in days
+* `result$microtrait_result$allfeatures`: Genomic, ORF, protein and tRNA features for estimation of the optimum growth temperature
+* `result$microtrait_result$ogt`: Estimated optimum growth temperature (degrees C)
+* `result$microtrait_result$cds_file`: Fasta file for protein coding gene predictions/ORFs (from prodigal)
+* `result$microtrait_result$proteins_file`: Fasta file for translated protein coding gene predictions (from prodigal)
+* `result$microtrait_result$norfs`: Number of predicted protein coding genes (ORFs)
 * `microtrait_result$time_log`: Run time logs
+* `result$rds_file`:
 
 #### Multiple (thousands) genomes (parallel workflow)
 

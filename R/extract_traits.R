@@ -148,9 +148,9 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
 
   if(optimalT_predict == "TRUE") {
     tictoc::tic("run_ogtmodel")
-    allfeatures = extract_features(genome_file = genome_file,
-                                    cds_file = cds_file,
-                                    proteins_file = proteins_file)
+    allfeatures = extract_features(genome_file = fasta_file,
+                                   cds_file = cds_file,
+                                   proteins_file = proteins_file)
     if(save_tempfiles == T) {
       write.table(allfeatures[,-1], sep = "\t", quote = F, row.names = F, col.names = F,
                   file = file.path(out_dir, paste0(id, ".allfeatures.txt")))
