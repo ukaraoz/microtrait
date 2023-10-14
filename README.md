@@ -112,11 +112,11 @@ list.files(file.path(.libPaths(), "microtrait/extdata/hmm/hmmpress"))
 ## Usage
 ### Extracting traits from a genome sequence
 #### Single genome
-Once *microTrait* is correctly setup, you can extract traits from a genome sequence. For the following example, we use the genome sequence of "Achromobacter xylosoxidans A-8 (IMG Taxon OID 2695420375)" included as part of *microTrait* package.
+Once *microTrait* is correctly setup, you can extract traits from a genome sequence. For the following example, we use the genome sequence of "Thermus tenuipuniceus YIM 76954" (IMG Taxon OID 2896171935 associated with GOLD Analysis [Ga0452602](https://gold.jgi.doe.gov/analysis_project?id=Ga0452602)) included as part of *microTrait* package.
 
 ```{r tidy = FALSE}
 library(microtrait)
-genome_file <- system.file("extdata/genomic/2695420375.fna", package="microtrait")
+genome_file <- system.file("extdata/genomic/2896171935.fna", package="microtrait")
 result = extract.traits(genome_file)
 ```
 
@@ -197,7 +197,7 @@ rds_files = list.files(system.file("extdata/genomic/100genomes",package = "micro
 
 
 ```{r, tidy = TRUE}
-rds_files = unlist(mclapply(microtrait_results, "[[", "rds_file", mc.cores = ncores))
+rds_files = unlist(parallel::mclapply(microtrait_results, "[[", "rds_file", mc.cores = ncores))
 ```
 
 Next, using these `rds_files` we will combine these results from multiple genomes.
