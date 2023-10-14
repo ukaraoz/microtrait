@@ -112,7 +112,7 @@ list.files(file.path(.libPaths(), "microtrait/extdata/hmm/hmmpress"))
 ## Usage
 ### Extracting traits from a genome sequence
 #### Single genome
-Once *microTrait* is correctly setup, you can extract traits from a genome sequence. For the following example, we use the genome sequence of "Thermus tenuipuniceus YIM 76954" (IMG Taxon OID 2896171935 associated with GOLD Analysis [Ga0452602](https://gold.jgi.doe.gov/analysis_project?id=Ga0452602)) included as part of *microTrait* package.
+Once *microTrait* is correctly setup, you can extract traits from a genome sequence. For the following example, we use the genome sequence of "Thermus tenuipuniceus YIM 76954" (IMG Taxon ID [2896171935](https://img.jgi.doe.gov/genome.php?id=2896171935) associated with GOLD Analysis [Ga0452602](https://gold.jgi.doe.gov/analysis_project?id=Ga0452602)) included as part of *microTrait* package.
 
 ```{r tidy = FALSE}
 library(microtrait)
