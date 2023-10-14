@@ -135,27 +135,27 @@ write.genomeset.results <- function(genomeset_results, out_dir, datasetid) {
 #' @return results
 #'
 #' @export extract.traits.parallel
-extract.traits.parallel <- function(fna_files,
-                                    out_dirs = dirname(fna_files),
+extract.traits.parallel <- function(fa_files,
+                                    out_dirs = dirname(fa_files),
                                     ncores = floor(parallel::detectCores()*0.7),
                                     save_tempfiles = F, type = "genomic") {
-  tictoc::tic(paste0("Running microtrait for ", length(fna_files), " genomes"))
-  parallel::mclapply(1:length(fna_files),
-                     function(i) {
-                        returnList = extract.traits(fna_files[i], out_dirs[i], save_tempfiles = save_tempfiles, type = type)
-                        returnList
-                      },
-                     mc.cores = ncores)
+  tictoc::tic(paste0("Running microtrait for ", length(fa_files), " genomes"))
+  results = parallel::mclapply(1:length(fa_files),
+                      function(i) {
+                         returnList = extract.traits(fa_files[i], out_dirs[i], save_tempfiles = save_tempfiles, type = type)
+                         returnList
+                       },
+                      mc.cores = ncores)
 
   # alternative way to parallelize, more error-prone in cluster environment due to memory allocation errors
   #cl <- parallel::makeCluster(ncores)
   #doParallel::registerDoParallel(cl)
-  #results = foreach(i = 1:length(fna_files), .packages = c("microtrait")) %dopar% {
-  #  extract.traits(fna_files[i], save_tempfiles = T, out_dir = out_dir)
+  #results = foreach(i = 1:length(fa_files), .packages = c("microtrait")) %dopar% {
+  #  extract.traits(fa_files[i], save_tempfiles = T, out_dir = out_dir)
   #}
   #parallel::stopCluster(cl)
   tictoc::toc(log = "TRUE")
-  #results
+  results
 }
 
 #' Combine microtrait results for multiple genomes

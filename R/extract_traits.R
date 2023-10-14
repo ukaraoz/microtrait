@@ -21,7 +21,8 @@
 extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.fna", package = "microtrait", mustWork = TRUE),
                            out_dir = system.file("extdata/genomic", package = "microtrait", mustWork = TRUE),
                            type = "genomic", mode = "single",
-                           growthrate_predict = T, optimalT_predict = T, save_tempfiles = F) {
+                           growthrate_predict = TRUE, optimalT_predict = TRUE, optimalT_predict_wtRNA = FALSE,
+                           save_tempfiles = F) {
   result <- c(call = match.call())
 
   tictoc::tic.clearlog()
@@ -148,14 +149,28 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
 
   if(optimalT_predict == "TRUE") {
     tictoc::tic("run_ogtmodel")
-    allfeatures = extract_features(genome_file = fasta_file,
-                                   cds_file = cds_file,
-                                   proteins_file = proteins_file)
-    if(save_tempfiles == T) {
-      write.table(allfeatures[,-1], sep = "\t", quote = F, row.names = F, col.names = F,
-                  file = file.path(out_dir, paste0(id, ".allfeatures.txt")))
+    if(optimalT_predict_wtRNA == "TRUE") {
+      allfeatures = extract_features(genome_file = fasta_file,
+                                     cds_file = cds_file,
+                                     proteins_file = proteins_file,
+                                     tRNA = TRUE)
+      if(save_tempfiles == T) {
+        write.table(allfeatures[,-1], sep = "\t", quote = F, row.names = F, col.names = F,
+                    file = file.path(out_dir, paste0(id, ".allfeatures.txt")))
+      }
+      ogt = run_ogtmodel(allfeatures, model = "genomic+tRNA+ORF+protein")
     }
-    ogt = run_ogtmodel(allfeatures)
+    if(optimalT_predict_wtRNA == "FALSE") {
+      allfeatures = extract_features(genome_file = fasta_file,
+                                     cds_file = cds_file,
+                                     proteins_file = proteins_file,
+                                     tRNA = FALSE)
+      if(save_tempfiles == T) {
+        write.table(allfeatures[,-1], sep = "\t", quote = F, row.names = F, col.names = F,
+                    file = file.path(out_dir, paste0(id, ".allfeatures.txt")))
+      }
+      ogt = run_ogtmodel(allfeatures, model = "genomic+ORF+protein")
+    }
     map.traits.result$allfeatures = allfeatures
     map.traits.result$ogt = ogt
     tictoc::toc(log = "TRUE")

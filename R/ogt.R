@@ -6,7 +6,7 @@
 #' @import gRodon
 #' @returns features
 #' @export extract_features
-extract_features <- function(genome_file, cds_file, proteins_file) {
+extract_features <- function(genome_file, cds_file, proteins_file, tRNA = TRUE) {
   id = fs::path_file(genome_file)
   id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
 
@@ -16,15 +16,6 @@ extract_features <- function(genome_file, cds_file, proteins_file) {
   # write.table(rbind(c(Genome = id, genome_genomicfeatures)),
   #             file = file.path(outdir, paste0(id, "_genomic_features.txt")),
   #             row.names = F, col.names = T, sep = "\t", quote = F)
-  # 2
-  message("Extracting tRNA features")
-  trna_results = run.tRNAscan(genome_file = genome_file)
-  if(trna_results$found) {
-    genome_tRNAfeatures = analyze_tRNA(trna_results$tRNA_lcfa)
-    # write.table(rbind(c(Genome = id, genome_tRNAfeatures)),
-    #             file = file.path(outdir, paste0(id, "_tRNA_features.txt")),
-    #             row.names = F, col.names = T, sep = "\t", quote = F)
-  }
   # 3
   #rrna_results = run.barrnap(genome_file = genome_file, kingdom = kingdom)
   #genome_rRNAfeatures = analyze_rRNA(rrna_results$rRNA_fa)
@@ -44,20 +35,43 @@ extract_features <- function(genome_file, cds_file, proteins_file) {
   # write.table(rbind(c(Genome = id, genome_proteinfeatures)),
   #             file = file.path(outdir, paste0(id, "_protein_features.txt")),
   #             row.names = F, col.names = T, sep = "\t", quote = F)
+  # 2
+  if(tRNA == TRUE) {
+    message("Extracting tRNA features")
+    trna_results = run.tRNAscan(genome_file = genome_file)
+    if(trna_results$found) {
+      genome_tRNAfeatures = analyze_tRNA(trna_results$tRNA_lcfa)
+      # write.table(rbind(c(Genome = id, genome_tRNAfeatures)),
+      #             file = file.path(outdir, paste0(id, "_tRNA_features.txt")),
+      #             row.names = F, col.names = T, sep = "\t", quote = F)
+    }
 
-  features = data.frame(Genome = id,
-                        feature =
-                          c(names(genome_genomicfeatures),
-                            names(genome_tRNAfeatures),
-                            names(genome_orffeatures),
-                            names(genome_proteinfeatures)),
-                        value =
-                          as.numeric(
-                            c(genome_genomicfeatures,
-                              genome_tRNAfeatures,
-                              genome_orffeatures,
-                              genome_proteinfeatures))) %>%
-    dplyr::as_tibble()
+    features = data.frame(Genome = id,
+                          feature =
+                            c(names(genome_genomicfeatures),
+                              names(genome_tRNAfeatures),
+                              names(genome_orffeatures),
+                              names(genome_proteinfeatures)),
+                          value =
+                            as.numeric(
+                              c(genome_genomicfeatures,
+                                genome_tRNAfeatures,
+                                genome_orffeatures,
+                                genome_proteinfeatures))) %>%
+      dplyr::as_tibble()
+  } else {
+    features = data.frame(Genome = id,
+                          feature =
+                            c(names(genome_genomicfeatures),
+                              names(genome_orffeatures),
+                              names(genome_proteinfeatures)),
+                          value =
+                            as.numeric(
+                              c(genome_genomicfeatures,
+                                genome_orffeatures,
+                                genome_proteinfeatures))) %>%
+      dplyr::as_tibble()
+  }
   return(features)
 }
 
