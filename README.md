@@ -130,7 +130,7 @@ result = extract.traits(genome_file)
 * `result$microtrait_result$trait_counts_atgranularity1`: Extracted traits summarized at granularity level 1
 * `result$microtrait_result$trait_counts_atgranularity2`: Extracted traits summarized at granularity level 2
 * `result$microtrait_result$trait_counts_atgranularity3`: Extracted traits summarized at granularity level 3
-* `result$microtrait_result$growthrate_d`: Estimated growth rate in days
+* `result$microtrait_result$growthrate_d`: Estimated growth rate in hours
 * `result$microtrait_result$allfeatures`: Genomic, ORF, protein and tRNA features for estimation of the optimum growth temperature
 * `result$microtrait_result$ogt`: Estimated optimum growth temperature (degrees C)
 * `result$microtrait_result$cds_file`: Fasta file for protein coding gene predictions/ORFs (from prodigal)
