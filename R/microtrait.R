@@ -77,15 +77,15 @@ make.genomeset.results <- function(rds_files, ids = NULL, growthrate = T, optimu
   if(growthrate == T) {
     mingentimes = combine.results(rds_files, type = "growthrate", ids = ids, ncores = ncores) %>% tibble::as_tibble()
     trait_matrixatgranularity1 = trait_matrixatgranularity1 %>%
-      dplyr::left_join(growthrates, by = c("id" = "id"))
+      dplyr::left_join(mingentimes, by = c("id" = "id"))
     trait_matrixatgranularity2 = trait_matrixatgranularity2 %>%
-      dplyr::left_join(growthrates, by = c("id" = "id"))
+      dplyr::left_join(mingentimes, by = c("id" = "id"))
     trait_matrixatgranularity3 = trait_matrixatgranularity3 %>%
-      dplyr::left_join(growthrates, by = c("id" = "id"))
+      dplyr::left_join(mingentimes, by = c("id" = "id"))
     hmm_matrix = hmm_matrix %>%
-      dplyr::left_join(growthrates, by = c("id" = "id"))
+      dplyr::left_join(mingentimes, by = c("id" = "id"))
     rule_matrix = rule_matrix %>%
-      dplyr::left_join(growthrates, by = c("id" = "id"))
+      dplyr::left_join(mingentimes, by = c("id" = "id"))
   }
   if(optimumT == T) {
     optimumTs = combine.results(rds_files, type = "optimumT", ids = ids, ncores = ncores) %>% tibble::as_tibble()
@@ -194,7 +194,7 @@ combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
     # drop=FALSE to add columns for undetected hmms
     gene = {results_rowbinded %>% tibble::add_column(n = factor(1, levels = c(0,1), ordered = T)) %>% distinct() %>% tidyr::spread(hmm, n, drop = FALSE, fill = 0)},
     rule = {results_rowbinded %>% tidyr::spread(`microtrait_rule-name`, `microtrait_rule-asserted`)},
-    growthrate = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)},
+    mingentime = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)},
     optimumT = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)}
   )
   parallel::stopCluster(cl)
@@ -237,8 +237,9 @@ fetch.results <- function(rds_file, id, type) {
     result = temp$rules_asserted %>%
       select(c("microtrait_rule-name", "microtrait_rule-asserted"))
   }
+  # the returned variable is name growthrate but it is not a rate, it is mingentime in hours
   if(type == "growthrate") {
-    result = data.frame(`microtrait_trait-name` = "growthrate",
+    result = data.frame(`microtrait_trait-name` = "mingentime",
                         `microtrait_trait-value` = temp$growthrate_d,
                         check.names = F) %>% tibble::as_tibble()
   }
