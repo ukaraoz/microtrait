@@ -397,7 +397,7 @@ calc_intergenome_variance = function(genomeset_results,
     geom_hline(yintercept = 60, color = "red", size = 0.3) +
     geom_hline(yintercept = 70, color = "red", size = 0.3) +
     geom_hline(yintercept = 90, color = "red", size = 0.3) +
-    scale_x_continuous(breaks = c(seq(0, attr(distance, "Size")-1, by = 5), attr(distance, "Size"))) +
+    scale_x_continuous(breaks = c(seq(0, attr(distance_matrix, "Size")-1, by = 5), attr(distance_matrix, "Size"))) +
     scale_y_continuous(breaks = seq(0, 100, by = 10)) +
     ggtitle("Trait variance across genomes") +
     xlab("number of guilds") +
