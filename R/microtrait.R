@@ -75,7 +75,7 @@ make.genomeset.results <- function(rds_files, ids = NULL, growthrate = T, optimu
   rule_matrix = combine.results(rds_files, type = "rule", ids = ids, ncores = ncores) %>% tibble::as_tibble()
 
   if(growthrate == T) {
-    mingentimes = combine.results(rds_files, type = "growthrate", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+    mingentimes = combine.results(rds_files, type = "mingentime", ids = ids, ncores = ncores) %>% tibble::as_tibble()
     trait_matrixatgranularity1 = trait_matrixatgranularity1 %>%
       dplyr::left_join(mingentimes, by = c("id" = "id"))
     trait_matrixatgranularity2 = trait_matrixatgranularity2 %>%
