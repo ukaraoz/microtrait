@@ -10,8 +10,9 @@
   out_dir = system.file("extdata/genomic", package = "microtrait", mustWork = TRUE),
   type = "genomic",
   mode = "single",
-  growthrate_predict = T,
-  optimalT_predict = T,
+  growthrate_predict = TRUE,
+  optimalT_predict = TRUE,
+  optimalT_predict_wtRNA = FALSE,
   save_tempfiles = F
 )
 }

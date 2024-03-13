@@ -5,8 +5,8 @@
 \title{Run microtrait for genomes in parallel using mclapply}
 \usage{
 \method{extract}{traits.parallel}(
-  fna_files,
-  out_dirs = dirname(fna_files),
+  fa_files,
+  out_dirs = dirname(fa_files),
   ncores = floor(parallel::detectCores() * 0.7),
   save_tempfiles = F,
   type = "genomic"

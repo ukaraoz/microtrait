@@ -4,7 +4,13 @@
 \alias{make.genomeset.results}
 \title{Combine microtrait outputs for multiple genomes into trait matrices (genomes x traits)}
 \usage{
-make.genomeset.results(rds_files, ids = NULL, ncores)
+make.genomeset.results(
+  rds_files,
+  ids = NULL,
+  growthrate = T,
+  optimumT = T,
+  ncores = 1
+)
 }
 \arguments{
 \item{rds_files}{rds_files}
