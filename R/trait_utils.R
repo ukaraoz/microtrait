@@ -68,17 +68,17 @@ trait.normalize <- function(genomeset_results,
       genomeset_results[[object]] = genomeset_results[[object]] %>%
         dplyr::filter(!is.na(get(normby))) %>% # shouldn't be common-there is one with no size information, taxon_id:2634166898
         dplyr::mutate_at(count_traits,
-                         funs(./as.numeric(get(normby)) * 1E6))
+                         list(~./as.numeric(get(normby)) * 1E6))
     }
     if(normby == "zscore") {
       genomeset_results[[object]] = genomeset_results[[object]] %>%
         dplyr::mutate_at(count_traits,
-                         funs((. - mean(.)) / sd(.)))
+                         list(~(. - mean(.)) / sd(.)))
     }
     if(normby == "range") {
       genomeset_results[[object]] = genomeset_results[[object]] %>%
         dplyr::mutate_at(count_traits,
-                         funs((. - min(.)) / (max(.) - min(.))))
+                         list(~(. - min(.)) / (max(.) - min(.))))
     }
     # check calculations
     # i = 30
