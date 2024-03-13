@@ -173,6 +173,7 @@ extract.traits.parallel <- function(fa_files,
 #' @param ncores Number of cores for computation
 #'
 #' @import tibble tidyr
+#' @export combine.results
 #' @return trait, rule, or hmm matrix
 combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
   # reminder for "foreach" way to parallelize
