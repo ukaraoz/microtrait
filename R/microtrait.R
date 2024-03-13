@@ -61,18 +61,33 @@ add.metadata <- function(genomeset_results, genome_metadata, genome_metadata_idc
 #'
 #' @export make.genomeset.results
 make.genomeset.results <- function(rds_files, ids = NULL, growthrate = T, optimumT = T, ncores = 1) {
+  genome_lengths = combine.results(rds_files, type = "genome_length", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+  
   message("Synthesizing traits at granularity 1")
   trait_matrixatgranularity1 = combine.results(rds_files, type = "trait_atgranularity1", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+  trait_matrixatgranularity1 = trait_matrixatgranularity1 %>%
+    dplyr::left_join(genome_lengths, by = c("id" = "id"))
 
   message("Synthesizing traits at granularity 2")
   trait_matrixatgranularity2 = combine.results(rds_files, type = "trait_atgranularity2", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+  trait_matrixatgranularity2 = trait_matrixatgranularity2 %>%
+    dplyr::left_join(genome_lengths, by = c("id" = "id"))
+  
   message("Synthesizing traits at granularity 3")
   trait_matrixatgranularity3 = combine.results(rds_files, type = "trait_atgranularity3", ids = ids, ncores = ncores) %>% tibble::as_tibble()
-
+  trait_matrixatgranularity3 = trait_matrixatgranularity3 %>%
+    dplyr::left_join(genome_lengths, by = c("id" = "id"))
+  
   message("Synthesizing hmms results")
   hmm_matrix = combine.results(rds_files, type = "gene", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+  hmm_matrix = hmm_matrix %>%
+    dplyr::left_join(genome_lengths, by = c("id" = "id"))
+  
   message("Synthesizing rule assertions")
   rule_matrix = combine.results(rds_files, type = "rule", ids = ids, ncores = ncores) %>% tibble::as_tibble()
+  rule_matrix = rule_matrix %>%
+    dplyr::left_join(genome_lengths, by = c("id" = "id"))
+  
 
   if(growthrate == T) {
     mingentimes = combine.results(rds_files, type = "mingentime", ids = ids, ncores = ncores) %>% tibble::as_tibble()
@@ -196,7 +211,8 @@ combine.results <- function(rds_files, ids = NULL, type, ncores = 1) {
     gene = {results_rowbinded %>% tibble::add_column(n = factor(1, levels = c(0,1), ordered = T)) %>% distinct() %>% tidyr::spread(hmm, n, drop = FALSE, fill = 0)},
     rule = {results_rowbinded %>% tidyr::spread(`microtrait_rule-name`, `microtrait_rule-asserted`)},
     mingentime = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)},
-    optimumT = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)}
+    optimumT = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)},
+    genome_length = {results_rowbinded %>% tidyr::spread(`microtrait_trait-name`, `microtrait_trait-value`)}
   )
   parallel::stopCluster(cl)
   # todo: NULLify rownames earlier
@@ -247,6 +263,11 @@ fetch.results <- function(rds_file, id, type) {
   if(type == "optimumT") {
     result = data.frame(`microtrait_trait-name` = "optimumT",
                         `microtrait_trait-value` = temp$ogt,
+                        check.names = F) %>% tibble::as_tibble()
+  }
+  if(type == "genome_length") {
+    result = data.frame(`microtrait_trait-name` = "genome_length",
+                        `microtrait_trait-value` = temp$genome_length,
                         check.names = F) %>% tibble::as_tibble()
   }
   result = result %>%

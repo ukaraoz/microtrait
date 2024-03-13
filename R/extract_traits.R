@@ -5,6 +5,7 @@
 #' @returns
 #' extracted traits.
 #' @import fs tictoc gRodon
+#' @importFrom seqinr read.fasta getLength
 #' @importFrom assertthat assert_that
 #' @export extract.traits
 #'
@@ -57,6 +58,8 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
 
     tictoc::tic("run.prodigal")
     fasta_file = in_file
+    fasta_seq = seqinr::read.fasta(file = fasta_file, seqtype = "DNA", as.string = T, forceDNAtolower = F, seqonly = T)
+    genome_length = sum(seqinr::getLength(fasta_seq))
     result = run.prodigal(genome_file = fasta_file, fa_file = tempfile(), faa_file = tempfile(), mode = mode)
     cds_file = result$fa_file
     proteins_file = result$faa_file
@@ -102,6 +105,7 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
     id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
 
     proteins_file = in_file
+    genome_length = NA
     nseq = countseq.fasta(proteins_file)
     tictoc::tic("run.hmmsearch")
     microtrait_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "microtrait")
@@ -109,10 +113,10 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
     #ribosomal_domtblout_file = run.hmmsearch(faa_file = proteins_file, hmm = "ribosomal")
     tictoc::toc(log = "TRUE")
   }
-  if(type == "domtblout") {  # run gene finder
+  if(type == "domtblout") {  # directly map from hits
     id = fs::path_file(in_file[[1]])
     id = gsub("\\.fna$|\\.faa$|\\.fa$|", "", id, perl = T)
-
+    genome_length = NA
     microtrait_domtblout_file = in_file[[1]]
     dbcan_domtblout_file = in_file[[2]]
     #ribosomal_domtblout_file = in_file[[3]]
@@ -177,6 +181,7 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
   }
   tictoc::toc(log = "TRUE")
 
+
   if(save_tempfiles == T) {
     file.copy(cds_file,
               file.path(out_dir, paste0(id, ".prodigal.fa")))
@@ -190,6 +195,7 @@ extract.traits <- function(in_file = system.file("extdata/genomic", "2695420375.
   map.traits.result$id = id
   map.traits.result$cds_file = file.path(out_dir, paste0(id, ".prodigal.fa"))
   map.traits.result$proteins_file = file.path(out_dir, paste0(id, ".prodigal.faa"))
+  map.traits.result$genome_length = genome_length
   map.traits.result$norfs = nseq
   map.traits.result$time_log = tictoc::tic.log()
   rds_file = file.path(out_dir, paste0(id, ".microtrait.rds"))
