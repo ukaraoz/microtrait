@@ -7,7 +7,7 @@
 calc_mixeddist(
   trait_matrix,
   idcol = "id",
-  col2ignore,
+  col2ignore = c("genome_length", "mingentime"),
   method = "wishart",
   binarytype = "logical",
   byrow = 1,

@@ -4,7 +4,7 @@
 \alias{trait.normalize}
 \title{Normalize count traits}
 \usage{
-trait.normalize(genomeset_results, normby = "Estimated Size")
+trait.normalize(genomeset_results, normby = "genome_length")
 }
 \arguments{
 \item{genomeset_results}{}
