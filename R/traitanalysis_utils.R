@@ -351,6 +351,74 @@ trait2trait_corr2 = function(feature_matrix) {
   dev.off()
 }
 
+#' Calculate interguild variance
+#'
+#' @param genomeset_results
+#'
+#' @importFrom vegan adonis2
+#' @importFrom ggplot2 ggplot
+#' @export
+calc_intergenome_variance = function(genomeset_results, 
+                                     trait_granularity = "trait_matrixatgranularity3", 
+                                     method = "wishart", 
+                                     normby = "genome_length", 
+                                     binarytype = "logical", 
+                                     clustering_method = "ward.D",
+                                     outdir, 
+                                     ncores = 1) {
+  ##############
+  ### 
+  ##############
+  genomeset_results_norm = genomeset_results %>% 
+    trait.normalize(normby = normby)
+  genomeset_results_norm = genomeset_results_norm %>% 
+    convert_traitdatatype(binarytype = binarytype)
+  distance_matrix = genomeset_results_norm[[trait_granularity]] %>% 
+    calc_mixeddist(method = method, binarytype = binarytype)
+
+  hclust_genomes = hclust(distance_matrix, method = "ward.D")
+  nguilds = seq(2, attr(distance_matrix, "Size")-1, 1)
+  adonis_results_temp =
+    parallel::mclapply(2:length(nguilds),
+                       function(i) {
+                          v = cutree(hclust_genomes, nguilds[i])
+                          genome2cluster = data.frame(guild = factor(v))
+                          rownames(genome2cluster) = names(v)
+                          adonis_results = vegan::adonis2(distance_matrix ~ guild, data = genome2cluster, perm = 1)
+                          result = data.frame(`number of guilds` = nguilds[i], 
+                                              `percent variance` = adonis_results["guild", "R2"]*100,
+                                              check.names = F)
+                       },
+                      mc.cores = ncores)
+  adonis_results = do.call("rbind", adonis_results_temp)
+  p = ggplot(adonis_results, aes(x=`number of guilds`, y=`percent variance`)) +
+    geom_line() + geom_point(size=0.8) +
+    #xlim(1, 500) +
+    geom_hline(yintercept = 60, color = "red", size = 0.3) +
+    geom_hline(yintercept = 70, color = "red", size = 0.3) +
+    geom_hline(yintercept = 90, color = "red", size = 0.3) +
+    scale_x_continuous(breaks = c(seq(0, attr(distance, "Size")-1, by = 5), attr(distance, "Size"))) +
+    scale_y_continuous(breaks = seq(0, 100, by = 10)) +
+    ggtitle("Trait variance across genomes") +
+    xlab("number of guilds") +
+    ylab("% explained variance") +
+    theme(text = element_text(size = 22),
+          axis.text = element_text(size = 22))
+  pdf_outfile = file.path(outdir, "traitvariance_acrossgenomes.pdf")
+  ggsave(p, height = 8, width = 8,
+         filename = pdf_outfile)
+  png_outfile = file.path(outdir, "traitvariance_acrossgenomes.png")
+  ggsave(p, height = 8, width = 8,
+         filename = png_outfile)
+  results = list(distance_matrix = distance_matrix, 
+                 adonis_results = adonis_results, 
+                 pdf_outfile = pdf_outfile, 
+                 png_outfile = png_outfile)
+  results
+}
+
+
+
 #' Genome by trait matrix heatmap.
 #'
 #' @param trait_matrix
