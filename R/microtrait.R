@@ -239,7 +239,7 @@ fetch.results <- function(rds_file, id, type) {
       select(c("microtrait_rule-name", "microtrait_rule-asserted"))
   }
   # the returned variable is name growthrate but it is not a rate, it is mingentime in hours
-  if(type == "growthrate") {
+  if(type == "mingentime") {
     result = data.frame(`microtrait_trait-name` = "mingentime",
                         `microtrait_trait-value` = temp$growthrate_d,
                         check.names = F) %>% tibble::as_tibble()
