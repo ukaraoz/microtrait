@@ -147,27 +147,28 @@ cramersV = function(...) {
 #'
 #' @import kmed
 #' @export
-calc_mixeddist = function(trait_matrix, idcol = "id", col2ignore, method = "wishart", binarytype = "logical", byrow = 1, verbose = TRUE) {
+calc_mixeddist = function(trait_matrix, idcol = "id", col2ignore = c("genome_length", "mingentime"), method = "wishart", binarytype = "logical", byrow = 1, verbose = TRUE) {
   # Calculate distances for mixed variable data such as
   # Gower, Podani, Wishart, Huang, Harikumar-PV, and Ahmad-Dey
   #methods = c("gower", "wishart", "podani", "huang", "harikumar", "ahmad")
   #d_gower = distmix(trait_matrix %>% dplyr::select(-1) %>% as.data.frame(),
   #                    method = "gower", idnum = idnum, idbin = idbin)
   if(verbose) {message("Calculating trait distance matrix for ", nrow(trait_matrix), " genomes.")}
-  matrix = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-col2ignore) %>% as.data.frame()
+  matrix = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-any_of(col2ignore)) %>% as.data.frame()
   rownames(matrix) = trait_matrix %>% dplyr::pull(1)
-  idnum = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-col2ignore) %>% as.data.frame() %>%
+  idnum = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-any_of(col2ignore)) %>% as.data.frame() %>%
     select(which(sapply(.,is.double))) %>%
     colnames() %>% match(colnames(trait_matrix)) -1
   if(binarytype == "logical") {
-    idbin = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-col2ignore) %>% as.data.frame() %>%
+    idbin = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-any_of(col2ignore)) %>% as.data.frame() %>%
       select(which(sapply(.,is.logical))) %>%
       colnames() %>% match(colnames(trait_matrix)) -1
+    # distmix returns type matrix
     distance = kmed::distmix(matrix,
                              method = method, idnum = idnum, idbin = idbin)
   }
   if(binarytype == "factor") {
-    idcat = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-col2ignore) %>% as.data.frame() %>%
+    idcat = trait_matrix %>% dplyr::select(-idcol) %>% dplyr::select(-any_of(col2ignore)) %>% as.data.frame() %>%
       select(which(sapply(.,is.factor))) %>%
       colnames() %>% match(colnames(trait_matrix)) -1
     distance = kmed::distmix(matrix,

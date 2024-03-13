@@ -50,7 +50,7 @@ convert_traitdatatype = function(genomeset_results, binarytype = "logical") {
 #' @return genomeset_results
 #' @export
 trait.normalize <- function(genomeset_results,
-                            normby = "Estimated Size") {
+                            normby = "genome_length") {
   # genomeset_results = genomeset_results_wmetadata
   granularities = c("1", "2", "3")
   for(g in 1:length(granularities)) {
